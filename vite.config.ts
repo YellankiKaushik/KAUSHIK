@@ -9,18 +9,21 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+
   plugins: [
     react(),
     mode === "development" && componentTagger(),
   ].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
 
-  // IMPORTANT: GitHub Pages base path
-  base: "/KAUSHIKYELLANKI/",
+  // ✅ KEY FIX:
+  // Use base path ONLY in production (GitHub Pages)
+  base: mode === "production" ? "/KAUSHIKYELLANKI/" : "/",
 
   build: {
     outDir: "dist",
