@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 
 const navItems = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "education", label: "Education" },
-  { id: "achievements", label: "Highlights" }
+  { id: "certifications", label: "Certificates" },
+  { id: "position-of-responsibility", label: "Responsibility" },
+  { id: "achievements", label: "Achievements" },
 ];
 
 const Navigation = () => {
@@ -16,7 +17,9 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => document.getElementById(item.id));
+      const sections = navItems.map(item =>
+        document.getElementById(item.id)
+      );
       const scrollPosition = window.scrollY + 100;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -59,9 +62,10 @@ const Navigation = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`
                   relative px-2 md:px-3 py-1.5 md:py-2 text-xs font-medium rounded-full transition-all duration-300 whitespace-nowrap
-                  ${activeSection === item.id
-                    ? "text-white bg-gradient-cosmic shadow-neon"
-                    : "text-white/70 hover:text-white hover:bg-white/10"
+                  ${
+                    activeSection === item.id
+                      ? "text-white bg-gradient-cosmic shadow-neon"
+                      : "text-white/70 hover:text-white hover:bg-white/10"
                   }
                 `}
               >
@@ -70,7 +74,11 @@ const Navigation = () => {
                   <motion.div
                     layoutId="activeTab"
                     className="absolute inset-0 bg-gradient-cosmic rounded-full -z-10"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{
+                      type: "spring",
+                      bounce: 0.2,
+                      duration: 0.6
+                    }}
                   />
                 )}
               </button>

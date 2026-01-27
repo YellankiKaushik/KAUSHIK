@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin } from "lucide-react";
-import keerthiProfile from "/lovable-uploads/634d3fe4-37c8-4d9d-b55b-3fcd08dc66af.png";
+import profileImage from "@/assets/profile.jpeg";
 
 const HeroSection = () => {
   return (
@@ -13,28 +13,20 @@ const HeroSection = () => {
       >
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="order-2 md:order-1 text-center md:text-left">
-            <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl text-white mb-4 font-display leading-tight"
-            >
+            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl text-white mb-4 font-display leading-tight">
               Kaushik Yellanki
             </motion.h1>
 
-            <motion.h2
-              className="text-lg sm:text-xl md:text-2xl text-primary-light mb-6 font-sans font-light leading-relaxed"
-            >
+            <motion.h2 className="text-lg sm:text-xl md:text-2xl text-primary-light mb-6 font-sans font-light leading-relaxed">
               AI Engineer and Data Analyst
             </motion.h2>
 
-            <motion.p
-              className="text-white/70 mb-8 text-base md:text-lg leading-relaxed"
-            >
+            <motion.p className="text-white/70 mb-8 text-base md:text-lg leading-relaxed">
               AI Engineer building intelligent, data-driven systems with real-world
               business impact.
             </motion.p>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-            >
+            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               {[
                 {
                   Icon: Mail,
@@ -63,8 +55,8 @@ const HeroSection = () => {
 
           <motion.div className="order-1 md:order-2 flex justify-center mb-6 md:mb-0">
             <img
-              src={keerthiProfile}
-              alt="Kaushik Yellanki"
+              src={profileImage}
+              alt="Kaushik Yellanki profile photo"
               className="rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover border-4 border-primary-dark/50 shadow-neon"
             />
           </motion.div>

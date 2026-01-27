@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
-import awsLogo from "../assets/logos/aws-logo.svg";
+import { Calendar, Github } from "lucide-react";
+import edunetLogo from "../assets/logos/edunet-logo.png";
 
 const experiences = [
   {
@@ -9,7 +9,9 @@ const experiences = [
     period: "Feb 2025 – Mar 2025",
     description:
       "Built a full-stack AI-driven analytics platform to convert unstructured YouTube comments into actionable sentiment insights. Designed end-to-end pipelines covering data extraction, NLP-based sentiment classification, AI summarization, and interactive dashboards. Gained hands-on experience with real-world datasets, API-driven system design, and AI-powered decision support systems under an industry-aligned program in collaboration with Microsoft & SAP.",
-    logo: awsLogo,
+    projectLink:
+      "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
+    logo: edunetLogo,
   },
 ];
 
@@ -27,23 +29,13 @@ const ExperienceSection = () => {
 
       <motion.div
         className="absolute top-20 left-10 w-24 h-24 bg-gradient-cosmic rounded-full blur-3xl opacity-10"
-        animate={{
-          x: [0, 20, 0],
-          y: [0, -10, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+        animate={{ x: [0, 20, 0], y: [0, -10, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <motion.div
         className="absolute bottom-20 right-10 w-20 h-20 bg-gradient-neon rounded-full blur-2xl opacity-10"
-        animate={{
-          x: [0, -15, 0],
-          y: [0, 10, 0],
-        }}
+        animate={{ x: [0, -15, 0], y: [0, 10, 0] }}
         transition={{
           duration: 15,
           repeat: Infinity,
@@ -57,11 +49,7 @@ const ExperienceSection = () => {
           initial={{ opacity: 0, y: -30, scale: 0.9 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
-          transition={{
-            duration: 0.6,
-            type: "spring",
-            stiffness: 100,
-          }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
           className="text-3xl font-bold text-white mb-10 text-center text-glow"
         >
           Professional Experience
@@ -74,33 +62,21 @@ const ExperienceSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.1,
-              }}
-              whileHover={{
-                y: -2,
-                transition: { duration: 0.2 },
-              }}
-              className="glass-card p-6 hover-glow group cursor-pointer"
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ y: -2 }}
+              className="glass-card p-6 hover-glow"
             >
               <div className="flex items-start gap-6">
-                <motion.div
-                  className="p-3 bg-white/90 backdrop-blur rounded-xl border border-white/30 shadow-lg"
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.2 },
-                  }}
-                >
+                <div className="p-3 bg-white/90 rounded-xl border border-white/30 shadow-lg">
                   <img
                     src={experience.logo}
-                    alt={`${experience.company} logo`}
+                    alt="Edunet Foundation logo"
                     className="w-8 h-8 object-contain"
                   />
-                </motion.div>
+                </div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-white">
                     {experience.title}
                   </h3>
 
@@ -115,11 +91,19 @@ const ExperienceSection = () => {
                     </div>
                   </div>
 
-                  <motion.p
-                    className="text-white/80 leading-relaxed group-hover:text-white transition-colors duration-300"
-                  >
+                  <p className="text-white/80 leading-relaxed mb-4">
                     {experience.description}
-                  </motion.p>
+                  </p>
+
+                  <a
+                    href={experience.projectLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary-light hover:text-white text-sm font-medium transition-colors"
+                  >
+                    <Github className="w-4 h-4" />
+                    View Project on GitHub
+                  </a>
                 </div>
               </div>
             </motion.div>

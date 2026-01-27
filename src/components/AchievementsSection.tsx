@@ -1,124 +1,80 @@
 import { motion } from "framer-motion";
-import { Trophy, Brain, Code, Presentation, ExternalLink } from "lucide-react";
+import { ExternalLink, Award } from "lucide-react";
 
 const achievements = [
   {
-    title: "AI Intern – Tech Saksham Program",
-    description:
-      "Built a full-stack AI analytics platform to analyze YouTube comments and generate sentiment insights using NLP, transformers, and interactive dashboards. Collaborated under the Tech Saksham initiative by Edunet Foundation in partnership with Microsoft & SAP.",
-    icon: <Brain className="w-4 h-4" />,
+    title: "Tech Saksham AI Internship",
     year: "2025",
-    link: "https://edunetfoundation.org/",
+    description:
+      "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
+    link: "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
   },
   {
     title: "YouTube Sentiment Analysis Platform",
-    description:
-      "Developed an end-to-end AI-driven analytics system that converts unstructured YouTube comments into actionable sentiment trends for content and audience analysis.",
-    icon: <Code className="w-4 h-4" />,
-    year: "2025",
-    link: "https://github.com/YellankiKaushik",
-  },
-  {
-    title: "VaaniPlan — Voice-First AI Planning Assistant",
-    description:
-      "Created a voice-driven AI assistant that transforms spoken daily plans into structured schedules, reducing planning friction using LLMs and Web Speech APIs.",
-    icon: <Brain className="w-4 h-4" />,
     year: "2024",
-    link: "https://github.com/YellankiKaushik",
-  },
-  {
-    title: "Gym Membership Management System",
     description:
-      "Built a full-stack web application to manage gym memberships, plans, attendance, and admin workflows using PHP and MySQL.",
-    icon: <Code className="w-4 h-4" />,
-    year: "2023",
-    link: "https://github.com/YellankiKaushik",
-  },
-  {
-    title: "Strong Academic Performance",
-    description:
-      "Maintained a consistent academic record in Computer Science and Engineering with a strong focus on AI, ML, and data-centric subjects.",
-    icon: <Trophy className="w-4 h-4" />,
-    year: "2021–2025",
-    link: "https://vbit.ac.in/",
-  },
-  {
-    title: "Technical Presentations & Project Demos",
-    description:
-      "Presented AI and web-based project demos during academic reviews and internal evaluations, demonstrating strong communication and technical articulation skills.",
-    icon: <Presentation className="w-4 h-4" />,
-    year: "2024",
-    link: "https://vbit.ac.in/",
+      "Designed and documented a full-stack AI platform that analyzes YouTube comments to extract sentiment insights and engagement trends, enabling data-driven content analysis and decision-making.",
+    link: "https://yellankikaushik.github.io/",
   },
 ];
 
 const AchievementsSection = () => {
   return (
     <section className="py-12 px-4 relative overflow-hidden">
-      {/* Subtle background elements */}
+      {/* Background */}
       <motion.div
-        className="absolute inset-0 bg-gradient-cyber opacity-10"
+        className="absolute inset-0 bg-gradient-dark opacity-5"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.1 }}
+        whileInView={{ opacity: 0.05 }}
         viewport={{ once: true }}
         transition={{ duration: 2 }}
       />
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container mx-auto max-w-5xl relative z-10">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl font-bold text-white mb-10 text-center font-display text-glow"
+          className="text-3xl font-bold text-white mb-10 text-center text-glow"
         >
-          Achievements & Experience Highlights
+          Achievements
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {achievements.map((achievement, index) => (
+        <div className="grid md:grid-cols-2 gap-6">
+          {achievements.map((item, index) => (
             <motion.a
               key={index}
-              href={achievement.link}
+              href={item.link}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-              className="glass-card p-5 hover-glow group cursor-pointer"
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ y: -3 }}
+              className="glass-card p-6 hover-glow group"
             >
               <div className="flex items-start gap-4">
-                <motion.div
-                  className="p-2 bg-gradient-neon rounded-lg flex-shrink-0"
-                  whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                >
-                  <div className="text-white w-4 h-4 flex items-center justify-center">
-                    {achievement.icon}
-                  </div>
-                </motion.div>
+                <div className="p-3 bg-gradient-cosmic rounded-lg">
+                  <Award className="w-5 h-5 text-white" />
+                </div>
 
                 <div className="flex-1">
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex flex-col gap-1">
-                      <h3 className="text-lg font-semibold text-white font-display group-hover:text-primary transition-colors duration-300">
-                        {achievement.title}
-                      </h3>
-                      <span className="px-2 py-1 bg-gradient-cosmic/30 text-accent-light rounded-full text-xs border border-accent/30 w-fit">
-                        {achievement.year}
-                      </span>
-                    </div>
-                    <ExternalLink className="w-4 h-4 text-white/40 group-hover:text-primary-light transition-colors" />
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <ExternalLink className="w-4 h-4 text-white/50 group-hover:text-primary-light" />
                   </div>
 
-                  <motion.p
-                    className="text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors duration-300"
-                    initial={{ opacity: 0.7 }}
-                    whileHover={{ opacity: 0.9 }}
-                  >
-                    {achievement.description}
-                  </motion.p>
+                  <span className="inline-block mb-3 px-3 py-1 text-xs rounded-full bg-gradient-neon/20 text-accent-light border border-accent/30">
+                    {item.year}
+                  </span>
+
+                  <p className="text-white/75 text-sm leading-relaxed group-hover:text-white transition-colors">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </motion.a>
