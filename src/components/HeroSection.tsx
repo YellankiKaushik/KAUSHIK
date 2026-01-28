@@ -28,11 +28,7 @@ const HeroSection = () => {
 
             <motion.div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               {[
-                {
-                  Icon: Mail,
-                  text: "Resume",
-                  href: "https://drive.google.com/file/d/1Ic2G3_YzpVyM4hJeT3S7Bg33jSfaWtOj/view?usp=sharing",
-                },
+                
                 {
                   Icon: Mail,
                   text: "Resume",
