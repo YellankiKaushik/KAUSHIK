@@ -1,6 +1,6 @@
 # 🧠 Kaushik Yellanki — AI Engineer & Data Analyst
 
-🚀 Personal portfolio website showcasing my work as an AI Engineer and Data Analyst, focused on building intelligent, data-driven systems with real-world business impact.
+🚀 Personal portfolio website showcasing my work, focused on building intelligent and real-world business impact.
 
 🔗 **Live Portfolio**  
 👉 https://yellankikaushik.github.io/KAUSHIKYELLANKI/
@@ -13,7 +13,7 @@ You can absolutely do it — and yes, you can **clone this repo** and customize 
 
 > 👉 Clone it, replace the content with your own, and make it yours.
 
-Here’s the **high-level process** I followed 👇
+Here’s  **process** 👇
 
 ---
 
@@ -44,7 +44,6 @@ You don’t need everything on Day 1 — start small and improve gradually.
 - Projects
 - Skills
 - Certifications
-- Leadership / Position of Responsibility
 
 Keep content **honest, clear, and outcome-focused**.
 
