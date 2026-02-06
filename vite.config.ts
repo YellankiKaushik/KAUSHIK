@@ -9,7 +9,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-
-  // GitHub Pages base path
   base: "/KAUSHIKYELLANKI/",
 });
