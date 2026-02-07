@@ -32,8 +32,6 @@ const experiences = [
     description:
       "Led data-driven event marketing initiatives that grew campus event reach by 35–40% and increased repeat participation by ~25% through targeted promotions, word-of-mouth strategies, and cross-team collaboration.",
     skills: [
-      "Growth Strategy",
-      "Content Promotion",
       "Campaign Planning",
       "Event Marketing Strategy",
       "Audience Acquisition Engagement",
