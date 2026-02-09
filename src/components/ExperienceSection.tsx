@@ -7,7 +7,7 @@ import aashayLogo from "../assets/logos/Aashayvbit.jpg";
 
 const experiences = [
   {
-    title: "AI Intern",
+    title: "AI Engineer",
     company: "Tech Saksham Program (Edunet Foundation)",
     period: "Feb 2025 – Mar 2025",
     description:
@@ -21,7 +21,7 @@ const experiences = [
       "End-to-End ML Pipelines",
     ],
     projectLink:
-      "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
+    "https://aidiagnose.streamlit.app/"
     linktype: "github",
     logo: edunetLogo,
   },
