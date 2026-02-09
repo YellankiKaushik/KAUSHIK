@@ -12,16 +12,16 @@ const experiences = [
     period: "Feb 2025 – Mar 2025",
     description:
       "Built an AI-driven disease prediction system that analyzes patient data using a trained ML pipeline and Flask-based web interface, achieving an 18% improvement in diagnostic accuracy over traditional baseline methods.",
-    skills: [
-      "Machine Learning",
-      "Python",
-      "Flask",
-      "Data Preprocessing",
-      "Model Evaluation",
-      "End-to-End ML Pipelines",
-    ],
+      skills: [
+        "Machine Learning",
+        "Python",
+        "scikit-learn",
+        "Streamlit",
+        "Model Deployment",
+        "System Design"
+      ],
     projectLink:
-    "https://aidiagnose.streamlit.app/"
+      "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
     linktype: "github",
     logo: edunetLogo,
   },
@@ -64,9 +64,6 @@ const experiences = [
     logo: aashayLogo,
   },
 ];
-
-
-
 const ExperienceSection = () => {
   return (
     <section className="py-12 px-4 relative overflow-hidden">
