@@ -21,8 +21,8 @@ const experiences = [
         "System Design"
       ],
     projectLink:
-      "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
-    linktype: "github",
+      "https://aidiagnose.streamlit.app/",
+    linktype: "live",
     logo: edunetLogo,
   },
   {
