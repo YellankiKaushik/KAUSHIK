@@ -166,9 +166,12 @@ const ExperienceSection = () => {
                   >
                     {experience.linktype === "instagram" ? (
                       <Instagram className="w-4 h-4" />
-                    ) : (
-                      <Github className="w-4 h-4" />
-                    )}
+                    ) : experience.linktype === "live" ? (
+                    <ExternalLink className="w-4 h-4" />
+                  ) : (
+                  <Github className="w-4 h-4" />
+                  )}
+
                     View Work
                   </a>
                 </div>
