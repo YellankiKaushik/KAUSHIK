@@ -19,6 +19,12 @@ const certifications = [
         link: " https://www.credly.com/badges/20c52c2f-9b0d-44d9-8d5e-1da28e1b2bfd/public_url",
   },
   
+  {
+    title : "DotNet Full Stack ",
+  issuer : "Wipro Talentext",
+  link: "https://drive.google.com/file/d/1DLUtQgfCW7AUu0VzSBXr0W7_ZFW30G1Z/view?usp=drive_link",
+  },
+  
   {	
     title: "Machine Learning Fundamentals Micro-Credential ",
      issuer: " Alteryx",
