@@ -32,7 +32,7 @@ const HeroSection = () => {
                 {
                   Icon: Mail,
                   text: "Resume",
-                  href: "https://drive.google.com/file/d/1xtsmX7olNJF5gc1gIdUS7Bns_2brRiJb/view?usp=sharing",
+                  href: "https://drive.google.com/file/d/1JD5P8LJSwRDSPN0Ts2-7eiyeGArwhktl/view?usp=sharing",
                 },
                 {
                   Icon: Linkedin,
