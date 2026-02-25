@@ -183,20 +183,48 @@ const CertificationsSection = () => {
           </AnimatePresence>
 
           {/* Left Arrow */}
-          <button
-            onClick={() => paginate(-1)}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 glass-card p-3 hover-glow z-20"
-          >
-            <ChevronLeft className="text-white w-5 h-5" />
-          </button>
+<motion.button
+  onClick={() => paginate(-1)}
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.95 }}
+  transition={{ type: "spring", stiffness: 300 }}
+  className="
+    absolute -left-4 top-1/2 -translate-y-1/2 z-20
+    w-11 h-11
+    rounded-full
+    backdrop-blur-xl
+    bg-white/5
+    border border-white/15
+    flex items-center justify-center
+    hover:border-primary-light/60
+    hover:bg-white/10
+    transition-all duration-300
+  "
+>
+  <ChevronLeft className="text-white w-5 h-5" />
+</motion.button>
 
-          {/* Right Arrow */}
-          <button
-            onClick={() => paginate(1)}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 glass-card p-3 hover-glow z-20"
-          >
-            <ChevronRight className="text-white w-5 h-5" />
-          </button>
+{/* Right Arrow */}
+<motion.button
+  onClick={() => paginate(1)}
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.95 }}
+  transition={{ type: "spring", stiffness: 300 }}
+  className="
+    absolute -right-4 top-1/2 -translate-y-1/2 z-20
+    w-11 h-11
+    rounded-full
+    backdrop-blur-xl
+    bg-white/5
+    border border-white/15
+    flex items-center justify-center
+    hover:border-primary-light/60
+    hover:bg-white/10
+    transition-all duration-300
+  "
+>
+  <ChevronRight className="text-white w-5 h-5" />
+</motion.button>
 
           {/* Dots */}
           <div className="flex justify-center items-center gap-3 mt-10">
