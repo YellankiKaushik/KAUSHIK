@@ -1,4 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+
+const ITEMS_PER_PAGE = 4;
 
 const certifications = [
   {
@@ -81,9 +85,46 @@ const certifications = [
   },
   
   
+
 ];
 
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 150 : -150,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -150 : 150,
+    opacity: 0,
+  }),
+};
+
 const CertificationsSection = () => {
+  const [[page, direction], setPage] = useState([0, 0]);
+
+  const totalPages = Math.ceil(certifications.length / ITEMS_PER_PAGE);
+
+  const paginate = (newDirection: number) => {
+    setPage(([prevPage]) => {
+      let nextPage = prevPage + newDirection;
+
+      // Infinite loop logic
+      if (nextPage < 0) nextPage = totalPages - 1;
+      if (nextPage >= totalPages) nextPage = 0;
+
+      return [nextPage, newDirection];
+    });
+  };
+
+  const pageData = certifications.slice(
+    page * ITEMS_PER_PAGE,
+    page * ITEMS_PER_PAGE + ITEMS_PER_PAGE
+  );
+
   return (
     <section className="py-8 md:py-12 px-4 relative overflow-hidden">
       <motion.div
@@ -100,36 +141,61 @@ const CertificationsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-2xl md:text-3xl font-bold text-white mb-8 text-center text-glow"
+          className="text-2xl md:text-3xl font-bold text-white mb-10 text-center text-glow"
         >
           Professional Certifications
         </motion.h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, index) => (
-            <motion.a
-              key={index}
-              href={cert.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              whileHover={{ y: -6, scale: 1.03 }}
-              className="glass-card p-6 hover-glow cursor-pointer text-center"
+        <div className="relative min-h-[420px] overflow-hidden">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={page}
+              variants={slideVariants}
+              custom={direction}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ type: "spring", stiffness: 90, damping: 18 }}
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              <h3 className="text-base md:text-lg font-semibold text-white mb-2">
-                {cert.title}
-              </h3>
-              <p className="text-primary-light text-sm">
-                {cert.issuer}
-              </p>
-              <p className="text-white/60 text-xs mt-2">
-                View Credential →
-              </p>
-            </motion.a>
-          ))}
+              {pageData.map((cert, index) => (
+                <motion.a
+                  key={index}
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -6, scale: 1.03 }}
+                  className="glass-card p-6 hover-glow cursor-pointer text-center"
+                >
+                  <h3 className="text-base md:text-lg font-semibold text-white mb-2 line-clamp-2">
+                    {cert.title}
+                  </h3>
+                  <p className="text-primary-light text-sm">
+                    {cert.issuer}
+                  </p>
+                  <p className="text-white/60 text-xs mt-2">
+                    View Credential →
+                  </p>
+                </motion.a>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Left Arrow */}
+          <button
+            onClick={() => paginate(-1)}
+            className="absolute -left-4 top-1/2 -translate-y-1/2 glass-card p-3 hover-glow"
+          >
+            <ChevronLeft className="text-white w-5 h-5" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => paginate(1)}
+            className="absolute -right-4 top-1/2 -translate-y-1/2 glass-card p-3 hover-glow"
+          >
+            <ChevronRight className="text-white w-5 h-5" />
+          </button>
         </div>
       </div>
     </section>
