@@ -154,13 +154,20 @@ const CertificationsSection = () => {
             >
               {pageData.map((cert, index) => (
                 <motion.a
-                  key={index}
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ y: -6, scale: 1.03 }}
-                  className="glass-card p-6 hover-glow cursor-pointer text-center"
-                >
+                key={index}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: index * 0.08,
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
+                whileHover={{ y: -6, scale: 1.03 }}
+                className="glass-card p-6 hover-glow cursor-pointer text-center"
+              >
                   <h3 className="text-base md:text-lg font-semibold text-white mb-2 line-clamp-2">
                     {cert.title}
                   </h3>
