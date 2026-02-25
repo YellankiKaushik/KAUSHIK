@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin } from "lucide-react";
+import { FileText, Linkedin } from "lucide-react";
 import profileImage from "@/assets/profile.jpeg";
 
 const HeroSection = () => {
@@ -30,7 +30,7 @@ const HeroSection = () => {
               {[
                 
                 {
-                  Icon: Mail,
+                  Icon: FileText,
                   text: "Resume",
                   href: "https://drive.google.com/file/d/1w6gZTB2CJVDK4JvasefBR9ngU9InEm9z/view?usp=sharing",
                 },
