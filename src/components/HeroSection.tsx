@@ -25,38 +25,55 @@ const HeroSection = () => {
               AI Engineer building intelligent, data-driven systems with real-world
               business impact.
             </motion.p> */}
-
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              {[
-                
-                {
-                  Icon: FileText,
-                  text: "Resume",
-                  href: "https://drive.google.com/file/d/1w6gZTB2CJVDK4JvasefBR9ngU9InEm9z/view?usp=sharing",
-                },
-                {
-                  Icon: Linkedin,
-                  text: "LinkedIn",
-                  href: "https://www.linkedin.com/in/yellankikaushik/",
-                },
-                {
-                  Icon: Mail,
-                  text: "Email",
-                  href: "mailto:kaushikyellanki@gmail.com",
-                },
-              ].map(({ Icon, text, href }, index) => (
-                <a
-                  key={index}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center sm:justify-start gap-2 text-white/60 hover:text-primary-light transition-colors p-2 rounded-lg hover:bg-white/5"
-                >
-                  <Icon className="w-5 h-5 flex-shrink-0" />
-                  <span className="text-sm">{text}</span>
-                </a>
-              ))}
-            </motion.div>
+            
+            <motion.div
+  initial={{ opacity: 0, y: 10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.2, duration: 0.4 }}
+  className="flex flex-wrap gap-3 justify-center md:justify-start"
+>
+  {[
+    {
+      Icon: FileText,
+      text: "Resume",
+      href: "https://drive.google.com/file/d/1w6gZTB2CJVDK4JvasefBR9ngU9InEm9z/view?usp=sharing",
+    },
+    {
+      Icon: Linkedin,
+      text: "LinkedIn",
+      href: "https://www.linkedin.com/in/yellankikaushik/",
+    },
+    {
+      Icon: Mail,
+      text: "Email",
+      href : "https://mail.google.com/mail/?view=cm&fs=1&to=kaushikyellanki@gmail.com&su=Portfolio%20Contact",
+    },
+  ].map(({ Icon, text, href }, index) => (
+    <motion.a
+      key={index}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ y: -4, scale: 1.02 }}
+      transition={{ duration: 0.3 }}
+      className="
+        glass-card
+        px-4 py-2
+        flex items-center gap-2
+        text-xs
+        justify-center
+        hover-glow
+      "
+    >
+      <span className="text-primary-light">
+        <Icon className="w-4 h-4" />
+      </span>
+      <span className="text-white">
+        {text}
+      </span>
+    </motion.a>
+  ))}
+</motion.div>
           </div>
 
           <motion.div className="order-1 md:order-2 flex justify-center mb-6 md:mb-0">

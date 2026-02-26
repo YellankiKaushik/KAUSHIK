@@ -5,7 +5,7 @@ const contacts = [
   {
     label: "Email",
     icon: <Mail className="w-4 h-4" />,
-    link: "mailto:kaushikyellanki@gmail.com",
+    link: "https://mail.google.com/mail/?view=cm&fs=1&to=kaushikyellanki@gmail.com&su=Portfolio%20Contact",
   },
   {
     label: "LinkedIn",
