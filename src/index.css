@@ -6,7 +6,6 @@
 body{
   cursor: none;
 }
-
 @layer base {
   body {
     @apply bg-background text-white/90 font-sans antialiased;
