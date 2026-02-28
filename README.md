@@ -1,4 +1,4 @@
-# 🧠 Kaushik Yellanki — AI Engineer & Data Analyst
+# 🧠 Kaushik Yellanki
 
 🚀 Personal portfolio website showcasing my work, focused on building intelligent and real-world business impact.
 
