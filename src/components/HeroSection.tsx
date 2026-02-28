@@ -46,7 +46,7 @@ const HeroSection = () => {
     {
       Icon: Mail,
       text: "Email",
-      href : "https://mail.google.com/mail/?view=cm&fs=1&to=kaushikyellanki@gmail.com&su=Portfolio%20Contact",
+      href: "https://mail.google.com/mail/?view=cm&fs=1&to=kaushikyellanki@gmail.com",
     },
   ].map(({ Icon, text, href }, index) => (
     <motion.a
@@ -54,13 +54,13 @@ const HeroSection = () => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ y: -4, scale: 1.02 }}
-      transition={{ duration: 0.3 }}
+      whileHover={{ y: -3, scale: 1.02 }}
+      transition={{ duration: 0.25 }}
       className="
         glass-card
         px-4 py-2
         flex items-center gap-2
-        text-xs
+        text-sm
         justify-center
         hover-glow
       "
