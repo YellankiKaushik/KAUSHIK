@@ -15,6 +15,8 @@ const CursorGlow = () => {
 
     mediaQuery.addEventListener("change", handleChange);
 
+
+    
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
     };
