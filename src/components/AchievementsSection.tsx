@@ -3,7 +3,7 @@ import { Calendar, ExternalLink } from "lucide-react";
 
 const achievements = [
   {
-    title: "Hackathon Organizer — Google Crowdsource VBIT",
+    title: "🎯 Hackathon Organizer — Google Crowdsource VBIT",
     year: "2023",
     description:
       "Organized and coordinated a community hackathon as part of the Google Crowdsource platform, enabling participants to contribute to real-world language and AI datasets while fostering collaboration and problem-solving.",
@@ -13,11 +13,11 @@ const achievements = [
     title: "Tech Saksham AI Internship",
     year: "2025",
     description:
-      "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
+      "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an 🩺 AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
     link: "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
   },
   {
-    title: "YouTube Sentiment Analysis Platform",
+    title: "🎥 YouTube Sentiment Analysis Platform",
     year: "2025",
     description:
       "Designed and documented a full-stack AI platform that analyzes YouTube comments to extract sentiment insights and engagement trends.",
