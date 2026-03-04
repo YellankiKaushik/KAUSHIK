@@ -35,7 +35,6 @@ const achievements = [
 const AchievementsSection = () => {
   return (
     <section className="py-12 px-4 relative overflow-hidden">
-
       {/* IDENTICAL BACKGROUND TO EDUCATION */}
       <motion.div
         className="absolute inset-0 bg-gradient-cyber opacity-5"
@@ -44,13 +43,11 @@ const AchievementsSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 2 }}
       />
-
       <motion.div
         className="absolute top-32 right-16 w-32 h-32 bg-gradient-neon rounded-full blur-3xl opacity-8"
         animate={{ x: [0, -20, 0], y: [0, 15, 0] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
-
       <motion.div
         className="absolute bottom-32 left-16 w-20 h-20 bg-gradient-cosmic rounded-full blur-2xl opacity-8"
         animate={{ x: [0, 25, 0], y: [0, -12, 0] }}
@@ -61,7 +58,6 @@ const AchievementsSection = () => {
           delay: 8,
         }}
       />
-
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: -30, scale: 0.9 }}
@@ -72,7 +68,6 @@ const AchievementsSection = () => {
         >
           Achievements
         </motion.h2>
-
         <div className="space-y-8">
           {achievements.map((item, index) => (
             <motion.div
@@ -87,7 +82,6 @@ const AchievementsSection = () => {
               <h3 className="text-xl font-semibold text-white mb-2">
                 {item.title}
               </h3>
-
               {/* META ROW — MATCHES EDUCATION EXACTLY */}
               <div className="flex items-center gap-3 text-white/70 mb-4">
                 <span className="font-medium text-accent-light">
@@ -103,7 +97,6 @@ const AchievementsSection = () => {
               <p className="text-white/75 leading-relaxed mb-4">
                 {item.description}
               </p>
-
               {/* LINK ROW — Styled Like Education Highlight Row */}
               <div className="text-accent-light font-medium">
                 <a
@@ -124,5 +117,4 @@ const AchievementsSection = () => {
     </section>
   );
 };
-
 export default AchievementsSection;
