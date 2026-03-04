@@ -3,20 +3,6 @@ import { Calendar, ExternalLink } from "lucide-react";
 
 const achievements = [
   {
-    title: "Tech Saksham AI Internship",
-    year: "2025",
-    description:
-      "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
-    link: "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
-  },
-  {
-    title: "Blog on Abundance of Space Theory",
-    year: "2026",
-    description:
-        "Wrote a blog on the Abundance of Space Theory by Myself",
-    link: "https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-527f54a9c0ca",
-  },
-  {
     title: "Hackathon Organizer — Google Crowdsource VBIT",
     year: "2023",
     description:
@@ -24,11 +10,25 @@ const achievements = [
     link: "https://www.instagram.com/p/Cxx1J4HvS7Z/?hl=en&img_index=10",
   },
   {
+    title: "Tech Saksham AI Internship",
+    year: "2025",
+    description:
+      "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
+    link: "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
+  },
+  {
     title: "YouTube Sentiment Analysis Platform",
     year: "2025",
     description:
       "Designed and documented a full-stack AI platform that analyzes YouTube comments to extract sentiment insights and engagement trends.",
     link: "https://yellankikaushik.github.io/",
+  },
+  {
+    title: "Blog on Abundance of Space Theory",
+    year: "2026",
+    description:
+        "Wrote a blog on the Abundance of Space Theory by Myself",
+    link: "https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-527f54a9c0ca",
   },
 ];
 
