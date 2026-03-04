@@ -1,9 +1,11 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { projects } from "../data/projects";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
+
   const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
@@ -28,13 +30,13 @@ const ProjectDetail = () => {
 
       <div className="container mx-auto max-w-6xl relative z-10">
 
-        {/* Back */}
-        <Link
-          to="/"
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
           className="text-primary-light hover:text-white transition mb-8 inline-block"
         >
           ← Back to Portfolio
-        </Link>
+        </button>
 
         {/* MAIN CARD */}
         <motion.div
