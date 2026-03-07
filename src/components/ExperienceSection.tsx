@@ -3,10 +3,10 @@ import { Calendar, Instagram, Github, ExternalLink } from "lucide-react";
 import edunetLogo from "../assets/logos/edunet-logo.png";
 import crowdsourceLogo from "../assets/logos/crowdsourcevbit.jpg";
 import aashayLogo from "../assets/logos/Aashayvbit.jpg";
-import uptoskillsLogo from "../assets/logos/uptoskills.png";
+/*import uptoskillsLogo from "../assets/logos/uptoskills.png";*/
 
 const experiences = [
-  {
+ /* {
     title: "AI Engineer",
     company: "Tech Saksham Program (Edunet Foundation)",
     period: "Feb 2025 – Mar 2025",
@@ -25,7 +25,7 @@ const experiences = [
     linktype: "live",
     logo: uptoskillsLogo,
   },
-
+*/
   {
     title: "AI Engineer",
     company: "Tech Saksham Program (Edunet Foundation)",
