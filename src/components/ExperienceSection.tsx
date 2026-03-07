@@ -3,7 +3,29 @@ import { Calendar, Instagram, Github, ExternalLink } from "lucide-react";
 import edunetLogo from "../assets/logos/edunet-logo.png";
 import crowdsourceLogo from "../assets/logos/crowdsourcevbit.jpg";
 import aashayLogo from "../assets/logos/Aashayvbit.jpg";
+import uptoskillsLogo from "../assets/logos/uptoskills.png";
+
 const experiences = [
+  {
+    title: "AI Engineer",
+    company: "Tech Saksham Program (Edunet Foundation)",
+    period: "Feb 2025 – Mar 2025",
+    description:
+    "Designed and deployed an end-to-end AI decision support system using Python, scikit-learn, and Streamlit that integrates multiple pre-trained ML models to deliver real-time disease risk predictions, reducing manual evaluation effort by ~80% while emphasizing system design, deployment, and responsible AI communication.",
+    skills: [
+        "Machine Learning",
+        "Python",
+        "scikit-learn",
+        "Streamlit",
+        "Model Deployment",
+        "System Design"
+      ],
+    projectLink:
+      "https://aidiagnose.streamlit.app/",
+    linktype: "live",
+    logo: uptoskillsLogo,
+  },
+
   {
     title: "AI Engineer",
     company: "Tech Saksham Program (Edunet Foundation)",
