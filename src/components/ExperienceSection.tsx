@@ -3,8 +3,28 @@ import { Calendar, Instagram, Github, ExternalLink } from "lucide-react";
 import edunetLogo from "../assets/logos/edunet-logo.png";
 import crowdsourceLogo from "../assets/logos/crowdsourcevbit.jpg";
 import aashayLogo from "../assets/logos/Aashayvbit.jpg";
-
+import uptoskillsLogo from "../assets/logos/uptoskills.png";
 const experiences = [
+
+  {
+    title: "AI Research Intern",
+    company: "UptoSkills",
+    period: "Feb 2026 – Present",
+    description:
+    "Designing Scalable and Deployable backend systems for AI Interviews for UptoSkills.",
+    skills: [
+        "Machine Learning",
+        "Python",
+        "scikit-learn",
+        "Streamlit",
+        "Model Deployment",
+        "System Design"
+      ],
+    projectLink:
+      "https://github.com/YellankiKaushik/GPT-Integration-Optimization",
+    linktype: "live",
+    logo: uptoskillsLogo,
+  },
 
   {
     title: "AI Engineer",
