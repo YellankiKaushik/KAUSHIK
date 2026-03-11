@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectDetail from "./pages/ProjectDetail";
 import CursorGlow from "@/components/CursorGlow"; // ✅ Added
+import ExperienceDetail from "./pages/ExperienceDetail";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/project/:slug" element={<ProjectDetail />} />
+        <Route path="/experience/:slug" element={<ExperienceDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       </BrowserRouter>
