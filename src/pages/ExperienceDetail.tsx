@@ -170,6 +170,7 @@ const ExperienceDetail = () => {
             </div>
           )}
 
+          
           {/* SCREENSHOTS */}
           {experience.screenshots && (
             <div className="mb-12">
