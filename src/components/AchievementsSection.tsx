@@ -28,7 +28,7 @@ const achievements = [
     year: "2026",
     description:
         "Wrote a blog on 🌿The Abundance of Space Theory on Medium",
-    link: "https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-527f54a9c0ca",
+    link: "https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-bbc8a5314615",
   },
 ];
 
