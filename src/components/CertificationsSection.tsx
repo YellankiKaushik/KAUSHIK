@@ -63,7 +63,7 @@ const certifications = [
   {
     title: "Tata - Data Visualisation Job Simulation",
     issuer: "Forage",
-    link: "https://www.theforage.com",
+    link: "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX_ifobHAoMjQs9s6bKS_m3xGpZ3r6inch3q7C_1739026179981_completion_certificate.pdf",
   },
   {
     title: "Deloitte Australia - Data Analytics Simulation",
