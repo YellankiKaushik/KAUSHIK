@@ -47,7 +47,7 @@ export const experiences = [
         ],
 
         projectLink:
-            "https://github.com/YellankiKaushik/GPT-Integration-Optimization",
+            "",
 
         linktype: "github",
 
