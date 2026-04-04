@@ -16,13 +16,13 @@ const achievements = [
       "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an 🩺 AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
     link: "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
   },*/
-  {
-    title: "🎥 YouTube Sentiment Analysis Platform",
-    year: "2025",
-    description:
-      "Designed and documented a full-stack AI platform that analyzes YouTube comments to extract sentiment insights and engagement trends.",
-    link: "https://github.com/YellankiKaushik/YT-Integrated-Review---Kaushik",
-  },
+  /* {
+     title: "🎥 YouTube Sentiment Analysis Platform",
+     year: "2025",
+     description:
+       "Designed and documented a full-stack AI platform that analyzes YouTube comments to extract sentiment insights and engagement trends.",
+     link: "https://github.com/YellankiKaushik/YT-Integrated-Review---Kaushik",
+   },*/
   {
     title: "🌿The Abundance of Space Theory - Medium Blog",
     year: "2026",
