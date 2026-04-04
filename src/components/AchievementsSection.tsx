@@ -9,23 +9,20 @@ const achievements = [
       "Organized and coordinated a community hackathon as part of the Google Crowdsource platform, enabling participants to contribute to real-world language and AI datasets while fostering collaboration and problem-solving.",
     link: "https://www.instagram.com/p/Cxx1J4HvS7Z/?hl=en&img_index=10",
   },
-
-
-  
-  /* {
+  {
     title: "Tech Saksham AI Internship",
     year: "2025",
     description:
       "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an 🩺 AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
     link: "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
-  },*/
- /* {
+  },
+  {
     title: "🎥 YouTube Sentiment Analysis Platform",
     year: "2025",
     description:
       "Designed and documented a full-stack AI platform that analyzes YouTube comments to extract sentiment insights and engagement trends.",
     link: "https://github.com/YellankiKaushik/YT-Integrated-Review---Kaushik",
-  }, */
+  },
   {
     title: "🌿The Abundance of Space Theory - Medium Blog",
     year: "2026",
