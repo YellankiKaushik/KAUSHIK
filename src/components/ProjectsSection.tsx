@@ -32,7 +32,7 @@ const projects = [
     description:
       "Created a voice-first AI planning prototype that eliminates typing and manual task structuring by using LLM reasoning, reducing planning effort by 60–70%, improving efficiency by ~50%, and earning acceptance in the Unleash LLM Innovation Challenge.",
     image: vaaniplanImg,
-    github: "",
+    github: "https://github.com/YellankiKaushik/VaaniPlan",
     live: "https://yellankikaushik.github.io/VaaniPlan/",
     medium: "",
     tags: ["FastAPI", "LLMs", "Web Speech API", "AI Assistants"],
@@ -44,7 +44,7 @@ const projects = [
       "Created a zero-cost, production-ready membership management system that replaces manual tracking with automated expiry alerts, reducing admin effort by 65–70% and preventing 30–40% of missed renewals for small gyms.",
     image: gymImg,
     github: "https://github.com/YellankiKaushik/Gym-Membership",
-    live: "",
+    live: "https://yellankikaushik.github.io/Gym-Membership/",
     medium: "",
     tags: ["PHP", "MySQL", "Web Application", "Admin Systems"],
   },

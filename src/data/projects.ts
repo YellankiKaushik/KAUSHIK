@@ -95,7 +95,7 @@ export const projects = [
       vaaniplanImg
     ],
 
-    github: "",
+    github: "https://github.com/YellankiKaushik/VaaniPlan",
     live: "https://yellankikaushik.github.io/VaaniPlan/",
     medium: "https://medium.com/@kaushikyellanki/️-vaaniplan-voice-first-ai-daily-planning-assistant-26f7477d35a6",
   },
@@ -142,7 +142,7 @@ export const projects = [
     ],
 
     github: "https://github.com/YellankiKaushik/Gym-Membership",
-    live: "",
+    live: "https://yellankikaushik.github.io/Gym-Membership/",
     medium: "",
   },
 
