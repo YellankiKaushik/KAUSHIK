@@ -2,6 +2,7 @@ import youtubeImg from "../assets/logos/youtube.png";
 import vaaniplanImg from "../assets/logos/vaaniplan.png";
 import gymImg from "../assets/logos/gym.png";
 import TabImg from "../assets/logos/tab.png";
+import krishiImg from "../assets/logos/krishi.png";
 
 export const projects = [
   {
@@ -189,4 +190,53 @@ export const projects = [
     live: "https://public.tableau.com/app/profile/yellanki.kaushik",
     medium: "",
   },
+  {
+    slug: "krishi-seva",
+
+    title: "Krishi Seva — Intelligent Agricultural Decision Agent",
+
+    image: krishiImg, // ⚠️ you need to import this image
+
+    description:
+      "Built an AI-powered agricultural decision agent that converts real-time weather data into actionable farming advice to prevent crop loss.",
+
+    highlights: [
+      "Translated real-time weather signals into actionable farm decisions using an AI agent pipeline.",
+      "Enabled instant risk detection (fungal, heat stress, rain) using explainable rule-based intelligence.",
+      "Designed a modular AI agent architecture with separation between reasoning and execution layers.",
+    ],
+
+    techStack: [
+      "Python",
+      "OpenWeatherMap API",
+      "AI Agents",
+      "Rule-Based Systems",
+      "NLP Design (Agent Layer)",
+      "YAML",
+      "Markdown",
+    ],
+
+    overview:
+      "Krishi Seva is a domain-specific AI decision agent that analyzes real-time environmental data and generates actionable farming instructions to help farmers make better field decisions.",
+
+    problem:
+      "Farmers rely on raw weather data or intuition, which makes it difficult to translate environmental conditions into correct farming actions, leading to preventable crop loss.",
+
+    solution:
+      "Developed a dual-layer AI system with an agent layer (defining reasoning and behavior) and an execution layer (Python-based real-time weather processing). The system analyzes temperature, humidity, and weather conditions to detect risks and generate precise, actionable advice.",
+
+    results: [
+      "Real-time agricultural decision support system",
+      "Explainable AI-based risk detection (no black-box models)",
+      "Improved decision accuracy using deterministic rule-based logic",
+    ],
+
+    screenshots: [
+      krishiImg
+    ],
+
+    github: "https://github.com/YellankiKaushik/Krishi-Seva-AI", // add your repo link here
+    live: "",
+    medium: "",
+  }
 ];
