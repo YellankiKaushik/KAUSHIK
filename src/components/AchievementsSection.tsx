@@ -42,7 +42,7 @@ const achievements = [
     title: "Topmate AI Project Documentation",
     year: "2026",
     description:
-      "Made a AI project Documentation that reads entire project code base to write a professional Project_Explanation.md file",
+      "Made a AI project Documentation Guide that reads entire project code base to write a professional Project_Explanation.md file",
     link: "https://topmate.io/kaushik_yellanki/2033727",
   },
 ];
