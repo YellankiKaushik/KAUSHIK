@@ -20,7 +20,7 @@ const contacts = [
   {
     label: "Resume",
     icon: <FileText className="w-4 h-4" />,
-    link: "https://drive.google.com/file/d/1VTlbAsWvQyVp0gctNto94_HznvL5iRl7/view?usp=drive_link",
+    link: "https://drive.google.com/file/d/1TwCpJUHn5TpV1w9uyWWvwfGfOYviDHK5/view?usp=drive_link",
   },
 ];
 
