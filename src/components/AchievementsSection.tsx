@@ -34,7 +34,7 @@ const achievements = [
     title: "1M1B recognized my open source LLM Project for Building Real World Impact",
     year: "2026",
     description:
-      "Build an open source LLM project that makes use of unstructural thoughts into Structural plan",
+      "Recognized for an open source LLM project that makes use of unstructural thoughts into Structural plan",
     link: "https://drive.google.com/file/d/170fFOFbElEn-t0khhUERrzq5OxOxutj_/view?usp=drive_link",
   },
 
@@ -42,7 +42,7 @@ const achievements = [
     title: "Topmate AI Project Documentation",
     year: "2026",
     description:
-      "Made a AI project Documentation Guide that reads entire project code base to write a professional Project_Explanation.md file",
+      "Made a AI project Documentation Guide that reads entire project code base to write a professional Project_Explanation.md file for Github Projects",
     link: "https://topmate.io/kaushik_yellanki/2033727",
   },
 ];

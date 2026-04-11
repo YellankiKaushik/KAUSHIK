@@ -195,7 +195,7 @@ export const projects = [
 
     title: "Krishi Seva — Intelligent Agricultural Decision Agent",
 
-    image: krishiImg, // ⚠️ you need to import this image
+    image: krishiImg,
 
     description:
       "Built an AI-powered agricultural decision agent that converts real-time weather data into actionable farming advice to prevent crop loss.",
