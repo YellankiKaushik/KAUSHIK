@@ -36,7 +36,7 @@ const HeroSection = () => {
                 {
                   Icon: FileText,
                   text: "Resume",
-                  href: "https://drive.google.com/file/d/1pSLwvLu4iN0KS0HIX2HyHbGSi_30F17M/view?usp=drive_link",
+                  href: "https://drive.google.com/file/d/16KiHsQG4CeF0eKZC-HsBM20_VFu7vsUi/view?usp=sharing",
                 },
                 {
                   Icon: Linkedin,
