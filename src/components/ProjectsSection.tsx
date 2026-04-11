@@ -6,7 +6,7 @@ import youtubeImg from "../assets/logos/youtube.png";
 import vaaniplanImg from "../assets/logos/vaaniplan.png";
 import gymImg from "../assets/logos/gym.png";
 import TabImg from "../assets/logos/tab.png";
-import krishiImg from "../assets/logos/krishi.png";
+/*import krishiImg from "../assets/logos/krishi.png"; */
 
 const projects = [
   {
@@ -64,7 +64,7 @@ const projects = [
     title: "Krishi Seva — Intelligent Agricultural Decision Agent",
     description:
       "Built a real-time AI decision agent that converts weather data into actionable farming advice, enabling instant risk detection (fungal, heat stress, rain) and improving on-field decision-making using explainable rule-based intelligence.",
-    image: krishiImg,
+    /*image: krishiImg,*/
     github: "https://github.com/YellankiKaushik/Krishi-Seva-AI", // add your repo link
     live: "",
     medium: "",
