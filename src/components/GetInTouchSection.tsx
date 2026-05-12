@@ -17,6 +17,7 @@ const contacts = [
     icon: <Github className="w-4 h-4" />,
     link: "https://github.com/YellankiKaushik",
   },
+  
   {
     label: "Resume",
     icon: <FileText className="w-4 h-4" />,
