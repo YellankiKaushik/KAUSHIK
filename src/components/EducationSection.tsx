@@ -18,6 +18,9 @@ const education = [
       "Web Technologies",
     ],
     logo: null,
+
+
+    
   },
   {
     degree: "Intermediate (MPC)",
