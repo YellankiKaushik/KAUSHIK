@@ -35,7 +35,7 @@ const achievements = [
     year: "2026",
     description:
       "Built Farmer OS, a production-style 9-agent AI system for agricultural decision intelligence, and secured a Top 50 position among 500 curated builders at Lyzr Agentathon 2026 in Bengaluru.",
-    link: "https://drive.google.com/file/d/1i2y0hlzP4MfOUakL_JsQ2aKpk0SDlYpT/view?usp=sharing",
+    link: "https://drive.google.com/file/d/1kDasmclWiG9T6oaEC9n2Oq4qx_iqnJtv/view?usp=drive_link",
   },
   {
     title: "1M1B recognized my open source LLM Project for Building Real World Impact",
