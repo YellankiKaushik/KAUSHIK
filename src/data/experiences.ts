@@ -10,7 +10,7 @@ export const experiences = [
 
         title: "AI Research Intern",
         company: "UptoSkills",
-        period: "Feb 2026 – Present",
+        period: "Feb 2026 – May 2026",
 
         description:
             "Designing scalable and deployable backend systems for AI interview evaluation and automation.",
