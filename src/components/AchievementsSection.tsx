@@ -34,8 +34,7 @@ const achievements = [
     title: "Farmer OS selected in Top 50 at Lyzr Agentathon 2026",
     year: "2026",
     description:
-      "Built Farmer OS, a production-style 9-agent AI system for agricultural decision intelligence, and secured a Top 50 position among 500 curated builders at Lyzr Agentathon 2026 in Bengaluru."
-    "(Search for my team name KISAAN in the below link.)",
+      "Built Farmer OS, a production-style 9-agent AI system for agricultural decision intelligence, and secured a Top 50 position among 500 curated builders at Lyzr Agentathon 2026 in Bengaluru.(Search for my team name KISAAN in the below link.)",
     link: "https://www.lyzr.ai/agentathon/",
   },
   {
