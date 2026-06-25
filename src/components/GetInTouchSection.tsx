@@ -5,7 +5,7 @@ const contacts = [
   {
     label: "Email",
     icon: <Mail className="w-4 h-4" />,
-    link: "https://mail.google.com/mail/?view=cm&fs=1&to=kaushikyellanki@gmail.com&su=Portfolio%20Contact",
+    link: "mailto:kaushikyellanki@gmail.com",
   },
   {
     label: "LinkedIn",
@@ -21,7 +21,7 @@ const contacts = [
   {
     label: "Resume",
     icon: <FileText className="w-4 h-4" />,
-    link: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view?usp=drive_link",
+    link: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
   },
 ];
 
@@ -50,9 +50,8 @@ const GetInTouchSection = () => {
           Get in Touch
         </motion.h2>
 
-        {/* 🔹 Added Line */}
         <p className="text-center text-white/80 text-sm md:text-base font-semibold mb-8">
-          Let’s connect and create something impactful together.
+          Open to full-time software and AI roles, project collaboration, and technical conversations.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           {contacts.map((item, index) => (

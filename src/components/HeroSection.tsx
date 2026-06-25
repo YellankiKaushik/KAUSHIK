@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FileText, Linkedin, Mail } from "lucide-react";
+import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import profileImage from "@/assets/profile.jpeg";
 
 const HeroSection = () => {
@@ -16,16 +16,6 @@ const HeroSection = () => {
             <motion.h1 className="text-3xl sm:text-4xl md:text-5xl text-white mb-4 font-display leading-tight">
               Kaushik Yellanki
             </motion.h1>
-            {/* 
-            <motion.h2 className="text-lg sm:text-xl md:text-2xl text-primary-light mb-4 font-sans font-light leading-relaxed">
-              AI Builder & Software Developer
-            </motion.h2>
-
-            <motion.p className="text-white/70 mb-8 text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
-              I build practical AI, data, and web projects — from NLP tools and
-              voice-first planners to dashboards and decision agents.
-            </motion.p>
-          */}
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -37,7 +27,12 @@ const HeroSection = () => {
                 {
                   Icon: FileText,
                   text: "Resume",
-                  href: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view?usp=drive_link",
+                  href: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
+                },
+                {
+                  Icon: Github,
+                  text: "GitHub",
+                  href: "https://github.com/YellankiKaushik",
                 },
                 {
                   Icon: Linkedin,
@@ -47,7 +42,7 @@ const HeroSection = () => {
                 {
                   Icon: Mail,
                   text: "Email",
-                  href: "https://mail.google.com/mail/?view=cm&fs=1&to=kaushikyellanki@gmail.com",
+                  href: "mailto:kaushikyellanki@gmail.com",
                 },
               ].map(({ Icon, text, href }, index) => (
                 <motion.a
