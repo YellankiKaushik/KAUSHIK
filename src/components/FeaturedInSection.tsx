@@ -3,19 +3,19 @@ import { User, Brain } from "lucide-react";
 
 const featuredHighlights = [
   {
-    title: "About Me",
+    title: "Builder Mindset",
     description:
-      "I am a Computer Science graduate with a strong foundation in Artificial Intelligence, Machine Learning, and Data Analytics. I have experience building full-stack AI-driven analytics platforms and intelligent systems.",
+      "I am a Computer Science graduate from India who learns by building. I like taking ideas, breaking them down, discussing them deeply, and turning them into working AI, data, and web projects.",
   },
   {
-    title: "My Focus",
+    title: "What I Build",
     description:
-      "I am deeply interested in applying AI, NLP, and data visualization to solve real-world problems and improve decision-making. I enjoy working at the intersection of data, product thinking, and user-centric system design.",
+      "I work across AI-enabled web apps, dashboards, agents, automation tools, NLP workflows, and decision-support systems. My focus is on connecting real problems with practical software.",
   },
   {
-    title: "Career Goals",
+    title: "Where I'm Heading",
     description:
-      "I am targeting entry-level roles and internships in AI Engineering, Data Analysis, Machine Learning, and Data Science domains, where I can build impactful and scalable solutions.",
+      "I am focused on growing into AI and software roles where I can build practical systems, learn fast, document clearly, and keep shipping better projects through real execution.",
   },
 ];
 

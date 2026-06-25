@@ -16,15 +16,16 @@ const HeroSection = () => {
             <motion.h1 className="text-3xl sm:text-4xl md:text-5xl text-white mb-4 font-display leading-tight">
               Kaushik Yellanki
             </motion.h1>
-            {/* Background */}
-            {/* <motion.h2 className="text-lg sm:text-xl md:text-2xl text-primary-light mb-6 font-sans font-light leading-relaxed">
-              AI Engineer and Data Analyst
+            {/* 
+            <motion.h2 className="text-lg sm:text-xl md:text-2xl text-primary-light mb-4 font-sans font-light leading-relaxed">
+              AI Builder & Software Developer
             </motion.h2>
 
-            <motion.p className="text-white/70 mb-8 text-base md:text-lg leading-relaxed">
-              AI Engineer building intelligent, data-driven systems with real-world
-              business impact.
-            </motion.p> */}
+            <motion.p className="text-white/70 mb-8 text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
+              I build practical AI, data, and web projects — from NLP tools and
+              voice-first planners to dashboards and decision agents.
+            </motion.p>
+          */}
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
