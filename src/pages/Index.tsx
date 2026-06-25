@@ -9,6 +9,7 @@ import SkillsSection from "@/components/SkillsSection";
 import AchievementsSection from "@/components/AchievementsSection";
 import FeaturedInSection from "@/components/FeaturedInSection";
 import GetInTouchSection from "@/components/GetInTouchSection";
+import WritingSection from "@/components/WritingSection";
 
 const Index = () => {
   return (
@@ -53,7 +54,10 @@ const Index = () => {
           <AchievementsSection />
         </section>
 
-        {/* ✅ NEW SECTION */}
+        <section id="writing">
+          <WritingSection />
+        </section>
+
         <section id="contact">
           <GetInTouchSection />
         </section>

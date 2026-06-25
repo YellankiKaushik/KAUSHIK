@@ -10,40 +10,37 @@ export const experiences = [
 
         title: "AI Research Intern",
         company: "UptoSkills",
-        period: "Feb 2026 – May 2026",
+        period: "Feb 2026 - May 2026",
 
         description:
-            "Designing scalable and deployable backend systems for AI interview evaluation and automation.",
-
-        /* impact: [
-            "Built backend logic for AI interview evaluation reducing manual screening effort by ~70%",
-            "Designed modular ML evaluation pipeline improving system scalability and deployment readiness"
-        ], 
-        */
+            "Worked on backend and ML evaluation workflows for an AI-driven interview evaluation platform, focusing on structured response analysis, scoring logic, and modular system design.",
 
         overview:
-            "Worked on designing backend systems that power AI-driven interview evaluation platforms. The system integrates machine learning models to analyze responses and produce structured evaluation outputs.",
+            "As an AI Research Intern at UptoSkills, I worked on backend components and evaluation workflows for an AI-enabled interview assessment system. The work focused on converting candidate responses into structured evaluation outputs using machine learning logic, scoring workflows, and deployable system components.",
 
         responsibilities: [
-            "Designing backend architecture for AI interview evaluation systems",
-            "Developing ML evaluation pipelines",
-            "Integrating scoring models into backend workflows",
-            "Improving system scalability and modular deployment"
+            "Worked on backend logic for AI-assisted interview evaluation workflows.",
+            "Explored ML-based response analysis and scoring model integration.",
+            "Helped structure evaluation outputs so interview responses could be reviewed more consistently.",
+            "Contributed to modular system design for deployable assessment components.",
+            "Documented technical decisions and implementation flow for easier project understanding."
         ],
 
         skills: [
             "Python",
             "Machine Learning",
             "scikit-learn",
+            "Backend Logic",
             "System Design",
-            "Model Deployment",
-            "Streamlit"
+            "Model Evaluation",
+            "Streamlit",
+            "Documentation"
         ],
 
         results: [
-            "Reduced manual screening workload",
-            "Improved evaluation consistency",
-            "Enabled scalable interview analysis pipeline"
+            "Built experience with backend-oriented AI evaluation workflows.",
+            "Strengthened understanding of ML scoring pipelines and structured output design.",
+            "Practiced designing modular components for AI-assisted assessment systems."
         ],
 
         projectLink:
@@ -59,24 +56,20 @@ export const experiences = [
 
         title: "AI Engineer",
         company: "Tech Saksham Program (Edunet Foundation)",
-        period: "Feb 2025 – Mar 2025",
+        period: "Feb 2025 - Mar 2025",
 
         description:
-            "Developed an AI decision-support system integrating ML models to predict disease risk.",
-
-        /* impact: [
-            "Built an ML-powered health risk prediction system",
-            "Reduced manual medical evaluation effort by ~80%"
-        ], */
+            "Built an ML-based health prediction prototype with a Streamlit interface, focusing on data preprocessing, model integration, and clear prediction output for educational AI use cases.",
 
         overview:
-            "Designed and deployed an end-to-end AI system that analyzes health indicators and predicts disease risk using multiple machine learning models integrated into a Streamlit interface.",
+            "During the Tech Saksham AI program, I built and deployed an ML-based health prediction prototype using Python, scikit-learn, and Streamlit. The project focused on applying machine learning workflows to structured health indicators and presenting model outputs through a simple web interface.",
 
         responsibilities: [
-            "Training ML models for disease prediction",
-            "Building a unified evaluation interface",
-            "Deploying the system using Streamlit",
-            "Designing the overall AI system architecture"
+            "Prepared and processed structured health-related datasets for ML experimentation.",
+            "Trained and tested machine learning models using Python and scikit-learn.",
+            "Built a Streamlit interface for entering inputs and viewing prediction outputs.",
+            "Connected model logic with a simple, usable frontend workflow.",
+            "Documented the project flow, model usage, and deployment process."
         ],
 
         skills: [
@@ -84,13 +77,15 @@ export const experiences = [
             "Machine Learning",
             "scikit-learn",
             "Streamlit",
+            "Data Preprocessing",
+            "Model Evaluation",
             "Data Analysis"
         ],
 
         results: [
-            "Reduced manual analysis workload",
-            "Delivered real-time prediction interface",
-            "Improved accessibility of ML-based diagnosis tools"
+            "Built a working ML prototype with a deployed Streamlit interface.",
+            "Practiced end-to-end ML workflow from preprocessing to deployment.",
+            "Strengthened understanding of model integration, evaluation, and user-facing AI interfaces."
         ],
 
         projectLink: "https://aidiagnose.streamlit.app/",
@@ -105,36 +100,36 @@ export const experiences = [
 
         title: "Marketing Associate",
         company: "Google Crowdsource VBIT",
-        period: "2023 – 2024",
+        period: "2023 - 2024",
 
         description:
-            "Led data-driven event marketing initiatives to increase campus participation.",
-
-        /* impact: [
-            "Increased event reach by ~40%",
-            "Improved repeat participation by ~25%"
-        ], */
+            "Supported community outreach and event promotion for Google Crowdsource VBIT, working on campaign planning, content coordination, and student engagement.",
 
         overview:
-            "Executed marketing campaigns focused on event growth, audience acquisition, and engagement optimization within the campus community.",
+            "As part of Google Crowdsource VBIT, I worked on community-facing activities that combined communication, event promotion, and audience engagement. This experience helped me understand how technical communities are built, promoted, and sustained through consistent execution.",
 
         responsibilities: [
-            "Planning event marketing strategies",
-            "Executing promotional campaigns",
-            "Analyzing marketing performance",
-            "Driving audience engagement"
+            "Planned and supported promotional campaigns for community events.",
+            "Created and coordinated outreach content for student audiences.",
+            "Helped communicate event details, participation instructions, and community updates.",
+            "Supported engagement activities around Google Crowdsource initiatives.",
+            "Collaborated with team members on event execution and visibility."
         ],
 
         skills: [
+            "Community Engagement",
+            "Event Promotion",
+            "Communication",
             "Campaign Planning",
-            "Marketing Strategy",
-            "Audience Engagement",
-            "Referral Marketing"
+            "Content Coordination",
+            "Leadership",
+            "Teamwork"
         ],
 
         results: [
-            "Increased event participation",
-            "Improved event engagement metrics"
+            "Built practical experience in community engagement and event promotion.",
+            "Improved communication, coordination, and campaign execution skills.",
+            "Learned how technical communities create participation through clear outreach."
         ],
 
         projectLink:
@@ -150,36 +145,36 @@ export const experiences = [
 
         title: "Social Media & Promotions Associate",
         company: "Aashay VBIT",
-        period: "2023 – 2024",
+        period: "2023 - 2024",
 
         description:
-            "Managed social media promotions improving audience engagement and reach.",
-
-        /* impact: [
-            "Increased social reach by ~50%",
-            "Improved engagement efficiency by ~30%"
-        ], */
+            "Worked on social media and promotional activities for Aashay VBIT, supporting content coordination, event visibility, and audience communication.",
 
         overview:
-            "Executed social media marketing strategies focused on content optimization, engagement growth, and audience outreach.",
+            "At Aashay VBIT, I contributed to social media and promotional work for student-led activities. The role focused on communicating event updates, coordinating content, supporting outreach, and improving how initiatives were presented to the student community.",
 
         responsibilities: [
-            "Managing social media campaigns",
-            "Optimizing promotional content",
-            "Tracking engagement performance",
-            "Supporting event promotions"
+            "Supported social media content planning and promotion.",
+            "Helped communicate event updates and campaign messages to student audiences.",
+            "Coordinated promotional material for college-level initiatives.",
+            "Worked with team members to improve outreach consistency.",
+            "Supported visibility for activities through clear and timely communication."
         ],
 
         skills: [
-            "Social Media Strategy",
-            "Campaign Analytics",
-            "Brand Promotion",
-            "Audience Engagement"
+            "Social Media",
+            "Content Coordination",
+            "Promotion",
+            "Communication",
+            "Outreach",
+            "Team Collaboration",
+            "Event Support"
         ],
 
         results: [
-            "Expanded social audience reach",
-            "Increased engagement metrics"
+            "Gained hands-on experience in content coordination and outreach.",
+            "Improved communication, planning, and team collaboration skills.",
+            "Built confidence in presenting initiatives clearly to a wider audience."
         ],
 
         projectLink:

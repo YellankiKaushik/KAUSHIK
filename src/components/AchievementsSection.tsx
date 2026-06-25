@@ -3,54 +3,39 @@ import { Calendar, ExternalLink } from "lucide-react";
 
 const achievements = [
   {
-    title: "🎯 Hackathon Organizer — Google Crowdsource VBIT",
-    year: "2023",
-    description:
-      "Organized and coordinated a community hackathon as part of the Google Crowdsource platform, enabling participants to contribute to real-world language and AI datasets while fostering collaboration and problem-solving.",
-    link: "https://www.instagram.com/p/Cxx1J4HvS7Z/?hl=en&img_index=10",
-  },
-  /* {
-    title: "Tech Saksham AI Internship",
-    year: "2025",
-    description:
-      "Completed an industry-aligned AI internship under the Tech Saksham Program (Edunet Foundation), where I built an 🩺 AI-based Diagnosis & Prediction System using real-world datasets, model pipelines, and deployment-ready architecture.",
-    link: "https://github.com/YellankiKaushik/AI_Diagnosis_Prediction_System",
-  },*/
-  /* {
-     title: "🎥 YouTube Sentiment Analysis Platform",
-     year: "2025",
-     description:
-       "Designed and documented a full-stack AI platform that analyzes YouTube comments to extract sentiment insights and engagement trends.",
-     link: "https://github.com/YellankiKaushik/YT-Integrated-Review---Kaushik",
-   },*/
-  {
-    title: "🌿The Abundance of Space Theory - Medium Blog",
+    title: "Farmer OS - Top 50 at Lyzr Agentathon 2026",
     year: "2026",
     description:
-      "Wrote a blog on 🌿The Abundance of Space Theory on Medium",
-    link: "https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-bbc8a5314615",
-  },
-  {
-    title: "Farmer OS selected in Top 50 at Lyzr Agentathon 2026",
-    year: "2026",
-    description:
-      "Built Farmer OS, a production-style 9-agent AI system for agricultural decision intelligence, and secured a Top 50 position among 500 curated builders at Lyzr Agentathon 2026 in Bengaluru.(Search for my team name KISAAN in the below link.)",
+      "Selected among the Top 50 teams for Farmer OS, an AI-agent-based agricultural decision-support project built around crop planning, advisory workflows, and farmer-focused automation.",
     link: "https://www.lyzr.ai/agentathon/",
   },
   {
-    title: "1M1B recognized my open source LLM Project for Building Real World Impact",
+    title: "1M1B Open-Source LLM Project Recognition",
     year: "2026",
     description:
-      "Recognized for an open source LLM project that makes use of unstructural thoughts into Structural plan",
+      "Recognized for contributing to an open-source LLM project focused on turning unstructured thoughts into structured plans and practical action workflows.",
     link: "https://drive.google.com/file/d/170fFOFbElEn-t0khhUERrzq5OxOxutj_/view?usp=drive_link",
   },
-
   {
-    title: "Topmate AI Project Documentation",
+    title: "Topmate AI Project Documentation Guide",
     year: "2026",
     description:
-      "Made a AI project Documentation Guide that reads entire project code base to write a professional Project_Explanation.md file for Github Projects",
+      "Created an AI-assisted documentation workflow that helps developers understand a codebase and generate clear project explanation documents for portfolios, submissions, and technical storytelling.",
     link: "https://topmate.io/kaushik_yellanki/2033727",
+  },
+  {
+    title: "Hackathon Organizer - Google Crowdsource VBIT",
+    year: "2023",
+    description:
+      "Helped organize a student hackathon under Google Crowdsource VBIT, supporting event planning, community coordination, participant communication, and execution.",
+    link: "https://www.instagram.com/p/Cxx1J4HvS7Z/?hl=en&img_index=10",
+  },
+  {
+    title: "Medium Writing and Technical Notes",
+    year: "2026",
+    description:
+      "Published long-form writing on ideas, projects, and technical learning, using writing as a way to explain systems, document thinking, and share project-building lessons.",
+    link: "https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-bbc8a5314615",
   },
 ];
 
@@ -104,7 +89,7 @@ const AchievementsSection = () => {
               <h3 className="text-xl font-semibold text-white mb-2">
                 {item.title}
               </h3>
-              {/* META ROW — MATCHES EDUCATION EXACTLY */}
+              {/* META ROW - MATCHES EDUCATION EXACTLY */}
               <div className="flex items-center gap-3 text-white/70 mb-4">
                 <span className="font-medium text-accent-light">
                   Achievement
@@ -119,18 +104,20 @@ const AchievementsSection = () => {
               <p className="text-white/75 leading-relaxed mb-4">
                 {item.description}
               </p>
-              {/* LINK ROW — Styled Like Education Highlight Row */}
-              <div className="text-accent-light font-medium">
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 hover:text-white transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  View Related Work
-                </a>
-              </div>
+              {/* LINK ROW - Styled Like Education Highlight Row */}
+              {item.link && (
+                <div className="text-accent-light font-medium">
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:text-white transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Related Work
+                  </a>
+                </div>
+              )}
 
             </motion.div>
           ))}

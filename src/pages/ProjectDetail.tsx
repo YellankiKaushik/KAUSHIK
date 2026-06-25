@@ -1,6 +1,26 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { projects } from "../data/projects";
+
+const ProjectScreenshot = ({ src }: { src: string }) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return (
+      <div className="rounded-xl min-h-48 bg-gradient-cyber/20 border border-white/10" />
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt="project screenshot"
+      onError={() => setHasError(true)}
+      className="rounded-xl object-cover hover-glow"
+    />
+  );
+};
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -15,6 +35,41 @@ const ProjectDetail = () => {
       </div>
     );
   }
+
+  const caseStudySections = [
+    {
+      title: "Architecture",
+      items: project.caseStudy?.architecture,
+    },
+    {
+      title: "Workflow",
+      items: project.caseStudy?.workflow,
+    },
+    {
+      title: "Key Features",
+      items: project.caseStudy?.features,
+    },
+    {
+      title: "My Contribution",
+      items: project.caseStudy?.myContribution,
+    },
+    {
+      title: "Challenges",
+      items: project.caseStudy?.challenges,
+    },
+    {
+      title: "How I Solved Them",
+      items: project.caseStudy?.howISolved,
+    },
+    {
+      title: "Learnings",
+      items: project.caseStudy?.learnings,
+    },
+    {
+      title: "Limitations",
+      items: project.caseStudy?.limitations,
+    },
+  ];
 
   return (
     <section className="py-12 px-4 relative overflow-hidden">
@@ -190,6 +245,41 @@ const ProjectDetail = () => {
             </div>
           )}
 
+          {/* CASE STUDY */}
+          {project.caseStudy?.whyItMatters && (
+            <div className="mb-10">
+
+              <h2 className="text-xl font-semibold text-white mb-4">
+                Why It Matters
+              </h2>
+
+              <p className="text-white/80 leading-relaxed">
+                {project.caseStudy.whyItMatters}
+              </p>
+
+            </div>
+          )}
+
+          {caseStudySections.map(
+            ({ title, items }) =>
+              items &&
+              items.length > 0 && (
+                <div key={title} className="mb-10">
+
+                  <h2 className="text-xl font-semibold text-white mb-4">
+                    {title}
+                  </h2>
+
+                  <ul className="list-disc list-inside text-white/80 space-y-2">
+                    {items.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+
+                </div>
+              )
+          )}
+
           {/* SCREENSHOTS */}
           {project.screenshots && (
             <div className="mb-12">
@@ -201,12 +291,7 @@ const ProjectDetail = () => {
               <div className="grid md:grid-cols-2 gap-6">
 
                 {project.screenshots.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt="project screenshot"
-                    className="rounded-xl object-cover hover-glow"
-                  />
+                  <ProjectScreenshot key={i} src={img} />
                 ))}
 
               </div>
@@ -246,7 +331,7 @@ const ProjectDetail = () => {
                 rel="noopener noreferrer"
                 className="glass-card px-5 py-2 hover-glow"
               >
-                Medium Article
+                Read Full Medium Write-up
               </a>
             )}
 
