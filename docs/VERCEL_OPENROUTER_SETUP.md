@@ -2,6 +2,14 @@
 
 This portfolio is prepared for Vercel deployment with a server-side OpenRouter chatbot route. The frontend must never receive the OpenRouter API key.
 
+The chatbot architecture is knowledge-first:
+
+- The frontend deterministic engine creates the verified local answer first.
+- The frontend sends the visitor message, verified local answer, category, and recent conversation to the API route.
+- The API route does not import frontend data files, Vite-only modules, or assets.
+- OpenRouter is the second answer-generation layer and may only rewrite or refine the verified local answer.
+- If OpenRouter is unavailable or not configured, the chatbot uses the verified local answer.
+
 ## Vercel Project Settings
 
 - Framework preset: Vite
@@ -35,6 +43,8 @@ Example request:
 ```json
 {
   "message": "Tell me about AGROGUIA.AI.",
+  "localAnswer": "AGROGUIA.AI is a full-stack AI farm advisory dashboard/MVP...",
+  "category": "project_detail",
   "conversation": [
     {
       "role": "user",
@@ -61,6 +71,8 @@ Example response:
 ## Local Fallback
 
 The frontend keeps the deterministic local chatbot engine. If the Vercel API route fails, times out, or OpenRouter is not configured, the chatbot answers from the verified local portfolio knowledge base.
+
+The serverless route intentionally avoids importing `src/data/portfolioKnowledge.ts`, project data, experience data, or frontend assets because those files can depend on Vite-only behavior such as `import.meta.env`.
 
 ## GitHub Pages Backup
 

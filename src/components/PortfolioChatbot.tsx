@@ -47,7 +47,8 @@ const PortfolioChatbot = () => {
 
     const userMessage = createMessage("user", trimmedPrompt);
     const pendingAssistantMessage = createMessage("assistant", "Thinking...");
-    const localAnswer = getPortfolioAnswer(trimmedPrompt).content;
+    const localResult = getPortfolioAnswer(trimmedPrompt);
+    const localAnswer = localResult.content;
 
     setMessages((currentMessages) => [
       ...currentMessages,
@@ -65,6 +66,8 @@ const PortfolioChatbot = () => {
         },
         body: JSON.stringify({
           message: trimmedPrompt,
+          localAnswer,
+          category: localResult.category,
           conversation: getRecentConversation(messages),
         }),
       });

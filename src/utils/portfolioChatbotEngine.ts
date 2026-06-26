@@ -234,6 +234,25 @@ const answerResume = (): ChatbotAnswer => ({
 });
 
 const answerRoleRelevance = (question: string): ChatbotAnswer => {
+  if (
+    hasAny(question, [
+      "recruiter",
+      "evaluating",
+      "evaluate",
+      "candidate",
+      "role fit",
+      "hiring",
+      "ai software role",
+      "software role",
+    ])
+  ) {
+    return {
+      category: "projects",
+      content:
+        "From a recruiter's perspective, Kaushik's portfolio shows relevant evidence for AI/software roles through projects such as AGROGUIA.AI, YouTube Review, Hazlo, and AI Crowd Intelligence Assistant. It demonstrates practical work across AI-assisted products, full-stack interfaces, NLP-style analysis, dashboards, and deployment-focused project building. This is portfolio evidence, not an employment guarantee.",
+    };
+  }
+
   if (hasAny(question, ["full stack", "full-stack", "software developer"])) {
     return {
       category: "projects",
@@ -299,8 +318,16 @@ export const getPortfolioAnswer = (question: string): ChatbotAnswer => {
     hasAny(normalizedQuestion, [
       "relevant",
       "suitable",
+      "recruiter",
+      "evaluating",
+      "evaluate",
+      "candidate",
+      "role fit",
+      "hiring",
       "ai roles",
       "ai role",
+      "ai software role",
+      "software role",
       "full stack roles",
       "full-stack roles",
       "software developer",
