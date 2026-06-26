@@ -9,6 +9,7 @@ The chatbot architecture is knowledge-first:
 - The API route does not import frontend data files, Vite-only modules, or assets.
 - OpenRouter is the second answer-generation layer and may only rewrite or refine the verified local answer.
 - If OpenRouter is unavailable or not configured, the chatbot uses the verified local answer.
+- The chatbot uses a cost-aware AI gate. Simple, refusal, contact, resume, education, and certification questions are answered locally. OpenRouter is used only for meaningful portfolio explanation, project, skills, experience, achievement, writing, and role-fit questions.
 
 ## Vercel Project Settings
 

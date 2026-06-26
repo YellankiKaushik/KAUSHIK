@@ -27,6 +27,16 @@ const getRecentConversation = (messages: ChatMessage[]) =>
     .slice(-6)
     .map(({ role, content }) => ({ role, content }));
 
+const aiEnhancedCategories = new Set([
+  "identity",
+  "projects",
+  "project_detail",
+  "skills",
+  "experience",
+  "achievements",
+  "writing",
+]);
+
 const PortfolioChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -46,16 +56,25 @@ const PortfolioChatbot = () => {
     if (!trimmedPrompt || isLoading) return;
 
     const userMessage = createMessage("user", trimmedPrompt);
-    const pendingAssistantMessage = createMessage("assistant", "Thinking...");
     const localResult = getPortfolioAnswer(trimmedPrompt);
     const localAnswer = localResult.content;
+    const shouldUseAI = aiEnhancedCategories.has(localResult.category);
+    const assistantMessage = createMessage(
+      "assistant",
+      shouldUseAI ? "Thinking..." : localAnswer
+    );
 
     setMessages((currentMessages) => [
       ...currentMessages,
       userMessage,
-      pendingAssistantMessage,
+      assistantMessage,
     ]);
     setInputValue("");
+
+    if (!shouldUseAI) {
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -89,7 +108,7 @@ const PortfolioChatbot = () => {
 
       setMessages((currentMessages) =>
         currentMessages.map((message) =>
-          message.id === pendingAssistantMessage.id
+          message.id === assistantMessage.id
             ? { ...message, content: answer }
             : message
         )
@@ -97,7 +116,7 @@ const PortfolioChatbot = () => {
     } catch {
       setMessages((currentMessages) =>
         currentMessages.map((message) =>
-          message.id === pendingAssistantMessage.id
+          message.id === assistantMessage.id
             ? { ...message, content: localAnswer }
             : message
         )
