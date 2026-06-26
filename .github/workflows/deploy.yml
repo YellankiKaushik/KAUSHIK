@@ -1,9 +1,8 @@
 name: Deploy Portfolio
 
+# GitHub Pages is kept as a manual backup. Vercel is the primary deployment.
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
