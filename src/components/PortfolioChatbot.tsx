@@ -2,12 +2,16 @@ import { FormEvent, KeyboardEvent, useMemo, useRef, useState } from "react";
 import { Bot, MessageCircle, Send, X } from "lucide-react";
 import { suggestedChatbotQuestions } from "@/data/portfolioKnowledge";
 import { getPortfolioAnswer } from "@/utils/portfolioChatbotEngine";
+import { trackEvent } from "@/utils/analytics";
 
 type ChatMessage = {
   id: string;
   role: "assistant" | "user";
   content: string;
 };
+
+type QuestionSource = "starter" | "manual";
+type AnswerSource = "openrouter" | "local_fallback" | "local_only";
 
 const initialAssistantMessage =
   "Hi, I'm Kaushik's portfolio assistant. I can help visitors explore his projects, skills, experience, writing, resume, and contact links.";
@@ -37,6 +41,12 @@ const aiEnhancedCategories = new Set([
   "writing",
 ]);
 
+const getLengthBucket = (message: string) => {
+  if (message.length <= 60) return "short";
+  if (message.length <= 180) return "medium";
+  return "long";
+};
+
 const PortfolioChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -51,7 +61,10 @@ const PortfolioChatbot = () => {
     []
   );
 
-  const addUserPrompt = async (prompt: string) => {
+  const addUserPrompt = async (
+    prompt: string,
+    questionSource: QuestionSource = "manual"
+  ) => {
     const trimmedPrompt = prompt.trim();
     if (!trimmedPrompt || isLoading) return;
 
@@ -71,7 +84,19 @@ const PortfolioChatbot = () => {
     ]);
     setInputValue("");
 
+    trackEvent("chatbot_question_submitted", {
+      question_source: questionSource,
+      question_category: localResult.category,
+      uses_ai: shouldUseAI,
+      length_bucket: getLengthBucket(trimmedPrompt),
+    });
+
     if (!shouldUseAI) {
+      trackEvent("chatbot_answer_returned", {
+        answer_source: "local_only",
+        question_category: localResult.category,
+        uses_ai: false,
+      });
       return;
     }
 
@@ -97,14 +122,22 @@ const PortfolioChatbot = () => {
 
       const data = await response.json();
       let answer = localAnswer;
+      let answerSource: AnswerSource = "local_fallback";
 
       if (
-        data?.source !== "local_fallback" &&
+        data?.source === "openrouter" &&
         typeof data?.answer === "string" &&
         data.answer.trim()
       ) {
         answer = data.answer.trim();
+        answerSource = "openrouter";
       }
+
+      trackEvent("chatbot_answer_returned", {
+        answer_source: answerSource,
+        question_category: localResult.category,
+        uses_ai: true,
+      });
 
       setMessages((currentMessages) =>
         currentMessages.map((message) =>
@@ -114,6 +147,15 @@ const PortfolioChatbot = () => {
         )
       );
     } catch {
+      trackEvent("chatbot_api_error", {
+        question_category: localResult.category,
+        fallback_used: true,
+      });
+      trackEvent("chatbot_answer_returned", {
+        answer_source: "local_fallback",
+        question_category: localResult.category,
+        uses_ai: true,
+      });
       setMessages((currentMessages) =>
         currentMessages.map((message) =>
           message.id === assistantMessage.id
@@ -124,6 +166,27 @@ const PortfolioChatbot = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const openChatbot = () => {
+    setIsOpen(true);
+    trackEvent("chatbot_opened");
+  };
+
+  const closeChatbot = () => {
+    setIsOpen(false);
+    trackEvent("chatbot_closed");
+  };
+
+  const handleStarterQuestionClick = (question: string, starterIndex: number) => {
+    const localResult = getPortfolioAnswer(question);
+
+    trackEvent("chatbot_starter_question_clicked", {
+      starter_index: starterIndex,
+      question_category: localResult.category,
+    });
+
+    addUserPrompt(question, "starter");
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -145,7 +208,7 @@ const PortfolioChatbot = () => {
         <button
           type="button"
           aria-label="Open Kaushik portfolio assistant"
-          onClick={() => setIsOpen(true)}
+          onClick={openChatbot}
           className="glass-card hover-glow flex items-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-white shadow-neon"
         >
           <MessageCircle className="h-4 w-4 text-primary-light" aria-hidden="true" />
@@ -181,7 +244,7 @@ const PortfolioChatbot = () => {
           <button
             type="button"
             aria-label="Close Kaushik portfolio assistant"
-            onClick={() => setIsOpen(false)}
+            onClick={closeChatbot}
             className="rounded-full p-2 text-white/70 transition hover:bg-white/10 hover:text-white"
           >
             <X className="h-4 w-4" aria-hidden="true" />
@@ -193,11 +256,11 @@ const PortfolioChatbot = () => {
             Starter questions
           </p>
           <div className="flex gap-2 overflow-x-auto pb-1">
-            {starterQuestions.map((question) => (
+            {starterQuestions.map((question, index) => (
               <button
                 key={question}
                 type="button"
-                onClick={() => addUserPrompt(question)}
+                onClick={() => handleStarterQuestionClick(question, index)}
                 disabled={isLoading}
                 className="shrink-0 rounded-full border border-primary/30 bg-gradient-cosmic/15 px-3 py-2 text-left text-xs text-primary-light transition hover:border-primary-light/60 hover:text-white"
               >
