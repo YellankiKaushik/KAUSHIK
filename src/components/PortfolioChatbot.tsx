@@ -21,12 +21,19 @@ const createMessage = (
   content,
 });
 
+const getRecentConversation = (messages: ChatMessage[]) =>
+  messages
+    .filter((message) => message.content !== initialAssistantMessage)
+    .slice(-6)
+    .map(({ role, content }) => ({ role, content }));
+
 const PortfolioChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     createMessage("assistant", initialAssistantMessage),
   ]);
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const starterQuestions = useMemo(
@@ -34,16 +41,67 @@ const PortfolioChatbot = () => {
     []
   );
 
-  const addUserPrompt = (prompt: string) => {
+  const addUserPrompt = async (prompt: string) => {
     const trimmedPrompt = prompt.trim();
-    if (!trimmedPrompt) return;
+    if (!trimmedPrompt || isLoading) return;
+
+    const userMessage = createMessage("user", trimmedPrompt);
+    const pendingAssistantMessage = createMessage("assistant", "Thinking...");
+    const localAnswer = getPortfolioAnswer(trimmedPrompt).content;
 
     setMessages((currentMessages) => [
       ...currentMessages,
-      createMessage("user", trimmedPrompt),
-      createMessage("assistant", getPortfolioAnswer(trimmedPrompt).content),
+      userMessage,
+      pendingAssistantMessage,
     ]);
     setInputValue("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/portfolio-chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: trimmedPrompt,
+          conversation: getRecentConversation(messages),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Portfolio chat API request failed.");
+      }
+
+      const data = await response.json();
+      let answer = localAnswer;
+
+      if (
+        data?.source !== "local_fallback" &&
+        typeof data?.answer === "string" &&
+        data.answer.trim()
+      ) {
+        answer = data.answer.trim();
+      }
+
+      setMessages((currentMessages) =>
+        currentMessages.map((message) =>
+          message.id === pendingAssistantMessage.id
+            ? { ...message, content: answer }
+            : message
+        )
+      );
+    } catch {
+      setMessages((currentMessages) =>
+        currentMessages.map((message) =>
+          message.id === pendingAssistantMessage.id
+            ? { ...message, content: localAnswer }
+            : message
+        )
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -118,6 +176,7 @@ const PortfolioChatbot = () => {
                 key={question}
                 type="button"
                 onClick={() => addUserPrompt(question)}
+                disabled={isLoading}
                 className="shrink-0 rounded-full border border-primary/30 bg-gradient-cosmic/15 px-3 py-2 text-left text-xs text-primary-light transition hover:border-primary-light/60 hover:text-white"
               >
                 {question}
@@ -159,13 +218,14 @@ const PortfolioChatbot = () => {
             onKeyDown={handleInputKeyDown}
             rows={1}
             placeholder="Ask about projects, skills, resume..."
+            disabled={isLoading}
             className="max-h-24 min-h-10 flex-1 resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-sm text-white placeholder:text-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           />
           <button
             type="submit"
             aria-label="Send message to Kaushik portfolio assistant"
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-cosmic text-white transition hover:shadow-neon disabled:cursor-not-allowed disabled:opacity-50"
-            disabled={!inputValue.trim()}
+            disabled={!inputValue.trim() || isLoading}
           >
             <Send className="h-4 w-4" aria-hidden="true" />
           </button>

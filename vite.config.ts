@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
+const base = process.env.VERCEL ? "/" : "/KAUSHIK/";
+
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -9,5 +11,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: "/KAUSHIK/",
+  base,
 });
