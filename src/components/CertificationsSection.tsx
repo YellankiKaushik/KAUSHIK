@@ -158,6 +158,7 @@ const CertificationsSection = () => {
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`View ${cert.title} credential from ${cert.issuer}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -184,7 +185,9 @@ const CertificationsSection = () => {
 
           {/* Left Arrow */}
 <motion.button
+  type="button"
   onClick={() => paginate(-1)}
+  aria-label="Show previous certifications"
   whileHover={{ scale: 1.1 }}
   whileTap={{ scale: 0.95 }}
   transition={{ type: "spring", stiffness: 300 }}
@@ -201,12 +204,14 @@ const CertificationsSection = () => {
     transition-all duration-300
   "
 >
-  <ChevronLeft className="text-white w-5 h-5" />
+  <ChevronLeft className="text-white w-5 h-5" aria-hidden="true" />
 </motion.button>
 
 {/* Right Arrow */}
 <motion.button
+  type="button"
   onClick={() => paginate(1)}
+  aria-label="Show next certifications"
   whileHover={{ scale: 1.1 }}
   whileTap={{ scale: 0.95 }}
   transition={{ type: "spring", stiffness: 300 }}
@@ -223,7 +228,7 @@ const CertificationsSection = () => {
     transition-all duration-300
   "
 >
-  <ChevronRight className="text-white w-5 h-5" />
+  <ChevronRight className="text-white w-5 h-5" aria-hidden="true" />
 </motion.button>
 
           {/* Dots */}
@@ -231,9 +236,12 @@ const CertificationsSection = () => {
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
+                type="button"
                 onClick={() =>
                   setPage([index, index > page ? 1 : -1])
                 }
+                aria-label={`Show certifications page ${index + 1}`}
+                aria-current={index === page ? "true" : undefined}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === page
                     ? "w-8 bg-primary-light"

@@ -91,6 +91,7 @@ const HeroSection = () => {
             <img
               src={profileImage}
               alt="Kaushik Yellanki profile photo"
+              decoding="async"
               className="rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover border-4 border-primary-dark/50 shadow-neon"
             />
           </motion.div>

@@ -41,9 +41,13 @@ const Navigation = () => {
     if (element) {
       const offset = 80;
       const elementPosition = element.offsetTop - offset;
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
       window.scrollTo({
         top: elementPosition,
-        behavior: "smooth"
+        behavior: prefersReducedMotion ? "auto" : "smooth"
       });
     }
   };
@@ -61,6 +65,8 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
+                aria-label={`Scroll to ${item.label} section`}
+                aria-current={activeSection === item.id ? "page" : undefined}
                 className={`
                   relative px-2 md:px-3 py-1.5 md:py-2 text-xs font-medium rounded-full transition-all duration-300 whitespace-nowrap
                   ${

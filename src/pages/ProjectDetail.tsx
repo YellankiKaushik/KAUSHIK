@@ -4,7 +4,7 @@ import { useState } from "react";
 import { projects } from "../data/projects";
 import { trackEvent } from "@/utils/analytics";
 
-const ProjectScreenshot = ({ src }: { src: string }) => {
+const ProjectScreenshot = ({ src, alt }: { src: string; alt: string }) => {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
@@ -16,7 +16,9 @@ const ProjectScreenshot = ({ src }: { src: string }) => {
   return (
     <img
       src={src}
-      alt="project screenshot"
+      alt={alt}
+      loading="lazy"
+      decoding="async"
       onError={() => setHasError(true)}
       className="rounded-xl object-cover hover-glow"
     />
@@ -308,7 +310,11 @@ const ProjectDetail = () => {
               <div className="grid md:grid-cols-2 gap-6">
 
                 {project.screenshots.map((img, i) => (
-                  <ProjectScreenshot key={i} src={img} />
+                  <ProjectScreenshot
+                    key={i}
+                    src={img}
+                    alt={`${project.title} screenshot ${i + 1}`}
+                  />
                 ))}
 
               </div>

@@ -5,20 +5,20 @@ const CursorGlow = () => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    // Detect if device has a fine pointer (mouse/trackpad)
-    const mediaQuery = window.matchMedia("(pointer: fine)");
-    setIsDesktop(mediaQuery.matches);
+    const pointerQuery = window.matchMedia("(pointer: fine)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     const handleChange = () => {
-      setIsDesktop(mediaQuery.matches);
+      setIsDesktop(pointerQuery.matches && !motionQuery.matches);
     };
 
-    mediaQuery.addEventListener("change", handleChange);
+    handleChange();
+    pointerQuery.addEventListener("change", handleChange);
+    motionQuery.addEventListener("change", handleChange);
 
-
-    
     return () => {
-      mediaQuery.removeEventListener("change", handleChange);
+      pointerQuery.removeEventListener("change", handleChange);
+      motionQuery.removeEventListener("change", handleChange);
     };
   }, []);
 
@@ -58,6 +58,7 @@ const CursorGlow = () => {
   return (
     <div
       ref={cursorRef}
+      aria-hidden="true"
       className="
         pointer-events-none
         fixed

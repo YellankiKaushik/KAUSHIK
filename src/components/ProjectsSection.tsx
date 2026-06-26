@@ -29,6 +29,7 @@ const ProjectCardImage = ({
       src={src}
       alt={alt}
       loading="lazy"
+      decoding="async"
       onError={() => setHasError(true)}
       className="rounded-xl mb-6 w-full h-48 object-cover"
     />

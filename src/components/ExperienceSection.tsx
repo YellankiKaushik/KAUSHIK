@@ -48,7 +48,9 @@ const ExperienceSection = () => {
                 <div className="p-3 bg-white/90 rounded-xl border border-white/30 shadow-lg">
                   <img
                     src={experience.logo}
-                    alt={experience.company}
+                    alt={`${experience.company} logo`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-8 h-8 object-contain"
                   />
                 </div>

@@ -173,7 +173,9 @@ const ExperienceDetail = () => {
                   <img
                     key={i}
                     src={img}
-                    alt="experience screenshot"
+                    alt={`${experience.title} proof screenshot ${i + 1}`}
+                    loading="lazy"
+                    decoding="async"
                     className="rounded-xl object-cover hover-glow"
                   />
                 ))}
