@@ -10,10 +10,28 @@
     gtag('js', new Date());
     gtag('config', 'G-E5L9TZR005');
   </script>
+  <script type="text/javascript">
+    (function (l) {
+      if (l.search[1] === "/") {
+        var decoded = l.search
+          .slice(1)
+          .split("&")
+          .map(function (s) {
+            return s.replace(/~and~/g, "&");
+          })
+          .join("?");
+        window.history.replaceState(
+          null,
+          null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    })(window.location);
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Kaushik Yellanki | Portfolio</title>
+  <title>Kaushik Yellanki | AI Builder & Software Developer</title>
 
   <!-- FAVICONS -->
   <link rel="icon" href="/KAUSHIK/favicon.ico?v=2" />
@@ -23,14 +41,49 @@
   <link rel="manifest" href="/KAUSHIK/site.webmanifest" />
 
   <!-- SEO -->
-  <meta name="description" content="Personal portfolio of Kaushik Yellanki" />
+  <meta name="description"
+    content="Portfolio of Kaushik Yellanki, an AI builder and software developer creating practical AI, data, and web projects across agents, dashboards, automation, and full-stack applications." />
   <meta name="author" content="Kaushik Yellanki" />
+  <link rel="canonical" href="https://yellankikaushik.github.io/KAUSHIK/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kaushik Yellanki | AI Builder & Software Developer" />
+  <meta property="og:description"
+    content="Portfolio of Kaushik Yellanki, an AI builder and software developer creating practical AI, data, and web projects." />
+  <meta property="og:url" content="https://yellankikaushik.github.io/KAUSHIK/" />
+  <meta property="og:site_name" content="Kaushik Yellanki Portfolio" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kaushik Yellanki | AI Builder & Software Developer" />
+  <meta name="twitter:description"
+    content="AI builder and software developer creating practical AI, data, and web projects." />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kaushik Yellanki",
+      "url": "https://yellankikaushik.github.io/KAUSHIK/",
+      "sameAs": [
+        "https://github.com/YellankiKaushik",
+        "https://www.linkedin.com/in/yellankikaushik/",
+        "https://medium.com/@kaushikyellanki",
+        "https://dev.to/kaushikyellanki"
+      ],
+      "jobTitle": "AI Builder and Software Developer",
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Software Development",
+        "Full-Stack Development",
+        "Machine Learning",
+        "Data Dashboards",
+        "AI Agents"
+      ]
+    }
+  </script>
 
   <!-- Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&family=Playfair+Display:wght@400;700&display=swap"
     rel="stylesheet" />
-  <script type="module" crossorigin src="/KAUSHIK/assets/index-DmshRctg.js"></script>
+  <script type="module" crossorigin src="/KAUSHIK/assets/index-U_lmeWk0.js"></script>
   <link rel="stylesheet" crossorigin href="/KAUSHIK/assets/index-a_1Y8_eT.css">
 </head>
 
