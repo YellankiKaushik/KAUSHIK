@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yellankikaushik.github.io/KAUSHIK/sitemap.xml
+Sitemap: https://kaaushik.vercel.app/sitemap.xml
