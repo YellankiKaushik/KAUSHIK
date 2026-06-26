@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { projects } from "../data/projects";
+import { trackEvent } from "@/utils/analytics";
 
 const ProjectScreenshot = ({ src }: { src: string }) => {
   const [hasError, setHasError] = useState(false);
@@ -116,6 +117,14 @@ const ProjectDetail = () => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("project_outbound_click", {
+                      location: "project_detail",
+                      project_slug: project.slug,
+                      project_title: project.title,
+                      destination: "github",
+                    })
+                  }
                   className="glass-card px-4 py-2 hover-glow text-sm"
                 >
                   GitHub
@@ -127,6 +136,14 @@ const ProjectDetail = () => {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("project_outbound_click", {
+                      location: "project_detail",
+                      project_slug: project.slug,
+                      project_title: project.title,
+                      destination: "live_demo",
+                    })
+                  }
                   className="glass-card px-4 py-2 hover-glow text-sm"
                 >
                   Live Demo
@@ -307,6 +324,14 @@ const ProjectDetail = () => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("project_outbound_click", {
+                    location: "project_detail",
+                    project_slug: project.slug,
+                    project_title: project.title,
+                    destination: "github",
+                  })
+                }
                 className="glass-card px-5 py-2 hover-glow"
               >
                 GitHub Repository
@@ -318,6 +343,14 @@ const ProjectDetail = () => {
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("project_outbound_click", {
+                    location: "project_detail",
+                    project_slug: project.slug,
+                    project_title: project.title,
+                    destination: "live_demo",
+                  })
+                }
                 className="glass-card px-5 py-2 hover-glow"
               >
                 Live Demo
@@ -329,6 +362,14 @@ const ProjectDetail = () => {
                 href={project.medium}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("project_outbound_click", {
+                    location: "project_detail",
+                    project_slug: project.slug,
+                    project_title: project.title,
+                    destination: "medium",
+                  })
+                }
                 className="glass-card px-5 py-2 hover-glow"
               >
                 Read Full Medium Write-up

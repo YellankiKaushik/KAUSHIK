@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { trackEvent } from "@/utils/analytics";
 
 const writingItems = [
   {
@@ -8,6 +9,8 @@ const writingItems = [
       "Long-form project stories, technical breakdowns, and reflections on AI, software, and product-building.",
     link: "https://medium.com/@kaushikyellanki",
     cta: "Read on Medium",
+    eventName: "medium_click",
+    destination: "medium_profile",
   },
   {
     title: "Dev.to Posts",
@@ -15,6 +18,8 @@ const writingItems = [
       "Developer-focused write-ups, implementation notes, and project documentation written for technical readers.",
     link: "https://dev.to/kaushikyellanki",
     cta: "Read on Dev.to",
+    eventName: "devto_click",
+    destination: "devto_profile",
   },
   {
     title: "Project Notes",
@@ -22,6 +27,8 @@ const writingItems = [
       "Concise notes and write-ups connected to my portfolio projects. I manually add project article links as each write-up is published.",
     link: "",
     cta: "",
+    eventName: "",
+    destination: "",
   },
 ];
 
@@ -77,6 +84,12 @@ const WritingSection = () => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent(item.eventName, {
+                      location: "writing",
+                      destination: item.destination,
+                    })
+                  }
                   className="inline-flex items-center gap-2 text-primary-light hover:text-white text-sm font-medium transition"
                 >
                   <ExternalLink className="w-4 h-4" />

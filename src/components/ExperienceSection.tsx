@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Calendar, Instagram, Github, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { experiences } from "../data/experiences";
+import { trackEvent } from "@/utils/analytics";
 
 const ExperienceSection = () => {
   return (
@@ -91,6 +92,14 @@ const ExperienceSection = () => {
                   {/* NEW INTERNAL PAGE LINK */}
                   <Link
                     to={`/experience/${experience.slug}`}
+                    onClick={() =>
+                      trackEvent("experience_detail_click", {
+                        location: "experience_section",
+                        experience_slug: experience.slug,
+                        experience_title: experience.title,
+                        company: experience.company,
+                      })
+                    }
                     className="inline-flex items-center gap-2 text-primary-light hover:text-white text-sm font-medium transition"
                   >
 

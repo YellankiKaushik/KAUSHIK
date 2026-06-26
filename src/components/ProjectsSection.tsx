@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../data/projects";
+import { trackEvent } from "@/utils/analytics";
 
 const visibleProjects = projects
   .filter((project) => project.visible !== false)
@@ -104,6 +105,13 @@ const ProjectsSection = () => {
                 {/* View Project Button */}
                 <Link
                   to={`/project/${project.slug}`}
+                  onClick={() =>
+                    trackEvent("project_detail_click", {
+                      location: "projects_section",
+                      project_slug: project.slug,
+                      project_title: project.title,
+                    })
+                  }
                   className="inline-flex items-center gap-2 text-primary-light hover:text-white transition"
                 >
                   <ExternalLink className="w-4 h-4" />

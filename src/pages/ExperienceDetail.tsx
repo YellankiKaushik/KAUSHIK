@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { experiences } from "../data/experiences";
+import { trackEvent } from "@/utils/analytics";
 
 const ExperienceDetail = () => {
   const { slug } = useParams();
@@ -68,6 +69,15 @@ const ExperienceDetail = () => {
                   href={experience.projectLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent("experience_outbound_click", {
+                      location: "experience_detail",
+                      experience_slug: experience.slug,
+                      experience_title: experience.title,
+                      company: experience.company,
+                      destination: experience.linktype || "external",
+                    })
+                  }
                   className="glass-card px-4 py-2 hover-glow text-sm"
                 >
                   View Work
@@ -178,6 +188,15 @@ const ExperienceDetail = () => {
                 href={experience.projectLink}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("experience_outbound_click", {
+                    location: "experience_detail",
+                    experience_slug: experience.slug,
+                    experience_title: experience.title,
+                    company: experience.company,
+                    destination: experience.linktype || "external",
+                  })
+                }
                 className="glass-card px-5 py-2 hover-glow"
               >
                 View Work

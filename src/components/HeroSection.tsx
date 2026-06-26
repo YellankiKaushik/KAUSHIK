@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import profileImage from "@/assets/profile.jpeg";
+import { trackEvent } from "@/utils/analytics";
 
 const HeroSection = () => {
   return (
@@ -28,28 +29,42 @@ const HeroSection = () => {
                   Icon: FileText,
                   text: "Resume",
                   href: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
+                  eventName: "resume_click",
+                  destination: "resume",
                 },
                 {
                   Icon: Github,
                   text: "GitHub",
                   href: "https://github.com/YellankiKaushik",
+                  eventName: "github_click",
+                  destination: "github_profile",
                 },
                 {
                   Icon: Linkedin,
                   text: "LinkedIn",
                   href: "https://www.linkedin.com/in/yellankikaushik/",
+                  eventName: "linkedin_click",
+                  destination: "linkedin_profile",
                 },
                 {
                   Icon: Mail,
                   text: "Email",
                   href: "mailto:kaushikyellanki@gmail.com",
+                  eventName: "email_click",
+                  destination: "mailto",
                 },
-              ].map(({ Icon, text, href }, index) => (
+              ].map(({ Icon, text, href, eventName, destination }, index) => (
                 <motion.a
                   key={index}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    trackEvent(eventName, {
+                      location: "hero",
+                      destination,
+                    })
+                  }
                   whileHover={{ y: -3, scale: 1.02 }}
                   transition={{ duration: 0.25 }}
                   className="

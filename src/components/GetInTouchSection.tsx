@@ -1,27 +1,36 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, FileText } from "lucide-react";
+import { trackEvent } from "@/utils/analytics";
 
 const contacts = [
   {
     label: "Email",
     icon: <Mail className="w-4 h-4" />,
     link: "mailto:kaushikyellanki@gmail.com",
+    eventName: "email_click",
+    destination: "mailto",
   },
   {
     label: "LinkedIn",
     icon: <Linkedin className="w-4 h-4" />,
     link: "https://www.linkedin.com/in/yellankikaushik/",
+    eventName: "linkedin_click",
+    destination: "linkedin_profile",
   },
   {
     label: "GitHub",
     icon: <Github className="w-4 h-4" />,
     link: "https://github.com/YellankiKaushik",
+    eventName: "github_click",
+    destination: "github_profile",
   },
   
   {
     label: "Resume",
     icon: <FileText className="w-4 h-4" />,
     link: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
+    eventName: "resume_click",
+    destination: "resume",
   },
 ];
 
@@ -60,6 +69,12 @@ const GetInTouchSection = () => {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent(item.eventName, {
+                  location: "contact",
+                  destination: item.destination,
+                })
+              }
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
