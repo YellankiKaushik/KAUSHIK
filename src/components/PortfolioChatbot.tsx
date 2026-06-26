@@ -14,7 +14,7 @@ type QuestionSource = "starter" | "manual";
 type AnswerSource = "openrouter" | "local_fallback" | "local_only";
 
 const initialAssistantMessage =
-  "Hi, I'm Kaushik's portfolio assistant. I can help visitors explore his projects, skills, experience, writing, resume, and contact links.";
+  "Hi, I'm Kaushik's portfolio assistant. I answer from verified portfolio information about his AI systems, projects, skills, experience, writing, resume, and contact links.";
 
 const createMessage = (
   role: ChatMessage["role"],

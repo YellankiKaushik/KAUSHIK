@@ -14,9 +14,27 @@ const HeroSection = () => {
       >
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className="order-2 md:order-1 text-center md:text-left">
-            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl text-white mb-4 font-display leading-tight">
+            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl text-white mb-3 font-display leading-tight">
               Kaushik Yellanki
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.4 }}
+              className="mb-3 text-lg sm:text-xl text-primary-light font-semibold"
+            >
+              AI Systems Builder & Software Developer
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.4 }}
+              className="mx-auto mb-5 max-w-xl text-sm sm:text-base leading-relaxed text-white/75 md:mx-0"
+            >
+              I build practical AI-powered products, full-stack applications,
+              and secure AI integrations that turn ideas into working deployed
+              systems.
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}

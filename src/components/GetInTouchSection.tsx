@@ -60,7 +60,7 @@ const GetInTouchSection = () => {
         </motion.h2>
 
         <p className="text-center text-white/80 text-sm md:text-base font-semibold mb-8">
-          Open to full-time software and AI roles, project collaboration, and technical conversations.
+          Open to full-time software and AI roles, AI product work, secure AI integrations, project collaboration, and technical conversations.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           {contacts.map((item, index) => (

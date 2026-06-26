@@ -1,72 +1,39 @@
-# 🧠 Kaushik Yellanki
+# Kaushik Yellanki Portfolio
 
-🚀 Personal portfolio website showcasing my work, focused on building intelligent and real-world business impact.
+AI Systems Builder & Software Developer
 
-🔗 **Live Portfolio**  
-👉 https://yellankikaushik.github.io/KAUSHIK/
+Live portfolio: https://kaaushik.vercel.app/
 
----
+This is my personal portfolio for showcasing practical AI systems, full-stack projects, secure AI integrations, writing, experience, and contact links.
 
-## ✨ Want to create a similar portfolio for yourself?
+## Stack
 
-You can absolutely do it — and yes, you can **clone this repo** and customize it.
+- React
+- Vite
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Vercel
+- Google Analytics 4
 
-> 👉 Clone it, replace the content with your own, and make it yours.
+## AI Layer
 
-Here’s  **process** 👇
+The portfolio includes an AI-powered assistant built with a knowledge-base-first architecture:
 
----
+- verified local portfolio knowledge as the first layer
+- OpenRouter through a Vercel serverless API route
+- local deterministic fallback when the AI route is unavailable
+- AI usage gate to avoid unnecessary token usage
+- privacy-safe GA4 chatbot analytics
 
-### 1️⃣ Decide what you want to show
-- Who you are (role + 1-line intro)
-- Your experience
-- Projects with real outcomes
-- Skills, certifications, and responsibilities
+The OpenRouter key is handled server-side only. No API keys are exposed in frontend code and no secrets should be committed.
 
-Think of it as an **expanded, visual version of your resume**.
+## Deployment Notes
 
----
+The active portfolio deployment is on Vercel:
 
-### 2️⃣ Set up the tech
-- Frontend: **React + Vite**
-- Styling: **Tailwind CSS**
-- Animations: **Framer Motion**
-- Hosting: **GitHub Pages**
-- Version control: **Git & GitHub**
+```txt
+https://kaaushik.vercel.app/
+```
 
-You don’t need everything on Day 1 — start small and improve gradually.
-
----
-
-### 3️⃣ Build section by section
-- Hero (name, role, links)
-- Experience
-- Projects
-- Skills
-- Certifications
-
-Keep content **honest, clear, and outcome-focused**.
-
----
-
-### 4️⃣ Deploy it
-- Push your code to GitHub
-- Use GitHub Actions to build & deploy
-- Enable GitHub Pages
-- Get your live portfolio link 🚀
-
----
-
-### 5️⃣ Keep improving
-This portfolio wasn’t built in one day.  
-It evolved with:
-- better projects
-- cleaner structure
-- stronger storytelling
-
-So don’t wait for “perfect” — **start**.
-
----
-
-⭐ If this repo or portfolio helped you,  
-don’t forget to **shoot a star 🌟😂**
+GitHub Pages configuration is still kept as a backup until the Vercel migration is fully finalized.

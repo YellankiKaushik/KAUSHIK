@@ -53,7 +53,7 @@ Example request:
     },
     {
       "role": "assistant",
-      "content": "Kaushik Yellanki is an AI Builder and Software Developer."
+      "content": "Kaushik Yellanki is an AI Systems Builder and Software Developer."
     }
   ]
 }

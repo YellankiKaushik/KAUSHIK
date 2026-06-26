@@ -5,7 +5,7 @@ const featuredHighlights = [
   {
     title: "Builder Mindset",
     description:
-      "I am a Computer Science graduate from India who learns by building. I like taking ideas, breaking them down, discussing them deeply, and turning them into working AI, data, and web projects.",
+      "I learn by building practical AI and software systems. My work connects full-stack interfaces, serverless APIs, AI integrations, dashboards, automation, and clear product thinking into projects that can be tested, explained, and improved.",
   },
   {
     title: "What I Build",

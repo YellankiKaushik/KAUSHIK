@@ -32,33 +32,33 @@ export const portfolioKnowledge = {
   identity: {
     fullName: "Kaushik Yellanki",
     displayName: "Kaushik",
-    currentPositioning: "AI Builder and Software Developer",
+    currentPositioning: "AI Systems Builder and Software Developer",
     location: "India",
     summary:
-      "Kaushik Yellanki is a Computer Science graduate from India who learns by building practical AI, data, and web projects.",
+      "Kaushik Yellanki is a Computer Science graduate from India who builds practical AI systems, full-stack products, dashboards, automation tools, and knowledge-first AI experiences.",
   },
 
   positioning: {
-    title: "AI Builder and Software Developer",
+    title: "AI Systems Builder and Software Developer",
     aboutHighlights: [
       {
         title: "Builder Mindset",
         description:
-          "Computer Science graduate from India who learns by building and turns ideas into working AI, data, and web projects.",
+          "Computer Science graduate from India who learns by building practical AI and software systems that can be tested, explained, and improved.",
       },
       {
         title: "What I Build",
         description:
-          "AI-enabled web apps, dashboards, agents, automation tools, NLP workflows, and decision-support systems.",
+          "AI-powered products, full-stack applications, serverless APIs, secure AI integrations, dashboards, automation tools, NLP workflows, and decision-support systems.",
       },
       {
         title: "Where I am Heading",
         description:
-          "Focused on growing into AI and software roles through practical systems, clear documentation, fast learning, and steady shipping.",
+          "Focused on growing into AI and software roles through practical systems, secure integrations, clear documentation, fast learning, and steady shipping.",
       },
     ],
     openTo:
-      "Full-time software and AI roles, project collaboration, and technical conversations.",
+      "Full-time software and AI roles, AI product work, secure AI integrations, project collaboration, and technical conversations.",
   },
 
   contact: contactLinks,
@@ -277,9 +277,16 @@ export const portfolioKnowledge = {
   ],
 
   safeClaims: [
-    "Kaushik Yellanki is an AI Builder and Software Developer.",
+    "Kaushik Yellanki is an AI Systems Builder and Software Developer.",
     "Kaushik is a Computer Science graduate from India.",
     "Kaushik builds AI, data, web, automation, dashboard, NLP, agent, and decision-support projects.",
+    "Kaushik's portfolio includes an AI-powered portfolio assistant.",
+    "Kaushik's portfolio includes a Vercel serverless API route for the chatbot.",
+    "Kaushik's portfolio uses an OpenRouter server-side integration for AI answer rewriting.",
+    "Kaushik's portfolio uses a knowledge-base-first chatbot architecture.",
+    "Kaushik's portfolio keeps a local deterministic chatbot fallback.",
+    "Kaushik's portfolio uses an AI usage gate to reduce unnecessary API calls.",
+    "Kaushik's portfolio includes privacy-safe GA4 chatbot analytics that avoid raw questions and answers.",
     "AGROGUIA.AI is a full-stack AI farm advisory dashboard and working MVP.",
     "Integrated Review of YouTube Videos is a full-stack AI/NLP dashboard for YouTube comments, transcripts, summaries, and sentiment.",
     "Hazlo is a voice-first productivity and task capture prototype with Notion sync.",
@@ -314,7 +321,6 @@ export const portfolioKnowledge = {
     "PsyMatch is missing a live link.",
     "UptoSkills proof/work link is empty.",
     "Open Graph image is missing.",
-    "Serverless AI backend is missing.",
   ],
 
   chatbotBoundaries: {
