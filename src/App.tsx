@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import ProjectDetail from "./pages/ProjectDetail";
 import ExperienceDetail from "./pages/ExperienceDetail";
 import CursorGlow from "@/components/CursorGlow";
+import PortfolioChatbot from "@/components/PortfolioChatbot";
 import ScrollToTop from "./components/ScrollToTop";
 
 
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <CursorGlow />
+      <PortfolioChatbot />
 
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
