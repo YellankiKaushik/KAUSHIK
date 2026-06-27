@@ -2,7 +2,7 @@
 
 AI Systems Builder & Software Developer
 
-Live portfolio: https://kaaushik.vercel.app/
+Live portfolio: https://kaaushik.vercel.app/  &   https://kaaush.vercel.app/
 
 This is my personal portfolio for showcasing practical AI systems, full-stack projects, secure AI integrations, writing, experience, and contact links.
 
