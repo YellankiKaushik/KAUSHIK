@@ -35,5 +35,9 @@ The active portfolio deployment is on Vercel:
 ```txt
 https://kaaushik.vercel.app/
 ```
+and 
 
-GitHub Pages configuration is still kept as a backup until the Vercel migration is fully finalized.
+```txt
+https://kaaush.vercel.app/
+```
+
