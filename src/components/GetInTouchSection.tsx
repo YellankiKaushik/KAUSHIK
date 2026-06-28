@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, FileText } from "lucide-react";
+import { BookOpenText, Code2, Mail, Linkedin, Github, FileText } from "lucide-react";
 import { trackEvent } from "@/utils/analytics";
 
 const contacts = [
@@ -8,29 +8,58 @@ const contacts = [
     icon: <Mail className="w-4 h-4" />,
     link: "mailto:kaushikyellanki@gmail.com",
     eventName: "email_click",
-    destination: "mailto",
+    trackingParams: {
+      location: "contact",
+      destination: "mailto",
+    },
   },
   {
     label: "LinkedIn",
     icon: <Linkedin className="w-4 h-4" />,
     link: "https://www.linkedin.com/in/yellankikaushik/",
     eventName: "linkedin_click",
-    destination: "linkedin_profile",
+    trackingParams: {
+      location: "contact",
+      destination: "linkedin_profile",
+    },
   },
   {
     label: "GitHub",
     icon: <Github className="w-4 h-4" />,
     link: "https://github.com/YellankiKaushik",
     eventName: "github_click",
-    destination: "github_profile",
+    trackingParams: {
+      location: "contact",
+      destination: "github_profile",
+    },
   },
-  
   {
     label: "Resume",
     icon: <FileText className="w-4 h-4" />,
     link: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
     eventName: "resume_click",
-    destination: "resume",
+    trackingParams: {
+      location: "contact",
+      destination: "resume",
+    },
+  },
+  {
+    label: "Medium",
+    icon: <BookOpenText className="w-4 h-4" />,
+    link: "https://medium.com/@kaushikyellanki",
+    eventName: "contact_medium_click",
+    trackingParams: {
+      label: "Medium",
+    },
+  },
+  {
+    label: "Dev.to",
+    icon: <Code2 className="w-4 h-4" />,
+    link: "https://dev.to/kaushikyellanki",
+    eventName: "contact_devto_click",
+    trackingParams: {
+      label: "Dev.to",
+    },
   },
 ];
 
@@ -62,19 +91,14 @@ const GetInTouchSection = () => {
         <p className="text-center text-white/80 text-sm md:text-base font-semibold mb-8">
           Open to full-time software and AI roles, AI product work, secure AI integrations, project collaboration, and technical conversations.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
           {contacts.map((item, index) => (
             <motion.a
               key={index}
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() =>
-                trackEvent(item.eventName, {
-                  location: "contact",
-                  destination: item.destination,
-                })
-              }
+              onClick={() => trackEvent(item.eventName, item.trackingParams)}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -82,11 +106,11 @@ const GetInTouchSection = () => {
               whileHover={{ y: -4, scale: 1.02 }}
               className="
                 glass-card
-                px-5 py-3
+                h-12 px-4
                 flex items-center gap-2
                 text-sm
-                min-w-[150px]
                 justify-center
+                whitespace-nowrap
                 hover-glow
               "
             >

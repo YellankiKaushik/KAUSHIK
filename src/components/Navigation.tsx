@@ -11,7 +11,6 @@ const navItems = [
   { id: "education", label: "Education" },
   { id: "certifications", label: "Certificates" },
   { id: "achievements", label: "Achievements" },
-  { id: "writing", label: "Writing" },
   { id: "contact", label: "Contact" },
 ];
 
