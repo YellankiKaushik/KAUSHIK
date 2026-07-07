@@ -36,7 +36,7 @@ const contacts = [
   {
     label: "Resume",
     icon: <FileText className="w-4 h-4" />,
-    link: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
+    link: "https://drive.google.com/file/d/1dArptFiOOW2951QYCWcv9-9S30aEnBG1/view?usp=sharing",
     eventName: "resume_click",
     trackingParams: {
       location: "contact",
