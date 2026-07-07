@@ -46,7 +46,7 @@ const HeroSection = () => {
                 {
                   Icon: FileText,
                   text: "Resume",
-                  href: "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
+                  href: "https://drive.google.com/file/d/1dArptFiOOW2951QYCWcv9-9S30aEnBG1/view?usp=sharing",
                   eventName: "resume_click",
                   destination: "resume",
                 },
