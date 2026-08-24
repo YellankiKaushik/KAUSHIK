@@ -1,31 +1,38 @@
 import { motion } from "framer-motion";
-import { Code2, Database, PenTool, Users } from "lucide-react";
+import {
+  BrainCircuit,
+  Cloud,
+  Code2,
+  Database,
+  GitBranch,
+  PenTool,
+  Server,
+  Trophy,
+  Users,
+} from "lucide-react";
 
 
 const skills = [
   {
     category: "Languages",
     icon: <Code2 className="w-4 h-4" />,
+    context:
+      "Used across AI prototypes, React/Vite interfaces, Python ML workflows, and deployed portfolio projects.",
     items: ["Python", "JavaScript", "TypeScript", "HTML", "CSS"],
   },
-  /*{
-    category: "Core Computer Science",
-    icon: <Cpu className="w-4 h-4" />,
-    items: [
-      "Data Structures",
-      "Algorithms",
-      "OOP",
-      "Time & Space Complexity",
-    ],
-  },*/
   {
-    category: "AI / Machine Learning",
-    icon: <Database className="w-4 h-4" />,
+    category: "AI & Machine Learning",
+    icon: <BrainCircuit className="w-4 h-4" />,
+    context:
+      "Visible in AGROGUIA.AI, YouTube Review, AI Crowd Intelligence, Sistemaa Electoral, and internship ML evaluation work.",
     items: [
       "scikit-learn",
       "PyTorch",
       "Hugging Face Transformers",
       "NLTK",
+      "OpenAI API",
+      "Gemini API",
+      "OpenRouter",
       "Model Deployment",
       "ML Inference Pipelines",
     ],
@@ -33,51 +40,108 @@ const skills = [
   {
     category: "Web Development",
     icon: <PenTool className="w-4 h-4" />,
+    context:
+      "Used to build recruiter-facing dashboards, AI product interfaces, case-study pages, and the portfolio assistant UI.",
     items: [
       "React",
       "Next.js",
-      "Flask",
-      "FastAPI",
+      "Vite",
       "Tailwind CSS",
       "Framer Motion",
+      "Streamlit",
     ],
   },
-  /*{
-    category: "APIs & Integrations",
-    icon: <Database className="w-4 h-4" />,
-    items: [
-      "OpenAI API",
-      "YouTube Data API",
-      "Web Speech API",
-    ],
-  },*/
   {
-    category: "Tools & Deployment",
-    icon: <PenTool className="w-4 h-4" />,
+    category: "Backend / APIs",
+    icon: <Server className="w-4 h-4" />,
+    context:
+      "Supported by full-stack projects with serverless routes, API integrations, auth foundations, and data-backed workflows.",
+    items: [
+      "Node.js",
+      "Express",
+      "Flask",
+      "FastAPI",
+      "MongoDB",
+      "Mongoose",
+      "Vercel Serverless Functions",
+      "Google Apps Script",
+      "JWT",
+      "REST APIs",
+      "YouTube Data API",
+      "Notion API",
+      "OpenWeather API",
+    ],
+  },
+  {
+    category: "Data & Visualization",
+    icon: <Database className="w-4 h-4" />,
+    context:
+      "Shown through Tableau work, Recharts dashboards, sentiment analysis views, and model-output interpretation.",
+    items: [
+      "Tableau",
+      "Recharts",
+      "Streamlit",
+      "Data Analysis",
+      "Data Visualization",
+      "Sentiment Visualization",
+      "Google Trends Analysis",
+    ],
+  },
+  {
+    category: "Tools & Development Workflow",
+    icon: <GitBranch className="w-4 h-4" />,
+    context:
+      "Used for open-source project work, documentation, version control, testing, and deployment-ready builds.",
     items: [
       "Git",
       "GitHub",
-      "Streamlit Community Cloud",
+      "Docker",
+      "Vitest",
+      "Technical Documentation",
+      "Project Case Studies",
+    ],
+  },
+  {
+    category: "Deployment & Platforms",
+    icon: <Cloud className="w-4 h-4" />,
+    context:
+      "Supported by live projects deployed across frontend, serverless, Streamlit, and Google Cloud environments.",
+    items: [
       "GitHub Pages",
+      "Vercel",
+      "Google Cloud Run",
+      "Streamlit Community Cloud",
       "Render",
     ],
   },
   {
-    category: "Visualization",
-    icon: <Database className="w-4 h-4" />,
-    items: ["Tableau", "Streamlit"],
+    category: "Product / Builder Skills",
+    icon: <Trophy className="w-4 h-4" />,
+    context:
+      "Demonstrated through practical AI products, hackathon prototypes, and challenge participation pages.",
+    items: [
+      "Hackathon Execution",
+      "Time-Bound Building",
+      "Fast Learning",
+      "Proof-of-Work",
+      "Product Thinking",
+      "Problem Framing",
+      "Technical Writing",
+    ],
   },
   {
     category: "Professional Skills",
     icon: <Users className="w-4 h-4" />,
+    context:
+      "Supported by internship work, community roles, event promotion, team collaboration, and technical communication.",
     items: [
       "Analytical Thinking",
-      "Structured Problem Solving & Communication",
-      "Data-Driven Decision Making",
-       "Problem Solving",
-        "Product Thinking",
-          "Data Interpretation",
+      "Structured Problem Solving",
+      "Communication",
       "Team Collaboration",
+      "Community Engagement",
+      "Content Coordination",
+      "Data Interpretation",
     ],
   },
 ];
@@ -145,6 +209,10 @@ const SkillsSection = () => {
                   <h3 className="text-xl font-semibold text-white mb-4">
                     {category.category}
                   </h3>
+
+                  <p className="mb-5 max-w-3xl text-sm leading-relaxed text-white/65">
+                    {category.context}
+                  </p>
 
                   <div className="flex flex-wrap gap-3">
                     {category.items.map((skill, i) => (
