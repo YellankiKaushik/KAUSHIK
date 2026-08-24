@@ -4,6 +4,48 @@ import aashayLogo from "../assets/logos/Aashayvbit.jpg";
 import uptoskillsLogo from "../assets/logos/uptoskills.png";
 
 export const experiences = [
+    {
+        slug: "challenge-participation",
+
+        title: "Challenge & Participation Experience",
+        company: "Time-Bound AI & Software Building",
+        period: "Ongoing",
+
+        description:
+            "Participate in AI/software challenges, hackathons, and builder events to practice fast learning, practical implementation, documentation, and proof-of-work under constraints.",
+
+        overview:
+            "This experience track is not employment. It collects Kaushik's challenge, hackathon, and builder-event participation as a scalable proof system for recruiters. The focus is on turning problem statements into working prototypes, documenting decisions, and attaching GitHub, live demo, certificate, article, or social proof links only when verified.",
+
+        responsibilities: [
+            "Translate challenge prompts and problem statements into practical project scopes.",
+            "Build or attempt AI/software prototypes in time-bound environments.",
+            "Use public project links, demos, posts, certificates, and write-ups as proof where available.",
+            "Document implementation choices so recruiters and technical reviewers can understand the work quickly.",
+            "Keep missing proof links empty until they are verified instead of publishing broken or inflated claims."
+        ],
+
+        skills: [
+            "Hackathon Execution",
+            "Time-Bound Building",
+            "AI Prototyping",
+            "Fast Learning",
+            "Technical Documentation",
+            "Proof-of-Work",
+            "Product Thinking"
+        ],
+
+        results: [
+            "Created a dedicated challenge participation architecture with overview and individual detail pages.",
+            "Connected verified entries such as Farmer OS at Lyzr Agentathon, AI Crowd Intelligence Assistant, and VaaniPlan challenge work.",
+            "Prepared future challenge records so proof links and outcomes can be added without redesigning the portfolio."
+        ],
+
+        projectLink: "",
+        detailRoute: "/experience/challenge-participation",
+        linktype: "challenge",
+        logo: ""
+    },
 
     {
         slug: "uptoskills-ai-research",
