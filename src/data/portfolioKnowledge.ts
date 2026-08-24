@@ -1,5 +1,6 @@
 import { experiences } from "./experiences";
 import { projects } from "./projects";
+import { challenges, sortedChallenges, verifiedChallenges } from "./challenges";
 
 const contactLinks = {
   email: "mailto:kaushikyellanki@gmail.com",
@@ -12,9 +13,17 @@ const contactLinks = {
 } as const;
 
 export const suggestedChatbotQuestions = [
-  "Who is Kaushik?",
-  "What projects has Kaushik built?",
-  "What are Kaushik's strongest AI projects?",
+  "Recruiter summary of Kaushik",
+  "Show his strongest projects",
+  "Explain his AI work",
+  "Explain his challenge participation",
+  "Can he build under deadlines?",
+  "Show proof links",
+  "Where can I contact him?",
+  "Where can I read his writing?",
+  "Which project should I review first?",
+  "Which project is most relevant for AI roles?",
+  "Which project is most relevant for full-stack roles?",
   "Tell me about AGROGUIA.AI.",
   "Tell me about the YouTube AI Review project.",
   "Tell me about Hazlo.",
@@ -22,10 +31,6 @@ export const suggestedChatbotQuestions = [
   "What experience does Kaushik have?",
   "Where can I see his GitHub?",
   "Where can I download his resume?",
-  "How can I contact him?",
-  "Does he write on Medium or Dev.to?",
-  "Which project is most relevant for AI roles?",
-  "Which project is most relevant for full-stack roles?",
 ] as const;
 
 export const portfolioKnowledge = {
@@ -67,7 +72,7 @@ export const portfolioKnowledge = {
     mediumProfile: contactLinks.medium,
     devToProfile: contactLinks.devTo,
     projectNotesStatus:
-      "Project Notes card exists, but project article links are manually added only when each write-up is published.",
+      "The separate homepage Project Notes/Writing section is not part of the current homepage flow. Medium and Dev.to profiles are available through Contact.",
     achievementLevelMediumArticle:
       "https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-bbc8a5314615",
     projectLevelMediumLinksStatus:
@@ -112,33 +117,76 @@ export const portfolioKnowledge = {
       "PyTorch",
       "Hugging Face Transformers",
       "NLTK",
+      "OpenAI API",
+      "Gemini API",
+      "OpenRouter",
       "Model Deployment",
       "ML Inference Pipelines",
     ],
     webDevelopment: [
       "React",
       "Next.js",
-      "Flask",
-      "FastAPI",
+      "Vite",
       "Tailwind CSS",
       "Framer Motion",
+      "Streamlit",
+    ],
+    backendApis: [
+      "Node.js",
+      "Express",
+      "Flask",
+      "FastAPI",
+      "MongoDB",
+      "Mongoose",
+      "Vercel Serverless Functions",
+      "Google Apps Script",
+      "JWT",
+      "REST APIs",
+      "YouTube Data API",
+      "Notion API",
+      "OpenWeather API",
     ],
     toolsDeployment: [
       "Git",
       "GitHub",
-      "Streamlit Community Cloud",
+      "Docker",
+      "Vitest",
+      "Technical Documentation",
+      "Project Case Studies",
+    ],
+    deploymentPlatforms: [
       "GitHub Pages",
+      "Vercel",
+      "Google Cloud Run",
+      "Streamlit Community Cloud",
       "Render",
     ],
-    visualization: ["Tableau", "Streamlit"],
+    visualization: [
+      "Tableau",
+      "Recharts",
+      "Streamlit",
+      "Data Analysis",
+      "Data Visualization",
+      "Sentiment Visualization",
+      "Google Trends Analysis",
+    ],
+    productBuilder: [
+      "Hackathon Execution",
+      "Time-Bound Building",
+      "Fast Learning",
+      "Proof-of-Work",
+      "Product Thinking",
+      "Problem Framing",
+      "Technical Writing",
+    ],
     professional: [
       "Analytical Thinking",
-      "Structured Problem Solving & Communication",
-      "Data-Driven Decision Making",
-      "Problem Solving",
-      "Product Thinking",
+      "Structured Problem Solving",
+      "Communication",
       "Data Interpretation",
       "Team Collaboration",
+      "Community Engagement",
+      "Content Coordination",
     ],
   },
 
@@ -178,6 +226,20 @@ export const portfolioKnowledge = {
     itemsMissingProofLinks: experiences
       .filter((experience) => !experience.projectLink)
       .map((experience) => experience.slug),
+  },
+
+  challenges,
+  challengeMetadata: {
+    overviewRoute: "/experience/challenge-participation",
+    detailRoutePattern: "/challenges/:slug",
+    verifiedChallengeSlugs: verifiedChallenges.map(
+      (challenge) => challenge.slug
+    ),
+    needsDetailsChallengeSlugs: sortedChallenges
+      .filter((challenge) => challenge.dataStatus === "needs-details")
+      .map((challenge) => challenge.slug),
+    challengeProofLinkStatus:
+      "Challenge proof links render only when verified URLs are present in src/data/challenges.ts.",
   },
 
   certifications: [
@@ -280,6 +342,8 @@ export const portfolioKnowledge = {
     "Kaushik Yellanki is an AI Systems Builder and Software Developer.",
     "Kaushik is a Computer Science graduate from India.",
     "Kaushik builds AI, data, web, automation, dashboard, NLP, agent, and decision-support projects.",
+    "Kaushik participates in time-bound AI/software challenges and builder events where listed in the challenge participation data.",
+    "Challenge entries may include GitHub, live demo, Medium, Dev.to, certificate, participation, LinkedIn, social post, and related project links only when those URLs are present.",
     "Kaushik's portfolio includes an AI-powered portfolio assistant.",
     "Kaushik's portfolio includes a Vercel serverless API route for the chatbot.",
     "Kaushik's portfolio uses an OpenRouter server-side integration for AI answer rewriting.",
@@ -293,6 +357,9 @@ export const portfolioKnowledge = {
     "Sistemaa Electoral is an AI-powered civic education assistant prototype.",
     "FitZone Gym Membership Management System is a serverless gym membership management app.",
     "Some projects have live demos, but only where live links are present in the project data.",
+    "Farmer OS is listed as a Top 50 Lyzr Agentathon 2026 achievement in the portfolio.",
+    "AI Crowd Intelligence Assistant is listed as a hackathon prototype with GitHub and live demo links.",
+    "VaaniPlan is listed as accepted into the Unleash LLM Innovation Challenge in project results.",
   ],
 
   unsafeClaims: [
@@ -308,6 +375,8 @@ export const portfolioKnowledge = {
     "Do not claim job offers.",
     "Do not claim final project article links where Medium fields are empty.",
     "Do not claim live deployment for projects without live links.",
+    "Do not claim challenge wins, rankings, dates, certificates, or organizers unless they are listed in the challenge data.",
+    "Do not turn a challenge participation record into employment experience.",
   ],
 
   missingInformation: [
@@ -321,6 +390,11 @@ export const portfolioKnowledge = {
     "PsyMatch is missing a live link.",
     "UptoSkills proof/work link is empty.",
     "Open Graph image is missing.",
+    "Prompt Wars challenge details and proof links need manual verification.",
+    "Hack Culture challenge details and proof links need manual verification.",
+    "Luma Builder Event details and proof links need manual verification.",
+    "AI for Good Hackathon organizer, year, submission, and proof links need manual verification.",
+    "UptoSkills AI Building Hackathon details need manual verification beyond the verified UptoSkills internship.",
   ],
 
   chatbotBoundaries: {
@@ -329,6 +403,7 @@ export const portfolioKnowledge = {
       "projects",
       "skills",
       "experience",
+      "challenge participation",
       "education",
       "certifications",
       "achievements",
