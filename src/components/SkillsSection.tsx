@@ -17,14 +17,14 @@ const skills = [
     category: "Languages",
     icon: <Code2 className="w-4 h-4" />,
     context:
-      "Used across AI prototypes, React/Vite interfaces, Python ML workflows, and deployed portfolio projects.",
+      /*"Used across AI prototypes, React/Vite interfaces, Python ML workflows, and deployed portfolio projects.",*/
     items: ["Python", "JavaScript", "TypeScript", "HTML", "CSS"],
   },
   {
     category: "AI & Machine Learning",
     icon: <BrainCircuit className="w-4 h-4" />,
     context:
-      "Visible in AGROGUIA.AI, YouTube Review, AI Crowd Intelligence, Sistemaa Electoral, and internship ML evaluation work.",
+      /*"Visible in AGROGUIA.AI, YouTube Review, AI Crowd Intelligence, Sistemaa Electoral, and internship ML evaluation work.",*/
     items: [
       "scikit-learn",
       "PyTorch",
@@ -41,7 +41,7 @@ const skills = [
     category: "Web Development",
     icon: <PenTool className="w-4 h-4" />,
     context:
-      "Used to build recruiter-facing dashboards, AI product interfaces, case-study pages, and the portfolio assistant UI.",
+      /*"Used to build recruiter-facing dashboards, AI product interfaces, case-study pages, and the portfolio assistant UI.",*/
     items: [
       "React",
       "Next.js",
@@ -55,7 +55,7 @@ const skills = [
     category: "Backend / APIs",
     icon: <Server className="w-4 h-4" />,
     context:
-      "Supported by full-stack projects with serverless routes, API integrations, auth foundations, and data-backed workflows.",
+      /*"Supported by full-stack projects with serverless routes, API integrations, auth foundations, and data-backed workflows.",*/
     items: [
       "Node.js",
       "Express",
@@ -76,7 +76,7 @@ const skills = [
     category: "Data & Visualization",
     icon: <Database className="w-4 h-4" />,
     context:
-      "Shown through Tableau work, Recharts dashboards, sentiment analysis views, and model-output interpretation.",
+      /*"Shown through Tableau work, Recharts dashboards, sentiment analysis views, and model-output interpretation.",*/
     items: [
       "Tableau",
       "Recharts",
@@ -91,7 +91,7 @@ const skills = [
     category: "Tools & Development Workflow",
     icon: <GitBranch className="w-4 h-4" />,
     context:
-      "Used for open-source project work, documentation, version control, testing, and deployment-ready builds.",
+      /*"Used for open-source project work, documentation, version control, testing, and deployment-ready builds.",*/
     items: [
       "Git",
       "GitHub",
@@ -105,7 +105,7 @@ const skills = [
     category: "Deployment & Platforms",
     icon: <Cloud className="w-4 h-4" />,
     context:
-      "Supported by live projects deployed across frontend, serverless, Streamlit, and Google Cloud environments.",
+    /*  "Supported by live projects deployed across frontend, serverless, Streamlit, and Google Cloud environments.",*/
     items: [
       "GitHub Pages",
       "Vercel",
@@ -118,7 +118,7 @@ const skills = [
     category: "Product / Builder Skills",
     icon: <Trophy className="w-4 h-4" />,
     context:
-      "Demonstrated through practical AI products, hackathon prototypes, and challenge participation pages.",
+     /* "Demonstrated through practical AI products, hackathon prototypes, and challenge participation pages.",*/
     items: [
       "Hackathon Execution",
       "Time-Bound Building",
@@ -133,7 +133,7 @@ const skills = [
     category: "Professional Skills",
     icon: <Users className="w-4 h-4" />,
     context:
-      "Supported by internship work, community roles, event promotion, team collaboration, and technical communication.",
+     /* "Supported by internship work, community roles, event promotion, team collaboration, and technical communication.",*/
     items: [
       "Analytical Thinking",
       "Structured Problem Solving",
