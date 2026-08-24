@@ -2,7 +2,16 @@ import { motion } from "framer-motion";
 import { BookOpenText, Code2, Mail, Linkedin, Github, FileText } from "lucide-react";
 import { trackEvent } from "@/utils/analytics";
 
-const contacts = [
+type ContactItem = {
+  label: string;
+  icon: JSX.Element;
+  link: string;
+  eventName: string;
+  secondaryEventName?: string;
+  trackingParams: Record<string, string>;
+};
+
+const contacts: ContactItem[] = [
   {
     label: "Email",
     icon: <Mail className="w-4 h-4" />,
@@ -48,8 +57,11 @@ const contacts = [
     icon: <BookOpenText className="w-4 h-4" />,
     link: "https://medium.com/@kaushikyellanki",
     eventName: "contact_medium_click",
+    secondaryEventName: "medium_click",
     trackingParams: {
       label: "Medium",
+      location: "contact",
+      destination: "medium_profile",
     },
   },
   {
@@ -57,8 +69,11 @@ const contacts = [
     icon: <Code2 className="w-4 h-4" />,
     link: "https://dev.to/kaushikyellanki",
     eventName: "contact_devto_click",
+    secondaryEventName: "devto_click",
     trackingParams: {
       label: "Dev.to",
+      location: "contact",
+      destination: "devto_profile",
     },
   },
 ];
@@ -98,7 +113,12 @@ const GetInTouchSection = () => {
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent(item.eventName, item.trackingParams)}
+              onClick={() => {
+                trackEvent(item.eventName, item.trackingParams);
+                if (item.secondaryEventName) {
+                  trackEvent(item.secondaryEventName, item.trackingParams);
+                }
+              }}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
