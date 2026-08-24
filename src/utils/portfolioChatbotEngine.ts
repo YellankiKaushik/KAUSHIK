@@ -8,6 +8,7 @@ export type ChatbotAnswer = {
     | "project_detail"
     | "skills"
     | "experience"
+    | "challenges"
     | "education"
     | "certifications"
     | "achievements"
@@ -19,10 +20,10 @@ export type ChatbotAnswer = {
 };
 
 const refusalResponse =
-  "I can answer questions about Kaushik's portfolio, projects, skills, experience, writing, resume, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
+  "I can answer questions about Kaushik's portfolio, projects, skills, experience, challenge participation, writing, resume, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
 
 const fallbackResponse =
-  'I can help with Kaushik\'s projects, skills, experience, education, certifications, achievements, writing, resume, and contact links. Try asking "What are Kaushik\'s strongest AI projects?" or "How can I contact him?"';
+  'I can help with Kaushik\'s projects, skills, experience, challenge participation, education, certifications, achievements, writing, resume, and contact links. Try asking "Recruiter summary of Kaushik" or "Can he build under deadlines?"';
 
 const normalizeQuestion = (question: string) =>
   question
@@ -40,6 +41,9 @@ const joinList = (items: readonly string[]) => items.join(", ");
 
 const getProjectBySlug = (slug: string) =>
   portfolioKnowledge.projects.find((project) => project.slug === slug);
+
+const getChallengeBySlug = (slug: string) =>
+  portfolioKnowledge.challenges.find((challenge) => challenge.slug === slug);
 
 const projectAliases = [
   {
@@ -89,6 +93,24 @@ const findNamedProject = (question: string) => {
   return match ? getProjectBySlug(match.slug) : undefined;
 };
 
+const challengeAliases = portfolioKnowledge.challenges.map((challenge) => ({
+  slug: challenge.slug,
+  aliases: [
+    challenge.slug.replace(/-/g, " "),
+    challenge.title.toLowerCase(),
+    challenge.organizer?.toLowerCase(),
+    challenge.platform?.toLowerCase(),
+  ].filter((alias): alias is string => Boolean(alias)),
+}));
+
+const findNamedChallenge = (question: string) => {
+  const match = challengeAliases.find(({ aliases }) =>
+    aliases.some((alias) => question.includes(alias))
+  );
+
+  return match ? getChallengeBySlug(match.slug) : undefined;
+};
+
 const formatProjectLinks = (
   project: NonNullable<ReturnType<typeof getProjectBySlug>>
 ) => {
@@ -127,6 +149,15 @@ const answerProjects = (question: string): ChatbotAnswer => {
 
   const isAiFocused = hasAny(question, ["strongest", "ai project", "ai roles"]);
   const isFullStackFocused = hasAny(question, ["full stack", "full-stack"]);
+  const wantsFirstReview = hasAny(question, ["review first", "look at first"]);
+
+  if (wantsFirstReview) {
+    return {
+      category: "projects",
+      content:
+        "A strong recruiter review path is AGROGUIA.AI first for full-stack AI product architecture, Integrated Review of YouTube Videos for AI/NLP dashboard work, Hazlo for voice-first productivity and Notion sync, then Challenge & Participation Experience for time-bound builder proof.",
+    };
+  }
 
   if (isAiFocused) {
     return {
@@ -154,6 +185,76 @@ const answerProjects = (question: string): ChatbotAnswer => {
   };
 };
 
+const formatChallengeProofLinks = (
+  challenge: NonNullable<ReturnType<typeof getChallengeBySlug>>
+) => {
+  const links = [
+    challenge.githubUrl ? `GitHub: ${challenge.githubUrl}` : "",
+    challenge.liveUrl ? `Live demo: ${challenge.liveUrl}` : "",
+    challenge.mediumUrl ? `Medium: ${challenge.mediumUrl}` : "",
+    challenge.devtoUrl ? `Dev.to: ${challenge.devtoUrl}` : "",
+    challenge.certificateUrl ? `Certificate: ${challenge.certificateUrl}` : "",
+    challenge.participationUrl
+      ? `Participation proof: ${challenge.participationUrl}`
+      : "",
+    challenge.linkedinPostUrl
+      ? `LinkedIn post: ${challenge.linkedinPostUrl}`
+      : "",
+    challenge.socialPostUrl ? `Social post: ${challenge.socialPostUrl}` : "",
+    challenge.projectUrl ? `Related project route: ${challenge.projectUrl}` : "",
+  ].filter(Boolean);
+
+  return links.length > 0
+    ? links.join(" ")
+    : "No verified proof links are currently listed for this challenge entry.";
+};
+
+const answerChallengeDetail = (
+  challenge: NonNullable<ReturnType<typeof getChallengeBySlug>>
+): ChatbotAnswer => ({
+  category: "challenges",
+  content: `${challenge.title}: ${challenge.summary} Status: ${
+    challenge.status
+  }. Route: /challenges/${challenge.slug}. ${formatChallengeProofLinks(
+    challenge
+  )}`,
+});
+
+const answerChallenges = (question: string): ChatbotAnswer => {
+  const verified = portfolioKnowledge.challenges.filter(
+    (challenge) => challenge.dataStatus === "verified"
+  );
+  const needsDetails = portfolioKnowledge.challenges.filter(
+    (challenge) => challenge.dataStatus === "needs-details"
+  );
+
+  if (hasAny(question, ["deadline", "deadlines", "time bound", "time-bound"])) {
+    return {
+      category: "challenges",
+      content:
+        "Yes, the portfolio presents Kaushik as a time-bound builder through challenge participation and hackathon-style projects. Verified examples include Farmer OS at Lyzr Agentathon 2026, AI Crowd Intelligence Assistant, and VaaniPlan. The strongest review route is /experience/challenge-participation.",
+    };
+  }
+
+  if (hasAny(question, ["proof", "links", "github", "live demo", "certificate"])) {
+    return {
+      category: "challenges",
+      content: `Challenge proof is organized on /experience/challenge-participation and individual /challenges/:slug pages. Verified entries with available proof are: ${verified
+        .map((challenge) => `${challenge.title} (${formatChallengeProofLinks(challenge)})`)
+        .join("; ")}. Missing proof links are intentionally not rendered.`,
+    };
+  }
+
+  return {
+    category: "challenges",
+    content: `Kaushik's challenge participation system shows time-bound AI/software building, fast learning, documentation, and proof-of-work. Verified entries: ${verified
+      .map((challenge) => challenge.title)
+      .join("; ")}. Entries ready for manual details: ${needsDetails
+      .map((challenge) => challenge.title)
+      .join("; ")}. Overview route: /experience/challenge-participation.`,
+  };
+};
+
 const answerIdentity = (): ChatbotAnswer => ({
   category: "identity",
   content: `${portfolioKnowledge.identity.fullName} is an ${portfolioKnowledge.identity.currentPositioning}. ${portfolioKnowledge.identity.summary} He works across ${portfolioKnowledge.positioning.aboutHighlights[1].description}`,
@@ -167,8 +268,12 @@ const answerSkills = (): ChatbotAnswer => ({
     portfolioKnowledge.skills.aiMachineLearning
   )}. Web: ${joinList(
     portfolioKnowledge.skills.webDevelopment
+  )}. Backend/APIs: ${joinList(
+    portfolioKnowledge.skills.backendApis
   )}. Tools/deployment: ${joinList(
     portfolioKnowledge.skills.toolsDeployment
+  )}. Platforms: ${joinList(
+    portfolioKnowledge.skills.deploymentPlatforms
   )}. Visualization: ${joinList(portfolioKnowledge.skills.visualization)}.`,
 });
 
@@ -249,7 +354,7 @@ const answerRoleRelevance = (question: string): ChatbotAnswer => {
     return {
       category: "projects",
       content:
-        "From a recruiter's perspective, Kaushik's portfolio shows relevant evidence for AI/software roles through projects such as AGROGUIA.AI, YouTube Review, Hazlo, and AI Crowd Intelligence Assistant. It demonstrates practical work across AI-assisted products, full-stack interfaces, NLP-style analysis, dashboards, and deployment-focused project building. This is portfolio evidence, not an employment guarantee.",
+        "From a recruiter's perspective, Kaushik's portfolio shows relevant evidence for AI/software roles through projects such as AGROGUIA.AI, YouTube Review, Hazlo, and AI Crowd Intelligence Assistant, plus challenge participation pages that show time-bound building and proof links where available. This is portfolio evidence, not an employment guarantee.",
     };
   }
 
@@ -262,9 +367,9 @@ const answerRoleRelevance = (question: string): ChatbotAnswer => {
   }
 
   return {
-    category: "projects",
-    content:
-      "Based on the portfolio, Kaushik shows relevant proof for AI/software roles through projects like AGROGUIA.AI, YouTube Review, Hazlo, and AI Crowd Intelligence Assistant. This is portfolio evidence, not an employment guarantee.",
+      category: "projects",
+      content:
+        "Based on the portfolio, Kaushik shows relevant proof for AI/software roles through projects like AGROGUIA.AI, YouTube Review, Hazlo, and AI Crowd Intelligence Assistant, and through the Challenge & Participation Experience route. This is portfolio evidence, not an employment guarantee.",
   };
 };
 
@@ -309,6 +414,23 @@ export const getPortfolioAnswer = (question: string): ChatbotAnswer => {
     return { category: "refusal", content: refusalResponse };
   }
 
+  const namedChallenge = findNamedChallenge(normalizedQuestion);
+  if (
+    namedChallenge &&
+    hasAny(normalizedQuestion, [
+      "challenge",
+      "hackathon",
+      "agentathon",
+      "participation",
+      "deadline",
+      "time bound",
+      "time-bound",
+      "proof",
+    ])
+  ) {
+    return answerChallengeDetail(namedChallenge);
+  }
+
   const namedProject = findNamedProject(normalizedQuestion);
   if (namedProject) {
     return answerProjectDetail(namedProject);
@@ -344,6 +466,7 @@ export const getPortfolioAnswer = (question: string): ChatbotAnswer => {
       "who are you",
       "portfolio summary",
       "about kaushik",
+      "recruiter summary",
     ])
   ) {
     return answerIdentity();
@@ -351,13 +474,37 @@ export const getPortfolioAnswer = (question: string): ChatbotAnswer => {
 
   if (
     hasAny(normalizedQuestion, [
+      "challenge",
+      "challenges",
+      "hackathon",
+      "hackathons",
+      "agentathon",
+      "participation",
+      "builder event",
+      "builder events",
+      "deadline",
+      "deadlines",
+      "time bound",
+      "time-bound",
+      "proof links",
+      "show proof",
+    ])
+  ) {
+    return answerChallenges(normalizedQuestion);
+  }
+
+  if (
+    hasAny(normalizedQuestion, [
       "projects",
+      "project",
       "built",
       "strongest projects",
+      "strongest project",
       "ai projects",
       "full stack projects",
       "full-stack projects",
       "list projects",
+      "review first",
     ])
   ) {
     return answerProjects(normalizedQuestion);
