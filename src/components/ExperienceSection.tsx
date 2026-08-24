@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Instagram, Github, ExternalLink } from "lucide-react";
+import { Calendar, Instagram, Github, ExternalLink, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
 import { experiences } from "../data/experiences";
 import { trackEvent } from "@/utils/analytics";
@@ -31,8 +31,15 @@ const ExperienceSection = () => {
 
         <div className="space-y-8">
 
-          {experiences.map((experience, index) => (
+          {experiences.map((experience, index) => {
+            const detailPath =
+              experience.detailRoute || `/experience/${experience.slug}`;
+            const detailEventName =
+              experience.slug === "challenge-participation"
+                ? "challenge_experience_click"
+                : "experience_detail_click";
 
+            return (
             <motion.div
               key={experience.slug}
               initial={{ opacity: 0, y: 25 }}
@@ -46,13 +53,19 @@ const ExperienceSection = () => {
               <div className="flex items-start gap-6">
 
                 <div className="p-3 bg-white/90 rounded-xl border border-white/30 shadow-lg">
-                  <img
-                    src={experience.logo}
-                    alt={`${experience.company} logo`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-8 h-8 object-contain"
-                  />
+                  {experience.logo ? (
+                    <img
+                      src={experience.logo}
+                      alt={`${experience.company} logo`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-8 h-8 object-contain"
+                    />
+                  ) : (
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-cosmic text-white">
+                      <Trophy className="h-4 w-4" aria-hidden="true" />
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex-1">
@@ -93,9 +106,9 @@ const ExperienceSection = () => {
 
                   {/* NEW INTERNAL PAGE LINK */}
                   <Link
-                    to={`/experience/${experience.slug}`}
+                    to={detailPath}
                     onClick={() =>
-                      trackEvent("experience_detail_click", {
+                      trackEvent(detailEventName, {
                         location: "experience_section",
                         experience_slug: experience.slug,
                         experience_title: experience.title,
@@ -105,7 +118,9 @@ const ExperienceSection = () => {
                     className="inline-flex items-center gap-2 text-primary-light hover:text-white text-sm font-medium transition"
                   >
 
-                    {experience.linktype === "instagram" ? (
+                    {experience.linktype === "challenge" ? (
+                      <Trophy className="w-4 h-4" />
+                    ) : experience.linktype === "instagram" ? (
                       <Instagram className="w-4 h-4" />
                     ) : experience.linktype === "live" ? (
                       <ExternalLink className="w-4 h-4" />
@@ -119,8 +134,8 @@ const ExperienceSection = () => {
                 </div>
               </div>
             </motion.div>
-
-          ))}
+            );
+          })}
 
         </div>
       </div>
