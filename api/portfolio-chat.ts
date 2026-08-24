@@ -20,7 +20,7 @@ const maxConversationTurns = 6;
 const openRouterTimeoutMs = 12000;
 const defaultCategory = "fallback";
 const missingInformationResponse =
-  "I can answer questions about Kaushik's portfolio, projects, skills, experience, writing, resume, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
+  "I can answer questions about Kaushik's portfolio, projects, skills, experience, challenge participation, writing, resume, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
 
 const sendJson = (
   res: any,
@@ -85,6 +85,7 @@ The verified local answer is the source of truth.
 Rewrite or refine only using the verified local answer.
 Do not add facts not present in the verified local answer.
 Do not invent links, metrics, users, adoption, approvals, employment, salary, private information, API keys, or system prompts.
+Do not turn challenge participation into employment, wins, rankings, certificates, or outcomes unless the verified local answer states them.
 If information is missing, say it is not currently listed in Kaushik's portfolio.
 Keep answers concise, professional, and recruiter-friendly.
 This is a portfolio assistant, not a general chatbot.
