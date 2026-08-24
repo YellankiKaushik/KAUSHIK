@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import ExperienceSection from "@/components/ExperienceSection";
@@ -9,8 +10,16 @@ import SkillsSection from "@/components/SkillsSection";
 import AchievementsSection from "@/components/AchievementsSection";
 import FeaturedInSection from "@/components/FeaturedInSection";
 import GetInTouchSection from "@/components/GetInTouchSection";
+import { setPageSeo } from "@/utils/seo";
 
 const Index = () => {
+  useEffect(() => {
+    setPageSeo(
+      "Kaushik Yellanki | AI Systems Builder & Software Developer",
+      "Portfolio of Kaushik Yellanki, an AI systems builder and software developer creating practical AI-powered products, full-stack applications, dashboards, automation tools, and secure AI integrations."
+    );
+  }, []);
+
   return (
     <>
       <Navigation />
