@@ -14,7 +14,7 @@ type QuestionSource = "starter" | "manual";
 type AnswerSource = "openrouter" | "local_fallback" | "local_only";
 
 const initialAssistantMessage =
-  "Hi, I'm Kaushik's portfolio assistant. I answer from verified portfolio information about his AI systems, projects, skills, experience, writing, resume, and contact links.";
+  "Hi, I'm Kaushik's portfolio assistant. I help recruiters review verified portfolio information about his AI systems, projects, skills, experience, challenge participation, writing, resume, and contact links.";
 
 const createMessage = (
   role: ChatMessage["role"],
@@ -37,6 +37,7 @@ const aiEnhancedCategories = new Set([
   "project_detail",
   "skills",
   "experience",
+  "challenges",
   "achievements",
   "writing",
 ]);
@@ -45,6 +46,13 @@ const getLengthBucket = (message: string) => {
   if (message.length <= 60) return "short";
   if (message.length <= 180) return "medium";
   return "long";
+};
+
+const getStarterEventName = (category: string, starterIndex: number) => {
+  if (starterIndex === 0) return "chatbot_recruiter_summary_click";
+  if (category === "challenges") return "chatbot_challenge_question_click";
+  if (starterIndex === 5) return "chatbot_proof_links_question_click";
+  return "chatbot_starter_question_clicked";
 };
 
 const PortfolioChatbot = () => {
@@ -181,7 +189,7 @@ const PortfolioChatbot = () => {
   const handleStarterQuestionClick = (question: string, starterIndex: number) => {
     const localResult = getPortfolioAnswer(question);
 
-    trackEvent("chatbot_starter_question_clicked", {
+    trackEvent(getStarterEventName(localResult.category, starterIndex), {
       starter_index: starterIndex,
       question_category: localResult.category,
     });
@@ -236,7 +244,7 @@ const PortfolioChatbot = () => {
                 Kaushik Portfolio Assistant
               </h2>
               <p className="mt-1 text-xs leading-relaxed text-white/65">
-                Ask about projects, skills, experience, writing, and contact.
+                Ask about projects, proof, challenges, skills, and contact.
               </p>
             </div>
           </div>
