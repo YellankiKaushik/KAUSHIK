@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import profileImage from "@/assets/profile.jpeg";
 import { trackEvent } from "@/utils/analytics";
+import { resumeFileName, resumeHref } from "@/config/resume";
+import { handleResumeDownload } from "@/utils/resumeDownload";
 
 const HeroSection = () => {
   return (
@@ -46,8 +48,9 @@ const HeroSection = () => {
                 {
                   Icon: FileText,
                   text: "Resume",
-                  href: "https://drive.google.com/file/d/1dArptFiOOW2951QYCWcv9-9S30aEnBG1/view?usp=sharing",
-                  eventName: "resume_click",
+                  href: resumeHref,
+                  download: resumeFileName,
+                  isResume: true,
                   destination: "resume",
                 },
                 {
@@ -71,18 +74,29 @@ const HeroSection = () => {
                   eventName: "email_click",
                   destination: "mailto",
                 },
-              ].map(({ Icon, text, href, eventName, destination }, index) => (
+              ].map(({ Icon, text, href, eventName, destination, download, isResume }, index) => (
                 <motion.a
                   key={index}
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() =>
-                    trackEvent(eventName, {
-                      location: "hero",
-                      destination,
-                    })
-                  }
+                  target={download ? undefined : "_blank"}
+                  rel={download ? undefined : "noopener noreferrer"}
+                  download={download}
+                  onClick={() => {
+                    if (isResume) {
+                      handleResumeDownload({
+                        location: "hero",
+                        linkText: text,
+                      });
+                      return;
+                    }
+
+                    if (eventName) {
+                      trackEvent(eventName, {
+                        location: "hero",
+                        destination,
+                      });
+                    }
+                  }}
                   whileHover={{ y: -3, scale: 1.02 }}
                   transition={{ duration: 0.25 }}
                   className="
