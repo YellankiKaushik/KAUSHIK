@@ -1,13 +1,13 @@
 import { experiences } from "./experiences";
 import { projects } from "./projects";
 import { challenges, sortedChallenges, verifiedChallenges } from "./challenges";
+import { resumeHref } from "@/config/resume";
 
 const contactLinks = {
   email: "mailto:kaushikyellanki@gmail.com",
   github: "https://github.com/YellankiKaushik",
   linkedIn: "https://www.linkedin.com/in/yellankikaushik/",
-  resume:
-    "https://drive.google.com/file/d/1l0pPWynlUP4p-aNgsQq_K7k3HYx15xS1/view",
+  resume: resumeHref,
   medium: "https://medium.com/@kaushikyellanki",
   devTo: "https://dev.to/kaushikyellanki",
 } as const;
