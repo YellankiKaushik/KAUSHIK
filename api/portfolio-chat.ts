@@ -14,6 +14,25 @@ type ChatRequestBody = {
 
 type ChatResponseSource = "openrouter" | "local_fallback";
 
+type ChatResponseBody = {
+  answer?: string;
+  source?: ChatResponseSource;
+  category?: string;
+  error?: string;
+};
+
+type ApiRequest = {
+  method?: string;
+  body?: unknown;
+};
+
+type ApiResponse = {
+  status: (statusCode: number) => {
+    json: (body: ChatResponseBody) => void;
+  };
+  setHeader: (name: string, value: string) => void;
+};
+
 const maxMessageLength = 1000;
 const maxLocalAnswerLength = 4000;
 const maxConversationTurns = 6;
@@ -23,14 +42,9 @@ const missingInformationResponse =
   "I can answer questions about Kaushik's portfolio, projects, skills, experience, challenge participation, writing, resume, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
 
 const sendJson = (
-  res: any,
+  res: ApiResponse,
   statusCode: number,
-  body: {
-    answer?: string;
-    source?: ChatResponseSource;
-    category?: string;
-    error?: string;
-  }
+  body: ChatResponseBody
 ) => {
   res.status(statusCode).json(body);
 };
@@ -161,7 +175,7 @@ const callOpenRouter = async (
   }
 };
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return sendJson(res, 405, { error: "Method not allowed." });
@@ -170,7 +184,10 @@ export default async function handler(req: any, res: any) {
   let body: ChatRequestBody;
 
   try {
-    body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+    body =
+      typeof req.body === "string"
+        ? (JSON.parse(req.body) as ChatRequestBody)
+        : (req.body as ChatRequestBody);
   } catch {
     return sendJson(res, 400, { error: "Invalid JSON body." });
   }
