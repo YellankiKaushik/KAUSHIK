@@ -1,14 +1,18 @@
 import { motion } from "framer-motion";
 import { BookOpenText, Code2, Mail, Linkedin, Github, FileText } from "lucide-react";
 import { trackEvent } from "@/utils/analytics";
+import { resumeFileName, resumeHref } from "@/config/resume";
+import { handleResumeDownload } from "@/utils/resumeDownload";
 
 type ContactItem = {
   label: string;
   icon: JSX.Element;
   link: string;
-  eventName: string;
+  eventName?: string;
   secondaryEventName?: string;
   trackingParams: Record<string, string>;
+  download?: string;
+  isResume?: boolean;
 };
 
 const contacts: ContactItem[] = [
@@ -45,8 +49,9 @@ const contacts: ContactItem[] = [
   {
     label: "Resume",
     icon: <FileText className="w-4 h-4" />,
-    link: "https://drive.google.com/file/d/1dArptFiOOW2951QYCWcv9-9S30aEnBG1/view?usp=sharing",
-    eventName: "resume_click",
+    link: resumeHref,
+    download: resumeFileName,
+    isResume: true,
     trackingParams: {
       location: "contact",
       destination: "resume",
@@ -111,10 +116,22 @@ const GetInTouchSection = () => {
             <motion.a
               key={index}
               href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={item.download ? undefined : "_blank"}
+              rel={item.download ? undefined : "noopener noreferrer"}
+              download={item.download}
               onClick={() => {
-                trackEvent(item.eventName, item.trackingParams);
+                if (item.isResume) {
+                  handleResumeDownload({
+                    location: item.trackingParams.location,
+                    linkText: item.label,
+                  });
+                  return;
+                }
+
+                if (item.eventName) {
+                  trackEvent(item.eventName, item.trackingParams);
+                }
+
                 if (item.secondaryEventName) {
                   trackEvent(item.secondaryEventName, item.trackingParams);
                 }
