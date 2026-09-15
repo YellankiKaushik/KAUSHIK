@@ -39,7 +39,7 @@ const maxConversationTurns = 6;
 const openRouterTimeoutMs = 12000;
 const defaultCategory = "fallback";
 const missingInformationResponse =
-  "I can answer questions about Kaushik's portfolio, projects, skills, experience, challenge participation, writing, resume, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
+  "I can answer questions about Kaushik's portfolio, projects, skills, experience, challenge participation, writing, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
 
 const sendJson = (
   res: ApiResponse,

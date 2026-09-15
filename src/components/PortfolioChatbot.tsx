@@ -14,7 +14,7 @@ type QuestionSource = "starter" | "manual";
 type AnswerSource = "openrouter" | "local_fallback" | "local_only";
 
 const initialAssistantMessage =
-  "Hi, I'm Kaushik's portfolio assistant. I help recruiters review verified portfolio information about his AI systems, projects, skills, experience, challenge participation, writing, resume, and contact links.";
+  "Hi, I'm Kaushik's portfolio assistant. I help recruiters review verified portfolio information about his AI systems, projects, skills, experience, challenge participation, writing, and contact links.";
 
 const createMessage = (
   role: ChatMessage["role"],
@@ -310,7 +310,7 @@ const PortfolioChatbot = () => {
             onChange={(event) => setInputValue(event.target.value)}
             onKeyDown={handleInputKeyDown}
             rows={1}
-            placeholder="Ask about projects, skills, resume..."
+            placeholder="Ask about projects, skills, proof..."
             disabled={isLoading}
             className="max-h-24 min-h-10 flex-1 resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-sm text-white placeholder:text-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           />
