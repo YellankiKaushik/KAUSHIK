@@ -14,16 +14,15 @@ export type ChatbotAnswer = {
     | "achievements"
     | "writing"
     | "contact"
-    | "resume"
     | "refusal"
     | "fallback";
 };
 
 const refusalResponse =
-  "I can answer questions about Kaushik's portfolio, projects, skills, experience, challenge participation, writing, resume, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
+  "I can answer questions about Kaushik's portfolio, projects, skills, experience, challenge participation, writing, and contact links. That information is not listed in the portfolio, so I do not want to guess.";
 
 const fallbackResponse =
-  'I can help with Kaushik\'s projects, skills, experience, challenge participation, education, certifications, achievements, writing, resume, and contact links. Try asking "Recruiter summary of Kaushik" or "Can he build under deadlines?"';
+  'I can help with Kaushik\'s projects, skills, experience, challenge participation, education, certifications, achievements, writing, and contact links. Try asking "Recruiter summary of Kaushik" or "Can he build under deadlines?"';
 
 const normalizeQuestion = (question: string) =>
   question
@@ -333,11 +332,6 @@ const answerContact = (): ChatbotAnswer => ({
   content: `You can contact or view Kaushik here: Email: ${portfolioKnowledge.contact.email}. GitHub: ${portfolioKnowledge.contact.github}. LinkedIn: ${portfolioKnowledge.contact.linkedIn}. Medium: ${portfolioKnowledge.contact.medium}. Dev.to: ${portfolioKnowledge.contact.devTo}.`,
 });
 
-const answerResume = (): ChatbotAnswer => ({
-  category: "resume",
-  content: `Kaushik's resume link is: ${portfolioKnowledge.contact.resume}`,
-});
-
 const answerRoleRelevance = (question: string): ChatbotAnswer => {
   if (
     hasAny(question, [
@@ -563,10 +557,6 @@ export const getPortfolioAnswer = (question: string): ChatbotAnswer => {
     ])
   ) {
     return answerWriting();
-  }
-
-  if (hasAny(normalizedQuestion, ["resume", "cv", "download resume"])) {
-    return answerResume();
   }
 
   if (

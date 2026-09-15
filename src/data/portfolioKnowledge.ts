@@ -1,13 +1,11 @@
 import { experiences } from "./experiences";
 import { projects } from "./projects";
 import { challenges, sortedChallenges, verifiedChallenges } from "./challenges";
-import { resumeHref } from "@/config/resume";
 
 const contactLinks = {
   email: "mailto:kaushikyellanki@gmail.com",
   github: "https://github.com/YellankiKaushik",
   linkedIn: "https://www.linkedin.com/in/yellankikaushik/",
-  resume: resumeHref,
   medium: "https://medium.com/@kaushikyellanki",
   devTo: "https://dev.to/kaushikyellanki",
 } as const;
@@ -30,7 +28,6 @@ export const suggestedChatbotQuestions = [
   "What are Kaushik's technical skills?",
   "What experience does Kaushik have?",
   "Where can I see his GitHub?",
-  "Where can I download his resume?",
 ] as const;
 
 export const portfolioKnowledge = {
@@ -409,7 +406,6 @@ export const portfolioKnowledge = {
       "achievements",
       "writing",
       "contact",
-      "resume",
       "GitHub, LinkedIn, Medium, and Dev.to links",
     ],
     mustRefuseOrRedirect: [
