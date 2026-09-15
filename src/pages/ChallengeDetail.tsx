@@ -198,7 +198,7 @@ const ChallengeDetail = () => {
                 <p className="text-white/80 leading-relaxed">
                   {challenge.timeframe
                     ? `This entry is presented as a ${challenge.timeframe.toLowerCase()} experience, focused on quick learning, implementation, documentation, and honest proof-of-work.`
-                    : "This entry is part of Kaushik's challenge participation architecture. Exact timing can be added once verified, while the page remains ready for resume and proof links."}
+                    : "This entry is part of Kaushik's challenge participation architecture. Exact timing can be added once verified, while the page remains ready for proof links."}
                 </p>
               </DetailSection>
 
