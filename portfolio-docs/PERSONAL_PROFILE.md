@@ -12,8 +12,6 @@ EXTRACTED unless otherwise marked.
 - `index.html`
 - `README.md`
 - `src/assets/profile.jpeg`
-- `src/config/resume.ts`
-- `public/resume/Kaushik-Resume.pdf`
 
 ## Name
 
@@ -134,8 +132,7 @@ EXTRACTED:
 ## Profile Assets
 
 - Profile image: `src/assets/profile.jpeg`
-- Resume: `public/resume/Kaushik-Resume.pdf`
-- Resume config: `src/config/resume.ts`
+- Portfolio document boundary: the repository does not host or maintain a canonical resume; job-specific resumes are managed separately outside the portfolio.
 
 ## Missing Information
 
@@ -151,5 +148,3 @@ EXTRACTED:
 
 - Verify whether the location should remain broad as India or become more specific.
 - Verify whether the title should use ampersand or "and" consistently.
-- Verify the resume PDF is current before treating it as a reviewed source.
-

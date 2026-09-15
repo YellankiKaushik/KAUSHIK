@@ -9,8 +9,6 @@ EXTRACTED.
 - `src/components/HeroSection.tsx`
 - `src/components/GetInTouchSection.tsx`
 - `src/data/portfolioKnowledge.ts`
-- `src/config/resume.ts`
-- `public/resume/Kaushik-Resume.pdf`
 - `index.html`
 - `README.md`
 - `src/data/projects.ts`
@@ -51,11 +49,11 @@ NEEDS VERIFICATION:
 
 - `https://dev.to/kaushikyellanki`
 
-## Resume
+## Portfolio Document Boundary
 
-- Configured file name: `Kaushik-Resume.pdf`
-- Runtime href: `${import.meta.env.BASE_URL}resume/Kaushik-Resume.pdf`
-- File path: `public/resume/Kaushik-Resume.pdf`
+- The portfolio does not host or maintain a canonical resume.
+- Job-specific resumes are managed separately outside this repository.
+- No contact or link surface should expose a resume URL, download, notification, or tracking flow.
 
 ## Project Links
 
@@ -151,6 +149,4 @@ NEEDS VERIFICATION:
 
 - Verify all external links before approval.
 - Verify which portfolio URL is primary.
-- Verify the resume PDF is current.
 - Verify whether any GitHub Pages project links still work with current repo settings.
-
