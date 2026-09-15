@@ -14,7 +14,6 @@ EXTRACTED from implementation files.
 - `src/pages/ChallengeDetail.tsx`
 - `src/components/*`
 - `src/data/*`
-- `src/config/resume.ts`
 - `src/utils/*`
 - `api/*`
 - `index.html`
@@ -55,10 +54,8 @@ Nav includes Home, Experience, Skills, Projects, Education, Certificates, Achiev
 ### Current Implementation
 
 - `src/components/HeroSection.tsx`
-- `src/config/resume.ts`
 - `src/assets/profile.jpeg`
 - `src/utils/analytics.ts`
-- `src/utils/resumeDownload.ts`
 
 ### Current Purpose
 
@@ -66,11 +63,11 @@ Communicates identity, title, value statement, profile image, and primary CTAs.
 
 ### Content Flow
 
-Hero content is hardcoded inside `HeroSection.tsx`. Resume path comes from `src/config/resume.ts`.
+Hero content is hardcoded inside `HeroSection.tsx`.
 
 ### Notes
 
-Hero includes Resume, GitHub, LinkedIn, and Email buttons.
+Hero includes GitHub, LinkedIn, and Email buttons.
 
 ## About Me
 
@@ -285,14 +282,11 @@ Achievement objects in the visible component include descriptions; `portfolioKno
 
 - `src/components/GetInTouchSection.tsx`
 - `src/components/HeroSection.tsx`
-- `src/config/resume.ts`
-- `src/utils/resumeDownload.ts`
 - `src/utils/analytics.ts`
-- `api/resume-download-notification.ts`
 
 ### Current Purpose
 
-Provides contact/social/resume/writing CTAs and tracks interactions.
+Provides contact, social, and writing CTAs and tracks interactions.
 
 ### Content Flow
 
@@ -300,7 +294,7 @@ Contact items are hardcoded in `GetInTouchSection.tsx` and duplicated in `HeroSe
 
 ### Notes
 
-Resume downloads are tracked and can trigger optional serverless email notification.
+The portfolio does not host or maintain a canonical resume. Job-specific resumes are managed outside this repository.
 
 ## Footer
 
@@ -324,7 +318,7 @@ MISSING.
 
 Contact section acts as the closing section.
 
-## Resume
+## Portfolio Document Boundary
 
 ### Knowledge Domain
 
@@ -333,24 +327,19 @@ Contact section acts as the closing section.
 
 ### Current Implementation
 
-- `src/config/resume.ts`
-- `public/resume/Kaushik-Resume.pdf`
-- `src/components/HeroSection.tsx`
-- `src/components/GetInTouchSection.tsx`
-- `src/utils/resumeDownload.ts`
-- `api/resume-download-notification.ts`
+No implementation surface remains.
 
 ### Current Purpose
 
-Provides downloadable resume CTA from hero and contact sections.
+The portfolio is a stable professional showcase. Job-specific resumes are managed separately outside the repository.
 
 ### Content Flow
 
-Resume filename is centralized in `src/config/resume.ts`.
+No portfolio code should define, link, download, track, notify, or store a canonical resume.
 
 ### Notes
 
-Verify the PDF before approval.
+Do not add resume CTAs, assets, notification APIs, or repository-side resume configuration.
 
 ## Metadata And SEO
 
@@ -410,4 +399,3 @@ Visitor question -> local deterministic answer -> category -> AI usage gate -> o
 ### Notes
 
 The verified local answer is the source of truth for chatbot responses.
-

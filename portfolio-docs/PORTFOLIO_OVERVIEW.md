@@ -47,7 +47,7 @@ The current homepage presents Kaushik as a practical AI/software builder with:
 - education;
 - certifications;
 - achievements;
-- contact, resume, writing, GitHub, and LinkedIn links;
+- contact, writing, GitHub, and LinkedIn links;
 - a floating portfolio assistant for recruiter questions.
 
 ## Major Portfolio Sections
@@ -92,8 +92,9 @@ EXTRACTED / INFERRED from repository structure:
 - Project data includes problem, solution, results, highlights, technologies, and links.
 - Challenge participation has dedicated data and routes, including verified and needs-details status.
 - The chatbot includes explicit safe and unsafe claim boundaries.
-- Contact and resume actions are tracked.
+- Contact and outbound portfolio actions are tracked.
 - Metadata has been updated for Vercel production URL and AI systems builder positioning.
+- The portfolio does not host or maintain a canonical resume; job-specific resumes are managed separately outside this repository.
 
 ## Important Draft Caveat
 
@@ -112,4 +113,3 @@ NEEDS VERIFICATION:
 - Missing project screenshots.
 - Missing project article links.
 - Whether hidden projects should remain hidden, be expanded, or be removed from future portfolio surfaces.
-
