@@ -78,19 +78,3 @@ export const trackPageView = (pagePath: string, pageTitle?: string) => {
     // Analytics must never interrupt navigation.
   }
 };
-
-export const trackResumeDownload = (params: {
-  fileName: string;
-  fileUrl: string;
-  pagePath: string;
-  linkText: string;
-  location: string;
-}) => {
-  trackEvent("resume_download", {
-    file_name: params.fileName,
-    file_url: params.fileUrl,
-    page_path: params.pagePath,
-    link_text: params.linkText,
-    location: params.location,
-  });
-};
