@@ -10,7 +10,6 @@ This portfolio uses a direct Google Analytics 4 setup. Extra Google products sho
 - In Vercel, set `VITE_GA_MEASUREMENT_ID` to the GA4 measurement ID before deploying.
 - The boot script disables GA's automatic first page view and lets the React router page-view helper send SPA page views.
 - Existing tracking covers portfolio clicks.
-- Resume downloads use GA4's automatic `file_download` event when Enhanced Measurement file downloads are enabled. The site also sends a custom `resume_download` event for easier resume-specific debugging and filtering.
 - Chatbot analytics track privacy-safe metadata only.
 - Raw chatbot questions are not tracked.
 - Chatbot answers and conversation text are not tracked.
@@ -25,19 +24,9 @@ Safe chatbot event metadata includes:
 - `length_bucket`: `short`, `medium`, or `long`
 - `starter_index`
 
-## Optional Resume Download Email Notification
+## Portfolio Document Boundary
 
-The Resume button also sends a best-effort, non-blocking request to a Vercel serverless route.
-
-Configure these server-side variables only if you want email notifications:
-
-```txt
-RESEND_API_KEY=your_resend_api_key_here
-RESUME_NOTIFICATION_EMAIL=you@example.com
-EMAIL_FROM=Portfolio <notifications@example.com>
-```
-
-If any of these values are missing, the notification route safely skips sending email. Do not prefix these variables with `VITE_` because they must remain server-side only.
+The portfolio does not host or maintain a canonical resume. Job-specific resumes are managed separately outside this repository, so there are no Google services, download events, or email notifications for resume delivery.
 
 ## Google Search Console
 
