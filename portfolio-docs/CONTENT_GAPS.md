@@ -135,7 +135,7 @@ The experience data does not distinguish:
 - community role;
 - challenge track.
 
-This makes future synchronization and resume-style rendering less precise.
+This makes future synchronization and application-material reuse less precise.
 
 ## Low Priority
 
@@ -232,7 +232,6 @@ NEEDS VERIFICATION:
 
 - Primary portfolio URL: README lists two Vercel URLs; metadata uses one.
 - Older `PORTFOLIO_AUDIT_REPORT.md` refers to GitHub Pages as live URL and older app state.
-- Resume PDF date/currentness.
 - Challenge dates and statuses.
 - Certification validity.
 - UptoSkills period ended May 2026 in current data; verify no newer status exists.
@@ -277,7 +276,6 @@ This is a confirmed implementation/content mismatch.
 - AI for Good Hackathon year and organizer.
 - UptoSkills AI Building Hackathon details.
 - UptoSkills internship proof link.
-- Resume PDF currentness.
 - External credential links.
 - Project live demo availability.
 
@@ -299,4 +297,3 @@ The repository already lists unsafe claim boundaries. Do not claim:
 - project article links where `medium` fields are empty;
 - live deployments for projects without live links;
 - challenge wins/rankings/dates/certificates/organizers unless present in challenge data.
-

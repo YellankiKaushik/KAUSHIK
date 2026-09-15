@@ -84,9 +84,8 @@ current website
 - `ACHIEVEMENTS.md` - Achievement inventory and proof status.
 - `CHALLENGES_AND_EVENTS.md` - Challenge, hackathon, and builder-event participation data.
 - `SERVICES.md` - Collaboration/open-to areas supported by the current portfolio.
-- `CONTACT_AND_LINKS.md` - Contact, resume, writing, social, project, and proof links.
+- `CONTACT_AND_LINKS.md` - Contact, writing, social, project, and proof links, plus the rule that job-specific resumes stay outside this repository.
 - `PORTFOLIO_STRUCTURE.md` - Mapping from knowledge areas to implementation paths.
 - `DESIGN_AND_BRANDING.md` - Current visual language, tone, UI patterns, and libraries.
 - `CONTENT_GAPS.md` - Audit of missing, weak, duplicated, conflicting, or stale content.
 - `UPDATE_INSTRUCTIONS.md` - Operating rules for future Codex synchronization tasks.
-
