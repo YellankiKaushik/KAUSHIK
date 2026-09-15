@@ -7,9 +7,9 @@ Scope: Phase 0 audit only. No portfolio implementation files were changed.
 
 ## 1. Executive Summary
 
-The portfolio is an existing Vite + React + TypeScript single-page app deployed to GitHub Pages. It is already functional and has the right core ingredients for a developer portfolio: project cards, project detail routes, experience detail routes, measurable project outcomes, a resume link, GitHub/LinkedIn/contact links, Google Analytics, responsive Tailwind layouts, and a GitHub Actions deployment workflow.
+The portfolio is an existing Vite + React + TypeScript single-page app deployed to GitHub Pages. It is already functional and has the right core ingredients for a developer portfolio: project cards, project detail routes, experience detail routes, measurable project outcomes, GitHub/LinkedIn/contact links, Google Analytics, responsive Tailwind layouts, and a GitHub Actions deployment workflow.
 
-The site is stronger than a generic student resume site because it includes actual builder evidence: AI projects, shipped demos, GitHub links, project detail pages, hackathon/community signals, certifications, and quantified outcomes. The current design is cohesive: dark glassmorphism, orange accent color, compact section spacing, animated cards, and real personal/project imagery.
+The site is stronger than a generic student profile site because it includes actual builder evidence: AI projects, shipped demos, GitHub links, project detail pages, hackathon/community signals, certifications, and quantified outcomes. The current design is cohesive: dark glassmorphism, orange accent color, compact section spacing, animated cards, and real personal/project imagery.
 
 The biggest gaps are content positioning and production polish. The hero currently shows the name and CTA buttons but the role/value copy is commented out in `src/components/HeroSection.tsx`, which weakens the first impression. Project cards are duplicated between `src/components/ProjectsSection.tsx` and `src/data/projects.ts`, creating content drift risk. SEO is minimal, analytics only tracks page load, contact conversion relies on external Gmail links, no EmailJS/form is implemented, and GitHub Pages direct deep links may fail because there is no `404.html` SPA fallback.
 
@@ -115,7 +115,7 @@ Generated folders such as `node_modules` and `dist` are present locally. `node_m
 | `src/data/projects.ts` | Project detail data source | Strong content; should become single source |
 | `src/data/experiences.ts` | Experience detail data source | Good structure; some proof gaps |
 | `src/components/ProjectsSection.tsx` | Home project grid | Duplicates data instead of importing `src/data/projects.ts` |
-| `src/components/HeroSection.tsx` | First impression, profile image, resume/social/email links | Visually clean but missing role/value copy |
+| `src/components/HeroSection.tsx` | First impression, profile image, social/email links | Visually clean but missing role/value copy |
 | `src/components/GetInTouchSection.tsx` | Contact CTA links | Clear but no form/event tracking |
 | `src/index.css` | Tailwind layers, theme utilities, global body styling | Central style system |
 | `src/App.css` | Default Vite demo styles | Not imported; likely leftover |
@@ -219,7 +219,6 @@ Purpose: first impression, identity, profile image, recruiter CTAs.
 
 Current visible text:
 - `Kaushik Yellanki`
-- `Resume`
 - `LinkedIn`
 - `Email`
 
@@ -235,7 +234,7 @@ Mobile behavior: responsive image sizing and ordering are good.
 
 Strong:
 - Real profile photo adds trust.
-- Resume, LinkedIn, Email are immediately available.
+- LinkedIn and Email are immediately available.
 - Minimal and uncluttered.
 
 Incomplete:
@@ -480,7 +479,7 @@ Visual quality: strong, but some copy needs tightening.
 Mobile behavior: safe stacked layout.
 
 Strong:
-- Adds memorable non-resume signals.
+- Adds memorable proof-of-work signals.
 - Hackathon and recognition items are valuable personal brand proof.
 - Writing/product documentation signal is distinctive.
 
@@ -499,7 +498,7 @@ Purpose: conversion section.
 Current visible text:
 - `Get in Touch`
 - `Let's connect and create something impactful together.`
-- Links: Email, LinkedIn, GitHub, Resume
+- Links: Email, LinkedIn, GitHub
 
 Layout: centered CTA heading and buttons.
 
@@ -508,7 +507,7 @@ Visual quality: clean, recruiter-friendly.
 Mobile behavior: buttons wrap well and have minimum width.
 
 Strong:
-- Recruiter can reach email/resume/LinkedIn/GitHub.
+- Recruiter can reach email/LinkedIn/GitHub.
 - Simple and not cluttered.
 
 Incomplete:
@@ -592,7 +591,7 @@ Improve:
 - Current build focus.
 - Personal operating style.
 - What kinds of problems you like solving.
-- A short human sentence that is not just resume copy.
+- A short human sentence that is not just generic profile copy.
 - Optional writing/open-source/community section grouping.
 
 ### Recommended improvements
@@ -610,7 +609,6 @@ Current visible copy:
 
 ```text
 Kaushik Yellanki
-Resume
 LinkedIn
 Email
 ```
@@ -630,7 +628,7 @@ Current copy summary:
 - Targeting entry-level roles and internships in AI Engineering, Data Analysis, ML, and Data Science.
 
 Issue:
-- Clear but slightly broad and resume-like.
+- Clear but slightly broad and profile-like.
 - Repeats AI/data terms without a memorable personal angle.
 
 Suggested direction:
@@ -693,7 +691,6 @@ Suggested direction:
 
 | Asset | Location | Status |
 |---|---|---|
-| Resume link | `HeroSection`, `GetInTouchSection` | Present, Google Drive |
 | LinkedIn | `HeroSection`, `GetInTouchSection` | Present |
 | GitHub profile | `GetInTouchSection` | Present |
 | Email link | `HeroSection`, `GetInTouchSection` | Present, Gmail compose URL |
@@ -705,17 +702,16 @@ Suggested direction:
 ### Findings
 
 - Recruiters can contact you, but Gmail compose links are not ideal for every user.
-- Resume is easy to access.
 - GitHub profile is not in the hero, only in contact.
 - Contact section is clear but near the bottom and absent from navigation.
-- No analytics events track resume, contact, project, GitHub, or demo clicks.
+- No analytics events track contact, project, GitHub, or demo clicks.
 
 ### Recommended improvements
 
 1. Add Contact to navigation.
 2. Use a `mailto:kaushikyellanki@gmail.com` fallback or replace Gmail compose with `mailto:`.
 3. Add GitHub CTA to hero if the hero can stay uncluttered.
-4. Add GA events for `resume_click`, `email_click`, `linkedin_click`, `github_click`, `project_detail_click`, `project_github_click`, `project_demo_click`.
+4. Add GA events for `email_click`, `linkedin_click`, `github_click`, `project_detail_click`, `project_github_click`, `project_demo_click`.
 5. Add EmailJS later only if a form is desired.
 
 ## 10. Analytics Audit
@@ -730,7 +726,6 @@ Suggested direction:
 
 ### Missing tracking events
 
-- Resume clicks.
 - Email/contact clicks.
 - LinkedIn/GitHub clicks.
 - Project detail clicks.
@@ -742,7 +737,6 @@ Suggested direction:
 
 | Event | Trigger | Suggested params |
 |---|---|---|
-| `resume_click` | Resume button in hero/contact | `{ location: "hero" | "contact" }` |
 | `contact_click` | Email/LinkedIn/GitHub contact buttons | `{ type, location }` |
 | `project_detail_click` | Home project card detail link | `{ slug, title }` |
 | `project_outbound_click` | GitHub/live/Medium on project detail | `{ slug, type }` |

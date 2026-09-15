@@ -33,7 +33,7 @@ This positioning reflects the actual work shown in the portfolio: AI-powered pro
 
 ## 4. AI Chatbot Architecture
 
-The portfolio includes an AI-powered assistant that answers questions about projects, skills, experience, education, certifications, achievements, writing, resume, and contact information.
+The portfolio includes an AI-powered assistant that answers questions about projects, skills, experience, education, certifications, achievements, writing, and contact information.
 
 ### Components
 
@@ -42,7 +42,7 @@ The portfolio includes an AI-powered assistant that answers questions about proj
 - **Local Deterministic Engine**: Keyword-based matching engine that produces verified answers from the knowledge base. This is the source of truth.
 - **Vercel Serverless API Route**: `api/portfolio-chat.ts` proxies requests to OpenRouter. The API key is read server-side only from `process.env.OPENROUTER_API_KEY`.
 - **OpenRouter Integration**: Server-side call to OpenRouter for AI-refined rewrites of verified local answers. The system prompt instructs the model to rewrite only from the verified local answer and not invent facts.
-- **AI Usage Gate**: A frontend gate that determines which question categories benefit from AI enhancement. Local-only categories (refusal, fallback, contact, resume, education, certifications) skip the API entirely.
+- **AI Usage Gate**: A frontend gate that determines which question categories benefit from AI enhancement. Local-only categories (refusal, fallback, contact, education, certifications) skip the API entirely.
 - **Local Fallback**: If OpenRouter is unavailable, times out, or returns an error, the verified local answer is returned instead.
 - **No Frontend API Keys**: The OpenRouter key is never exposed in frontend code.
 
