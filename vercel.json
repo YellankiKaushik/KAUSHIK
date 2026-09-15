@@ -22,6 +22,12 @@
       ]
     }
   ],
+  "routes": [
+    {
+      "src": "^/resume/Kaushik-Resume\\.pdf$",
+      "status": 410
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!api/.*).*)",
