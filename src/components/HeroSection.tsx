@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { FileText, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import profileImage from "@/assets/profile.jpeg";
 import { trackEvent } from "@/utils/analytics";
-import { resumeFileName, resumeHref } from "@/config/resume";
-import { handleResumeDownload } from "@/utils/resumeDownload";
 
 const HeroSection = () => {
   return (
@@ -46,14 +44,6 @@ const HeroSection = () => {
             >
               {[
                 {
-                  Icon: FileText,
-                  text: "Resume",
-                  href: resumeHref,
-                  download: resumeFileName,
-                  isResume: true,
-                  destination: "resume",
-                },
-                {
                   Icon: Github,
                   text: "GitHub",
                   href: "https://github.com/YellankiKaushik",
@@ -74,22 +64,13 @@ const HeroSection = () => {
                   eventName: "email_click",
                   destination: "mailto",
                 },
-              ].map(({ Icon, text, href, eventName, destination, download, isResume }, index) => (
+              ].map(({ Icon, text, href, eventName, destination }, index) => (
                 <motion.a
                   key={index}
                   href={href}
-                  target={download ? undefined : "_blank"}
-                  rel={download ? undefined : "noopener noreferrer"}
-                  download={download}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => {
-                    if (isResume) {
-                      handleResumeDownload({
-                        location: "hero",
-                        linkText: text,
-                      });
-                      return;
-                    }
-
                     if (eventName) {
                       trackEvent(eventName, {
                         location: "hero",

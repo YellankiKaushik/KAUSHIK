@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
-import { BookOpenText, Code2, Mail, Linkedin, Github, FileText } from "lucide-react";
+import { BookOpenText, Code2, Mail, Linkedin, Github } from "lucide-react";
 import { trackEvent } from "@/utils/analytics";
-import { resumeFileName, resumeHref } from "@/config/resume";
-import { handleResumeDownload } from "@/utils/resumeDownload";
 
 type ContactItem = {
   label: string;
@@ -11,8 +9,6 @@ type ContactItem = {
   eventName?: string;
   secondaryEventName?: string;
   trackingParams: Record<string, string>;
-  download?: string;
-  isResume?: boolean;
 };
 
 const contacts: ContactItem[] = [
@@ -44,17 +40,6 @@ const contacts: ContactItem[] = [
     trackingParams: {
       location: "contact",
       destination: "github_profile",
-    },
-  },
-  {
-    label: "Resume",
-    icon: <FileText className="w-4 h-4" />,
-    link: resumeHref,
-    download: resumeFileName,
-    isResume: true,
-    trackingParams: {
-      location: "contact",
-      destination: "resume",
     },
   },
   {
@@ -111,23 +96,14 @@ const GetInTouchSection = () => {
         <p className="text-center text-white/80 text-sm md:text-base font-semibold mb-8">
           Open to full-time software and AI roles, AI product work, secure AI integrations, project collaboration, and technical conversations.
         </p>
-        <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
           {contacts.map((item, index) => (
             <motion.a
               key={index}
               href={item.link}
-              target={item.download ? undefined : "_blank"}
-              rel={item.download ? undefined : "noopener noreferrer"}
-              download={item.download}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => {
-                if (item.isResume) {
-                  handleResumeDownload({
-                    location: item.trackingParams.location,
-                    linkText: item.label,
-                  });
-                  return;
-                }
-
                 if (item.eventName) {
                   trackEvent(item.eventName, item.trackingParams);
                 }
