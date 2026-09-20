@@ -1,18 +1,5 @@
 # Skills
 
-## Evidence Status
-
-EXTRACTED from visible skill component and consolidated knowledge base. No proficiency levels are claimed.
-
-## Repository Sources
-
-- `src/components/SkillsSection.tsx`
-- `src/data/portfolioKnowledge.ts`
-- `src/data/projects.ts`
-- `src/data/experiences.ts`
-- `src/data/challenges.ts`
-- `index.html`
-
 ## Programming Languages
 
 - Python
