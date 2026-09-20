@@ -4,17 +4,10 @@
 
 EXTRACTED from visible and chatbot achievement data. Proof/context should be manually verified.
 
-## Repository Sources
-
-- `src/components/AchievementsSection.tsx`
-- `src/data/portfolioKnowledge.ts`
-- `src/data/challenges.ts`
 
 ## Farmer OS - Top 50 At Lyzr Agentathon 2026
 
-## Evidence Status
 
-EXTRACTED.
 
 ## Year
 
@@ -33,23 +26,18 @@ Selected among the Top 50 teams for Farmer OS, an AI-agent-based agricultural de
 - Challenge record: `farmer-os-lyzr-agentathon-2026`
 - Challenge title: Farmer OS - Lyzr Agentathon 2026
 
-## Missing Information
+## Information
 
-- Team members.
-- Exact submission link.
-- Certificate/proof link.
-- Project repository/demo.
-- What Kaushik personally built.
+- Team members - i am solo 
+- Exact submission link - it is in hackculture 
+- Certificate/proof link - the certificate was not provided 
+- Project repository/demo - https://www.loom.com/share/08d251bdfe684b4fa6a7fc5333eac916
+- What Kaushik personally built - 
 
-## Verification Notes
-
-- Repository says Top 50; verify exact wording and proof before emphasizing.
 
 ## 1M1B Open-Source LLM Project Recognition
 
-## Evidence Status
 
-EXTRACTED.
 
 ## Year
 
@@ -71,44 +59,8 @@ Recognized for contributing to an open-source LLM project focused on turning uns
 - Contribution details.
 - Recognition criteria.
 
-## Verification Notes
-
-- Verify what "recognition" means before converting this into a stronger award claim.
-
-## Topmate AI Project Documentation Guide
-
-## Evidence Status
-
-EXTRACTED.
-
-## Year
-
-2026.
-
-## Description
-
-Created an AI-assisted documentation workflow that helps developers understand a codebase and generate clear project explanation documents for portfolios, submissions, and technical storytelling.
-
-## Link
-
-`https://topmate.io/kaushik_yellanki/2033727`
-
-## Missing Information
-
-- Whether this is a product, guide, service, or resource.
-- Usage/adoption evidence.
-- Example output.
-- Pricing/access status, if relevant.
-
-## Verification Notes
-
-- Do not claim users, purchases, or adoption unless added.
 
 ## Hackathon Organizer - Google Crowdsource VBIT
-
-## Evidence Status
-
-EXTRACTED.
 
 ## Year
 
@@ -138,33 +90,3 @@ Helped organize a student hackathon under Google Crowdsource VBIT, supporting ev
 ## Verification Notes
 
 - Keep wording as "helped organize" unless stronger proof is provided.
-
-## Medium Writing And Technical Notes
-
-## Evidence Status
-
-EXTRACTED.
-
-## Year
-
-2026.
-
-## Description
-
-Published long-form writing on ideas, projects, and technical learning, using writing as a way to explain systems, document thinking, and share project-building lessons.
-
-## Link
-
-`https://medium.com/@kaushikyellanki/the-abundance-of-space-theory-bbc8a5314615`
-
-## Missing Information
-
-- Complete writing list.
-- Whether writing is technical, conceptual, or project-specific.
-- Dev.to article links, if any.
-- Project-level write-ups.
-
-## Verification Notes
-
-- Project-level Medium fields are empty in `src/data/projects.ts`; do not imply every project has an article.
-
