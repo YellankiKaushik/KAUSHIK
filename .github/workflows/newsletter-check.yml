@@ -16,3 +16,5 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm run build
       - run: npx tsc --noEmit -p tsconfig.app.json
+      - name: Reject high or critical production dependency advisories
+        run: npm audit --omit=dev --audit-level=high
