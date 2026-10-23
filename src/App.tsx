@@ -13,6 +13,7 @@ import ChallengeDetail from "./pages/ChallengeDetail";
 import CursorGlow from "@/components/CursorGlow";
 import PortfolioChatbot from "@/components/PortfolioChatbot";
 import ScrollToTop from "./components/ScrollToTop";
+import { NewsletterPage } from "./components/SignalDaily";
 
 
 const queryClient = new QueryClient();
@@ -29,6 +30,8 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/newsletter" element={<NewsletterPage />} />
+          <Route path="/newsletter/:slug" element={<NewsletterPage />} />
           <Route path="/project/:slug" element={<ProjectDetail />} />
           <Route
             path="/experience/challenge-participation"
