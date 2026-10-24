@@ -13,6 +13,8 @@ The chatbot architecture is knowledge-first:
 
 ## Vercel Project Settings
 
+Canonical host verified 25 October 2026: `https://kaaush.vercel.app/`. In project `kaushik`, verified alias `kaaushik.vercel.app` redirects there with status 307. This was read-only inspection; no alias was changed. The existing SPA also serves the static Signal Daily archive/reader; its private editor, database and Ollama remain local. See [reader architecture](../portfolio-docs/NEWSLETTER_ARCHITECTURE.md). Keep signup and provider email disabled pending separate acceptance.
+
 - Framework preset: Vite
 - Install command: `npm install`
 - Build command: `npm run build`

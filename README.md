@@ -2,7 +2,7 @@
 
 AI Systems Builder & Software Developer
 
-Live portfolio: https://kaaushik.vercel.app/  &   https://kaaush.vercel.app/
+Live portfolio and canonical URL: https://kaaush.vercel.app/
 
 This is my personal portfolio for showcasing practical AI systems, full-stack projects, secure AI integrations, writing, experience, and contact links.
 
@@ -33,11 +33,9 @@ The OpenRouter key is handled server-side only. No API keys are exposed in front
 The active portfolio deployment is on Vercel:
 
 ```txt
-https://kaaushik.vercel.app/
-```
-and 
-
-```txt
 https://kaaush.vercel.app/
 ```
+The verified alternate domain `kaaushik.vercel.app` redirects to `kaaush.vercel.app` (307). The Vercel project mapping was inspected on 25 October 2026; no alias or redirect setting was changed.
+
+Signal Daily reader architecture, publication boundaries and maintenance instructions are documented in [portfolio-docs/NEWSLETTER_ARCHITECTURE.md](portfolio-docs/NEWSLETTER_ARCHITECTURE.md). The catalog is empty and subscriptions remain disabled. Local Phase 3 changes are uncommitted; they are not present in the existing preview or production deployment.
 

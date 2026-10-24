@@ -19,6 +19,12 @@ EXTRACTED from implementation files.
 - `index.html`
 - `public/*`
 
+## Signal Daily reader mapping (25 October 2026)
+
+The homepage's `SignalDailySection` follows `#contact` in `src/pages/Index.tsx` and exposes `#newsletter`. `src/components/SignalDaily.tsx` implements that section, the `NewsletterPage` archive at `/newsletter` and detail at `/newsletter/:slug`; routes live in `src/App.tsx`. The fixed navbar remains unchanged; the section's archive CTA supplies navigation.
+
+`src/data/newsletters.json` is the static public catalog and remains `[]`. Search matches title/intro; topics come from catalog entries. Missing slugs display an absent-edition message. Newsletter metadata uses `src/utils/seo.ts`; detail text comes only from the matching exported edition. Signup is disabled while `VITE_BUTTONDOWN_USERNAME` is unset. Source authority, content-to-code mapping, publishing and deployment are in [NEWSLETTER_ARCHITECTURE.md](NEWSLETTER_ARCHITECTURE.md). This technical inventory does not approve personal facts or newsletter content.
+
 ## Navigation
 
 ### Knowledge Domain
