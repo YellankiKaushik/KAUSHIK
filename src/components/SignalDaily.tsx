@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import catalog from "@/data/newsletters.json";
+import { setPageSeo } from "@/utils/seo";
 
 type Story = { headline: string; summary: string; why: string; source: string; url: string; published_at: string };
 type Edition = { id: string; version: number; slug: string; title: string; topic: string; intro: string; closing: string; publishedAt: string; items: Story[] };
@@ -36,6 +37,27 @@ export function NewsletterPage() {
   const [query, setQuery] = useState("");
   const [topic, setTopic] = useState("");
   const edition = slug ? editions.find(record => record.slug === slug) : undefined;
+  useEffect(() => {
+    if (edition) {
+      setPageSeo(
+        `${edition.title} | Signal Daily | Kaushik Yellanki`,
+        edition.intro.replace(/\s+/g, " ").trim().slice(0, 160),
+        `/newsletter/${encodeURIComponent(edition.slug)}`
+      );
+    } else if (slug) {
+      setPageSeo(
+        "Edition not found | Signal Daily | Kaushik Yellanki",
+        "This edition has not been published in the Signal Daily archive.",
+        null
+      );
+    } else {
+      setPageSeo(
+        "Signal Daily Newsletter Archive | Kaushik Yellanki",
+        "Read Signal Daily editions on AI, reviewed by a human and linked to original sources. Browse the newsletter archive by title and topic.",
+        "/newsletter"
+      );
+    }
+  }, [edition, slug]);
   const filtered = editions.filter(record => (!topic || record.topic === topic) && `${record.title} ${record.intro}`.toLowerCase().includes(query.toLowerCase()));
   return <main className="max-w-5xl mx-auto px-6 py-16 break-words">
     <nav aria-label="Newsletter navigation" className="flex gap-6 mb-12"><Link to="/">← Portfolio</Link><Link to="/newsletter">All editions</Link></nav>
