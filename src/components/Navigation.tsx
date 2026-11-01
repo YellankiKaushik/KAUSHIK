@@ -23,19 +23,39 @@ const Navigation = () => {
       const sections = navItems.map(item =>
         document.getElementById(item.id)
       );
-      const scrollPosition = window.scrollY + 100;
+      const lastSection = sections[sections.length - 1];
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+      // A short final section cannot reach the top activation line before
+      // scrolling stops. Select it when the page bottom is reached instead.
+      if (
+        maxScroll > 0 &&
+        window.scrollY >= maxScroll - 2 &&
+        lastSection &&
+        lastSection.getBoundingClientRect().top < window.innerHeight
+      ) {
+        setActiveSection(navItems[navItems.length - 1].id);
+        return;
+      }
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section && section.offsetTop <= scrollPosition) {
+        if (section && section.getBoundingClientRect().top <= 100) {
           setActiveSection(navItems[i].id);
-          break;
+          return;
         }
       }
+
+      setActiveSection("home");
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
