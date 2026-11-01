@@ -202,7 +202,7 @@ const SkillsSection = () => {
                   </h3>
 
                   <p className="mb-5 max-w-3xl text-sm leading-relaxed text-white/65">
-                    {category.context}
+                    {"context" in category ? String(category.context) : null}
                   </p>
 
                   <div className="flex flex-wrap gap-3">

@@ -50,6 +50,14 @@ npm run dev
 
 Vite prints the local URL after the development server starts. In a local build, the app uses `/KAUSHIK/` as its base path; Vercel builds use `/`.
 
+## Deployment notes
+
+The portfolio is hosted on Vercel at [kaaush.vercel.app](https://kaaush.vercel.app/). The verified alternate domain `kaaushik.vercel.app` redirects there (307); the project mapping was inspected on 25 October 2026 and no alias or redirect setting was changed.
+
+## Signal Daily newsletter
+
+Signal Daily reader architecture, publication boundaries and maintenance instructions are documented in [portfolio-docs/NEWSLETTER_ARCHITECTURE.md](portfolio-docs/NEWSLETTER_ARCHITECTURE.md). The public catalog is intentionally empty and subscriptions remain disabled until an approved edition is published. Actual editions must come from the approved Signal Daily export workflow; the portfolio does not host the private editor or its database.
+
 ### Optional environment variables
 
 Copy `.env.example` to `.env.local` and set only the integrations you want to use:

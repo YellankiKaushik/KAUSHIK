@@ -64,6 +64,7 @@ Route-level pages:
 - `ChallengeOverview.tsx` renders challenge participation overview from `src/data/challenges.ts`.
 - `ChallengeDetail.tsx` renders individual challenge detail pages from `src/data/challenges.ts` and related project lookups from `src/data/projects.ts`.
 - `NotFound.tsx` renders fallback route content.
+- `src/components/SignalDaily.tsx` exports `NewsletterPage` for `/newsletter` and `/newsletter/:slug`, plus the homepage `SignalDailySection` mounted after Contact. `src/data/newsletters.json` is public static export data, currently empty; private editor data is never imported.
 
 ### `src/components/`
 
@@ -318,17 +319,18 @@ Defined in `src/pages/Index.tsx`:
 
 ### Runtime SEO
 
-- `src/utils/seo.ts` sets `document.title` and updates/creates `meta[name="description"]`.
+- `src/utils/seo.ts` sets document title/description and matching OG/Twitter fields; its optional canonical path updates canonical/OG URL on the approved host, while `null` removes those URL tags for absent editions.
 - `src/pages/Index.tsx` sets homepage title and description.
 - `src/pages/ChallengeOverview.tsx` sets challenge overview title and description.
 - `src/pages/ChallengeDetail.tsx` sets challenge detail title and description.
+- `NewsletterPage` in `src/components/SignalDaily.tsx` sets archive metadata, actual exported edition title/intro metadata, or honest missing-edition metadata. No unpublished edition is added to the sitemap.
 
 NEEDS VERIFICATION: `ProjectDetail.tsx` and `ExperienceDetail.tsx` do not appear to call `setPageSeo`, so dynamic project and experience pages may keep prior/default metadata.
 
 ### Sitemap And Robots
 
 - `public/sitemap.xml` lists homepage, visible project detail routes, and experience detail routes.
-- `public/robots.txt` allows all crawling and points to `https://kaaushik.vercel.app/sitemap.xml`.
+- `public/robots.txt` allows crawling and points to canonical `https://kaaush.vercel.app/sitemap.xml`; the sitemap includes the archive and no unpublished edition routes.
 
 NEEDS VERIFICATION: challenge routes were not present in `public/sitemap.xml` during inspection.
 
@@ -411,6 +413,7 @@ From `.env.example` and docs:
 - `OPENROUTER_SITE_URL`
 - `OPENROUTER_SITE_NAME`
 - `VITE_GA_MEASUREMENT_ID`
+- `VITE_BUTTONDOWN_USERNAME` (public identifier only; unset while signup is disabled). Never expose `BUTTONDOWN_API_KEY` or local editor credentials through Vite.
 
 Important rule from existing docs: do not prefix secret OpenRouter keys with `VITE_`.
 
@@ -424,6 +427,8 @@ Important rule from existing docs: do not prefix secret OpenRouter keys with `VI
 - Challenge participation has its own overview and detail routing architecture.
 - The chatbot uses verified local answers as the first layer; preserve this fact-first design if updating chatbot content.
 - `vite.config.ts` uses `base = process.env.VERCEL ? "/" : "/KAUSHIK/"`; changes to deployment context affect asset and route paths.
-- Existing app copy and docs migrated toward Vercel production URL `https://kaaushik.vercel.app/`, while older audit docs mention GitHub Pages.
+- Canonical production URL is `https://kaaush.vercel.app/`. Authenticated Vercel mapping inspection on 25 October 2026 confirmed that `kaaushik.vercel.app` redirects there with status 307; older audit docs preserve historical GitHub Pages/alias references.
 - Do not treat `dist/` as the source for portfolio facts.
 - If updating metadata, inspect `index.html`, `src/utils/seo.ts`, route-level `setPageSeo` calls, `public/sitemap.xml`, `public/robots.txt`, and `public/site.webmanifest`.
+- The shared SEO helper accepts an optional canonical path, or `null` for an absent edition; existing callers retain the default root canonical. Newsletter title/description/OG/Twitter/canonical updates happen client-side. No SSR or SEO library was added.
+- See [NEWSLETTER_ARCHITECTURE.md](NEWSLETTER_ARCHITECTURE.md) for exact content-to-code mapping, deployment identity and publication/email gates. Zod 3.23.8 was removed as an unused root dependency in Phase 3; no replacement or major upgrade was introduced. npm/package-lock remain the validated install source; the historical Bun lockfile was not regenerated or used for acceptance.

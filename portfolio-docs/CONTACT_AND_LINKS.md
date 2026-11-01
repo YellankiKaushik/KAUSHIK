@@ -17,16 +17,12 @@ EXTRACTED.
 
 ## Primary Portfolio URLs
 
-EXTRACTED:
+Verified technical correction, 25 October 2026:
 
-- `https://kaaushik.vercel.app/`
-- `https://kaaush.vercel.app/`
-
-NEEDS VERIFICATION:
-
-- `index.html`, `robots.txt`, `sitemap.xml`, and structured data use `https://kaaushik.vercel.app/`.
-- `README.md` lists both `https://kaaushik.vercel.app/` and `https://kaaush.vercel.app/`.
-- Older audit docs mention GitHub Pages `https://yellankikaushik.github.io/KAUSHIK/`.
+- Owner-selected canonical production URL: `https://kaaush.vercel.app/`.
+- Authenticated Vercel project-domain inspection: `kaaush.vercel.app` is verified with no redirect; verified `kaaushik.vercel.app` redirects to it with status 307.
+- Local static metadata, robots/sitemap, structured data, package homepage and newsletter metadata now use `kaaush`. These Phase 3 edits are uncommitted and not yet deployed.
+- Older audit docs retain historical GitHub Pages/alternate-host observations. No Vercel alias or redirect setting was changed, and no other personal facts were approved by this correction.
 
 ## Email
 

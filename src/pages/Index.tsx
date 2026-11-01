@@ -11,6 +11,7 @@ import AchievementsSection from "@/components/AchievementsSection";
 import FeaturedInSection from "@/components/FeaturedInSection";
 import GetInTouchSection from "@/components/GetInTouchSection";
 import { setPageSeo } from "@/utils/seo";
+import { SignalDailySection } from "@/components/SignalDaily";
 
 const Index = () => {
   useEffect(() => {
@@ -65,6 +66,7 @@ const Index = () => {
         <section id="contact">
           <GetInTouchSection />
         </section>
+        <SignalDailySection />
       </motion.div>
     </>
   );

@@ -7,7 +7,7 @@ const ExperienceDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
 
-  const experience = experiences.find((e) => e.slug === slug);
+  const experience = experiences.find((e) => e.slug === slug) as (typeof experiences[number] & { impact?: string[]; screenshots?: string[] }) | undefined;
 
   if (!experience) {
     return (

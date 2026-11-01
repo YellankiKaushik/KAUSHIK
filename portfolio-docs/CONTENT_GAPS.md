@@ -230,7 +230,7 @@ Priority missing links:
 
 NEEDS VERIFICATION:
 
-- Primary portfolio URL: README lists two Vercel URLs; metadata uses one.
+- Historical primary-URL ambiguity: resolved locally on 25 October 2026 using the owner-selected canonical host and Vercel redirect mapping; see the Live Portfolio URL entry below. Deployment verification of the correction is still pending.
 - Older `PORTFOLIO_AUDIT_REPORT.md` refers to GitHub Pages as live URL and older app state.
 - Challenge dates and statuses.
 - Certification validity.
@@ -240,11 +240,7 @@ NEEDS VERIFICATION:
 
 ## Live Portfolio URL
 
-- `index.html`, `robots.txt`, `sitemap.xml`, `docs/FINAL_PORTFOLIO_REBUILD_REPORT.md`: `https://kaaushik.vercel.app/`
-- `README.md`: `https://kaaushik.vercel.app/` and `https://kaaush.vercel.app/`
-- `PORTFOLIO_AUDIT_REPORT.md`: older GitHub Pages URL `https://yellankikaushik.github.io/KAUSHIK/`
-
-NEEDS VERIFICATION: determine the canonical long-term URL.
+RESOLVED LOCALLY, 25 October 2026: the owner selected `https://kaaush.vercel.app/`; authenticated project-domain inspection confirms `kaaushik.vercel.app` redirects there (307). Local static metadata, robots/sitemap, package homepage, README and newsletter metadata now agree. No alias was changed. These uncommitted corrections require a new tested preview before release. Historical reports retain original alternate-host/GitHub Pages observations; they are not current canonical authority.
 
 ## Education Date Formatting
 

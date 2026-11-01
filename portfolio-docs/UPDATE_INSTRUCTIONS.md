@@ -124,6 +124,12 @@ Update all duplicate contact surfaces:
 
 ## Metadata And SEO Rules
 
+For Signal Daily follow [NEWSLETTER_ARCHITECTURE.md](NEWSLETTER_ARCHITECTURE.md). Portfolio documentation edits do not approve news. Real editions require private factual review, explicit approval, online-only local publication with email disabled, then the approved allowlist exporter and reviewed public JSON diff. Keep the committed catalog empty until those actions are separately authorized. Never put the private database, drafts, subscribers, tokens or internal Markdown into `public/` or client imports.
+
+Use canonical host `https://kaaush.vercel.app/`, verified from owner direction and Vercel project redirect configuration on 25 October 2026. Newsletter metadata reuses `setPageSeo`; derive actual edition title/intro from exported data, clear canonical metadata for missing editions and preserve homepage metadata on return. Test both direct entry and client navigation. Keep `VITE_BUTTONDOWN_USERNAME` unset and provider sending off until separate live consent/delivery acceptance.
+
+For a future release, record local HEAD plus dirty state, new tested commit SHA, preview SHA and production SHA separately. Do not label an old preview or zero-step GitHub failure as a passing check of newer code. No commit, push or release follows automatically from this synchronization workflow.
+
 When title, positioning, primary URL, project visibility, or public routes change, inspect:
 
 - `index.html`

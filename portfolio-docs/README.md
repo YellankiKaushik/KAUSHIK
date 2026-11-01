@@ -8,6 +8,8 @@ The portfolio application is the presentation layer. It decides layout, routes, 
 
 ## Current Status
 
+The 25 October 2026 technical Signal Daily synchronization is documented in [NEWSLETTER_ARCHITECTURE.md](NEWSLETTER_ARCHITECTURE.md). It does not change the review status of personal facts below. Approved portfolio facts and approved newsletter editions have separate authorities: a documentation edit never approves an edition, export or email.
+
 These files are a draft extraction generated from the current repository.
 
 They are not automatically authoritative just because they were generated from code. They become authoritative only after human review, corrections, and enrichment.
@@ -71,6 +73,8 @@ current website
 ```
 
 ## Document Map
+
+- `NEWSLETTER_ARCHITECTURE.md` - Verified reader mapping, private/public data boundaries, canonical deployment evidence and deliberately gated edition/email maintenance.
 
 - `CODEBASE_REFERENCE.md` - Technical repository reference for future Codex sessions.
 - `PORTFOLIO_OVERVIEW.md` - High-level inventory of what the portfolio currently communicates.

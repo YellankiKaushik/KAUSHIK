@@ -49,6 +49,10 @@ The current homepage presents Kaushik as a practical AI/software builder with:
 - achievements;
 - contact, writing, GitHub, and LinkedIn links;
 - a floating portfolio assistant for recruiter questions.
+- a Signal Daily section after Contact, with a deliberately empty public edition catalog and disabled email signup;
+- `/newsletter` archive and `/newsletter/:slug` source-attributed reader routes.
+
+Technical reader/deployment behavior was verified separately on 25 October 2026; this does not approve unreviewed personal claims elsewhere in this file. [Newsletter architecture and maintenance](NEWSLETTER_ARCHITECTURE.md) separates portfolio fact authority from Signal Daily's editorial approval/export authority. No real edition or provider email was published during this synchronization.
 
 ## Major Portfolio Sections
 
