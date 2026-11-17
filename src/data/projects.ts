@@ -1,10 +1,6 @@
-const projectImage = (fileName: string) =>
-  `${import.meta.env.BASE_URL}projects/${fileName}`;
-
 export type PortfolioProject = {
   slug: string;
   title: string;
-  image?: string;
   description: string;
   highlights?: string[];
   techStack: string[];
@@ -12,31 +8,18 @@ export type PortfolioProject = {
   problem?: string;
   solution?: string;
   results?: string[];
-  screenshots?: string[];
   github?: string;
   live?: string;
   medium?: string;
   order?: number;
   visible?: boolean;
   featured?: boolean;
-  caseStudy?: {
-    whyItMatters?: string;
-    architecture?: string[];
-    workflow?: string[];
-    features?: string[];
-    myContribution?: string[];
-    challenges?: string[];
-    howISolved?: string[];
-    learnings?: string[];
-    limitations?: string[];
-  };
 };
 
 export const projects: PortfolioProject[] = [
   {
     slug: "agroguia-ai",
     title: "AGROGUIA.AI",
-    image: projectImage("agroguia-ai.png"),
     description:
       "A full-stack AI farm advisory dashboard that turns farmer profiles and local weather context into structured agricultural decision modules.",
     highlights: [
@@ -76,7 +59,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "youtube-review",
     title: "Integrated Review of YouTube Videos",
-    image: projectImage("youtube-review.png"),
     description:
       "A full-stack AI dashboard that analyzes YouTube comments and transcripts to generate sentiment breakdowns and viewer feedback summaries.",
     highlights: [
@@ -104,7 +86,6 @@ export const projects: PortfolioProject[] = [
     results: [
       "Built a working full-stack review dashboard with YouTube API integration, transcript analysis, AI summaries, and sentiment visualization.",
     ],
-    screenshots: [projectImage("youtube-review.png")],
     github: "https://github.com/YellankiKaushik/Integrated-Review-YT-Videos",
     live: "",
     medium: "",
@@ -114,7 +95,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "hazlo",
     title: "Hazlo",
-    image: projectImage("hazlo.png"),
     description:
       "A voice-first productivity app that captures spoken thoughts, extracts likely tasks locally, and syncs structured notes to Notion.",
     highlights: [
@@ -153,7 +133,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "ai-crowd-intelligence",
     title: "AI Crowd Intelligence Assistant",
-    image: projectImage("ai-crowd-intelligence.png"),
     description:
       "A simulated crowd navigation assistant that recommends routes using crowd-aware scoring and Gemini-generated explanations.",
     highlights: [
@@ -181,7 +160,7 @@ export const projects: PortfolioProject[] = [
     results: [
       "Built a working full-stack hackathon prototype with simulated crowd-aware route recommendations, Gemini explanations, multilingual support, dashboard metrics, and a documented Cloud Run demo.",
     ],
-    github: "https://github.com/YellankiKaushik/AI-Crowd-Intelligence-Assistant.git",
+    github: "https://github.com/YellankiKaushik/AI-Crowd-Intelligence-Assistant",
     live: "https://ai-crowd-intelligence-148352897207.asia-south1.run.app",
     medium: "",
     order: 4,
@@ -190,7 +169,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "sistemaa-electoral",
     title: "Sistemaa Electoral",
-    image: projectImage("sistemaa-electoral.png"),
     description:
       "A multilingual AI election education assistant that combines a rule-based learning flow with Gemini fallback for open-ended questions.",
     highlights: [
@@ -228,7 +206,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "gym-membership",
     title: "FitZone Gym Membership Management System",
-    image: projectImage("fitzone-gym-membership.png"),
     description:
       "A serverless gym membership management app with public member lookup, admin CRUD workflows, renewal handling, and Google Sheets-backed persistence.",
     highlights: [
@@ -254,9 +231,8 @@ export const projects: PortfolioProject[] = [
     results: [
       "Built a working serverless membership management app with public lookup, admin workflows, renewal handling, and Google Sheets persistence.",
     ],
-    screenshots: [projectImage("fitzone-gym-membership.png")],
-    github: "https://github.com/YellankiKaushik/Gym-Membership.git",
-    live: "https://yellankikaushik.github.io/Gym-Membership/",
+    github: "https://github.com/YellankiKaushik/Gym-Membership",
+    live: "https://fitzone-gym-mu.vercel.app",
     medium: "",
     order: 6,
     featured: true,
@@ -264,7 +240,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "krishi-seva",
     title: "Krishi Seva AI Agent",
-    image: projectImage("krishi-seva.png"),
     description:
       "A Python agricultural advisory agent that turns live weather data into explainable farming risk alerts and simple action recommendations.",
     highlights: [
@@ -289,7 +264,6 @@ export const projects: PortfolioProject[] = [
     results: [
       "Built a Python rule-based agricultural advisory agent with live weather lookup, farming risk detection, and explainable recommendations.",
     ],
-    screenshots: [projectImage("krishi-seva.png")],
     github: "https://github.com/YellankiKaushik/Krishi-Seva-AI.git",
     live: "",
     medium: "",
@@ -300,7 +274,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "psymatch",
     title: "PsyMatch",
-    image: projectImage("psymatch.png"),
     description:
       "A personality matching prototype that converts questionnaire answers into trait profiles and ranks compatible demo users using cosine similarity.",
     highlights: [
@@ -330,7 +303,7 @@ export const projects: PortfolioProject[] = [
     results: [
       "Built a working React + TypeScript matching prototype with questionnaire scoring, 15-trait profile modeling, cosine similarity ranking, dashboard UI, mock chat, and FastAPI auth foundation.",
     ],
-    github: "https://github.com/YellankiKaushik/Dating.git",
+    github: "https://github.com/YellankiKaushik/Similarity-Dating-Platform",
     live: "",
     medium: "",
     order: 8,
@@ -340,12 +313,11 @@ export const projects: PortfolioProject[] = [
   {
     slug: "vaaniplan",
     title: "VaaniPlan - Voice-First AI Daily Planning Assistant",
-    image: projectImage("vaaniplan.png"),
     description:
       "A voice-first AI planning assistant that removes the need for manual typing and automatically structures daily tasks using LLM reasoning.",
     highlights: [
-      "Reduced daily planning effort by 60-70% through voice-driven AI task generation.",
-      "Improved productivity by about 50% by eliminating manual task structuring.",
+      "Uses voice capture to create a first draft of a daily plan.",
+      "Uses a language model to structure spoken tasks.",
     ],
     techStack: [
       "FastAPI",
@@ -363,7 +335,6 @@ export const projects: PortfolioProject[] = [
     results: [
       "Built a voice-driven productivity prototype accepted into the Unleash LLM Innovation Challenge.",
     ],
-    screenshots: [projectImage("vaaniplan.png")],
     github: "https://github.com/YellankiKaushik/VaaniPlan",
     live: "https://yellankikaushik.github.io/VaaniPlan/",
     medium: "",
@@ -373,7 +344,6 @@ export const projects: PortfolioProject[] = [
   {
     slug: "google-product-analysis",
     title: "Public Interest Analysis of Google Products",
-    image: projectImage("google-product-analysis.png"),
     description:
       "An interactive Tableau dashboard that analyzes Google Trends data to reveal product popularity patterns.",
     highlights: [
@@ -395,7 +365,6 @@ export const projects: PortfolioProject[] = [
     results: [
       "Built an interactive analytics dashboard for exploring product search trends.",
     ],
-    screenshots: [projectImage("google-product-analysis.png")],
     github: "",
     live: "https://public.tableau.com/app/profile/yellanki.kaushik",
     medium: "",

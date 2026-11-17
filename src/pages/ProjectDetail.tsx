@@ -1,394 +1,75 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { projects } from "../data/projects";
+import { useEffect } from "react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { Link, useParams } from "react-router-dom";
+import { projects } from "@/data/projects";
+import { projectStories } from "@/data/projectStories";
+import ProjectVisual from "@/components/ProjectVisual";
+import NotFound from "@/pages/NotFound";
+import { setPageSeo } from "@/utils/seo";
 import { trackEvent } from "@/utils/analytics";
 
-const ProjectScreenshot = ({ src, alt }: { src: string; alt: string }) => {
-  const [hasError, setHasError] = useState(false);
-
-  if (hasError) {
-    return (
-      <div className="rounded-xl min-h-48 bg-gradient-cyber/20 border border-white/10" />
-    );
-  }
-
-  return (
-    <img
-      src={src}
-      alt={alt}
-      loading="lazy"
-      decoding="async"
-      onError={() => setHasError(true)}
-      className="rounded-xl object-cover hover-glow"
-    />
-  );
-};
-
-const ProjectDetail = () => {
+export default function ProjectDetail() {
   const { slug } = useParams();
-  const navigate = useNavigate();
+  const project = projects.find(record => record.slug === slug);
+  const story = slug ? projectStories[slug] : undefined;
 
-  const project = projects.find((p) => p.slug === slug);
+  useEffect(() => {
+    if (!project) return;
+    setPageSeo(`${project.title} | Kaushik Yellanki`, project.description, `/project/${project.slug}`);
+  }, [project]);
 
-  if (!project) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-white">
-        <h2 className="text-2xl">Project not found</h2>
-      </div>
-    );
-  }
+  if (!project) return <NotFound />;
 
-  const caseStudySections = [
-    {
-      title: "Architecture",
-      items: project.caseStudy?.architecture,
-    },
-    {
-      title: "Workflow",
-      items: project.caseStudy?.workflow,
-    },
-    {
-      title: "Key Features",
-      items: project.caseStudy?.features,
-    },
-    {
-      title: "My Contribution",
-      items: project.caseStudy?.myContribution,
-    },
-    {
-      title: "Challenges",
-      items: project.caseStudy?.challenges,
-    },
-    {
-      title: "How I Solved Them",
-      items: project.caseStudy?.howISolved,
-    },
-    {
-      title: "Learnings",
-      items: project.caseStudy?.learnings,
-    },
-    {
-      title: "Limitations",
-      items: project.caseStudy?.limitations,
-    },
+  const visible = projects.filter(record => record.visible !== false);
+  const index = visible.findIndex(record => record.slug === project.slug);
+  const next = visible[index + 1];
+  const links = [
+    { href: project.github, label: "Source on GitHub", destination: "github" },
+    { href: project.live, label: project.live?.includes(".run.app") ? "Cloud Run deployment" : "Open live demo", destination: "live_demo" },
+    { href: project.medium, label: "Read the write-up", destination: "medium" },
+    { ...story?.evidence, destination: "evidence" },
   ];
 
   return (
-    <section className="py-12 px-4 relative overflow-hidden">
-
-      {/* SAME BACKGROUND SYSTEM */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-cyber opacity-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.1 }}
-        transition={{ duration: 1.2 }}
-      />
-
-      <div className="container mx-auto max-w-6xl relative z-10">
-
-        {/* Back Button */}
-        <button
-          onClick={() => navigate(-1)}
-          className="text-primary-light hover:text-white transition mb-8 inline-block"
-        >
-          ← Back to Portfolio
-        </button>
-
-        {/* MAIN GLASS CARD */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="glass-card p-6 md:p-8 hover-glow"
-        >
-
-          {/* HEADER */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-
-            {/* TITLE */}
-            <h1 className="text-3xl md:text-4xl font-bold text-white text-glow">
-              {project.title}
-            </h1>
-
-            {/* TOP LINKS */}
-            <div className="flex gap-3 flex-wrap">
-
-              {project.github && (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() =>
-                    trackEvent("project_outbound_click", {
-                      location: "project_detail",
-                      project_slug: project.slug,
-                      project_title: project.title,
-                      destination: "github",
-                    })
-                  }
-                  className="glass-card px-4 py-2 hover-glow text-sm"
-                >
-                  GitHub
-                </a>
-              )}
-
-              {project.live && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() =>
-                    trackEvent("project_outbound_click", {
-                      location: "project_detail",
-                      project_slug: project.slug,
-                      project_title: project.title,
-                      destination: "live_demo",
-                    })
-                  }
-                  className="glass-card px-4 py-2 hover-glow text-sm"
-                >
-                  Live Demo
-                </a>
-              )}
-
-            </div>
-
-          </div>
-
-          {/* DESCRIPTION */}
-          <p className="text-white/80 leading-relaxed mb-10">
-            {project.description}
-          </p>
-
-          {/* HIGHLIGHTS */}
-          {project.highlights && (
-            <div className="mb-10">
-
-              <h2 className="text-xl font-semibold text-white mb-4">
-                Key Achievements
-              </h2>
-
-              <ul className="list-disc list-inside text-white/80 space-y-2">
-                {project.highlights.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-
-            </div>
-          )}
-
-          {/* TECH STACK */}
-          {project.techStack && (
-            <div className="mb-10">
-
-              <h2 className="text-xl font-semibold text-white mb-4">
-                Tech Stack
-              </h2>
-
-              <div className="flex flex-wrap gap-2">
-                {project.techStack.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 text-xs rounded-full
-                    bg-gradient-neon/20 text-accent-light
-                    border border-accent/30"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-            </div>
-          )}
-
-          {/* OVERVIEW */}
-          {project.overview && (
-            <div className="mb-10">
-
-              <h2 className="text-xl font-semibold text-white mb-4">
-                Project Overview
-              </h2>
-
-              <p className="text-white/80 leading-relaxed">
-                {project.overview}
-              </p>
-
-            </div>
-          )}
-
-          {/* PROBLEM */}
-          {project.problem && (
-            <div className="mb-10">
-
-              <h2 className="text-xl font-semibold text-white mb-4">
-                Problem
-              </h2>
-
-              <p className="text-white/80 leading-relaxed">
-                {project.problem}
-              </p>
-
-            </div>
-          )}
-
-          {/* SOLUTION */}
-          {project.solution && (
-            <div className="mb-10">
-
-              <h2 className="text-xl font-semibold text-white mb-4">
-                Solution
-              </h2>
-
-              <p className="text-white/80 leading-relaxed">
-                {project.solution}
-              </p>
-
-            </div>
-          )}
-
-          {/* RESULTS */}
-          {project.results && (
-            <div className="mb-10">
-
-              <h2 className="text-xl font-semibold text-white mb-4">
-                Results
-              </h2>
-
-              <ul className="list-disc list-inside text-white/80 space-y-2">
-                {project.results.map((r, i) => (
-                  <li key={i}>{r}</li>
-                ))}
-              </ul>
-
-            </div>
-          )}
-
-          {/* CASE STUDY */}
-          {project.caseStudy?.whyItMatters && (
-            <div className="mb-10">
-
-              <h2 className="text-xl font-semibold text-white mb-4">
-                Why It Matters
-              </h2>
-
-              <p className="text-white/80 leading-relaxed">
-                {project.caseStudy.whyItMatters}
-              </p>
-
-            </div>
-          )}
-
-          {caseStudySections.map(
-            ({ title, items }) =>
-              items &&
-              items.length > 0 && (
-                <div key={title} className="mb-10">
-
-                  <h2 className="text-xl font-semibold text-white mb-4">
-                    {title}
-                  </h2>
-
-                  <ul className="list-disc list-inside text-white/80 space-y-2">
-                    {items.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-
-                </div>
-              )
-          )}
-
-          {/* SCREENSHOTS */}
-          {project.screenshots && (
-            <div className="mb-12">
-
-              <h2 className="text-xl font-semibold text-white mb-6">
-                Screenshots
-              </h2>
-
-              <div className="grid md:grid-cols-2 gap-6">
-
-                {project.screenshots.map((img, i) => (
-                  <ProjectScreenshot
-                    key={i}
-                    src={img}
-                    alt={`${project.title} screenshot ${i + 1}`}
-                  />
-                ))}
-
-              </div>
-
-            </div>
-          )}
-
-          {/* BOTTOM LINKS */}
-          <div className="flex flex-wrap gap-4 pt-6 border-t border-white/10">
-
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  trackEvent("project_outbound_click", {
-                    location: "project_detail",
-                    project_slug: project.slug,
-                    project_title: project.title,
-                    destination: "github",
-                  })
-                }
-                className="glass-card px-5 py-2 hover-glow"
-              >
-                GitHub Repository
-              </a>
-            )}
-
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  trackEvent("project_outbound_click", {
-                    location: "project_detail",
-                    project_slug: project.slug,
-                    project_title: project.title,
-                    destination: "live_demo",
-                  })
-                }
-                className="glass-card px-5 py-2 hover-glow"
-              >
-                Live Demo
-              </a>
-            )}
-
-            {project.medium && (
-              <a
-                href={project.medium}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() =>
-                  trackEvent("project_outbound_click", {
-                    location: "project_detail",
-                    project_slug: project.slug,
-                    project_title: project.title,
-                    destination: "medium",
-                  })
-                }
-                className="glass-card px-5 py-2 hover-glow"
-              >
-                Read Full Medium Write-up
-              </a>
-            )}
-
-          </div>
-
-        </motion.div>
-
+    <div className="shell detail-page">
+      <Link to="/#projects" className="breadcrumb text-link"><ArrowLeft size={17} aria-hidden="true" /> Selected work</Link>
+      <header>
+        <p className="eyebrow">{story?.category ?? "Project archive"}</p>
+        <h1>{project.title}</h1>
+        <p className="lead">{project.description}</p>
+        <div className="detail-page-actions">
+          {links.filter(link => link.href && link.label).map(({ href, label, destination }, index) => (
+            <a key={href} className={`action ${index === 0 ? "action-primary" : "action-outline"}`} href={href}
+              onClick={() => trackEvent("project_outbound_click", { location: "project_detail", project_slug: project.slug, project_title: project.title, destination })}>
+              {label}<ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          ))}
+        </div>
+      </header>
+      {story && <div className="case-visual"><ProjectVisual story={story} /></div>}
+      <div className="case-grid">
+        <aside aria-label="Technology stack">
+          <p className="eyebrow">Stack</p>
+          <ul className="case-stack">{project.techStack.map(item => <li key={item}>{item}</li>)}</ul>
+        </aside>
+        <div className="case-content">
+          {project.problem && <section><h2>The problem</h2><p>{project.problem}</p></section>}
+          {story?.contribution && <section><h2>My role</h2><p>{story.contribution}</p></section>}
+          <section>
+            <h2>How it works</h2>
+            {story ? story.decisions.map(decision => <p key={decision}>{decision}</p>) : <p>{project.solution ?? project.overview}</p>}
+          </section>
+          {project.results?.length > 0 && <section>
+            <h2>What the project delivers</h2>
+            {project.results.map(result => <p key={result}>{result}</p>)}
+          </section>}
+          {story && <section><h2>Limits and lessons</h2>{story.boundaries.map(boundary => <p key={boundary}>{boundary}</p>)}</section>}
+          {!story && !!project.highlights?.length && <section><h2>Implementation highlights</h2><ul>{project.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}</ul></section>}
+        </div>
       </div>
-    </section>
+      <div className="case-next"><Link to={next ? `/project/${next.slug}` : "/#projects"} className="text-link">
+        {next ? `Next project: ${next.title}` : "Back to selected work"}<ArrowUpRight size={17} aria-hidden="true" />
+      </Link></div>
+    </div>
   );
-};
-
-export default ProjectDetail;
+}

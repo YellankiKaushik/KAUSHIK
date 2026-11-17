@@ -1,117 +1,27 @@
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import profileImage from "@/assets/profile.jpeg";
+import { github } from "@/data/contact";
 import { trackEvent } from "@/utils/analytics";
 
-const HeroSection = () => {
+export default function HeroSection() {
   return (
-    <section className="flex items-center justify-center py-12 px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="container mx-auto max-w-6xl"
-      >
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div className="order-2 md:order-1 text-center md:text-left">
-            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl text-white mb-3 font-display leading-tight">
-              Kaushik Yellanki
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-              className="mb-3 text-lg sm:text-xl text-primary-light font-semibold"
-            >
-              AI Systems Builder & Software Developer
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.4 }}
-              className="mx-auto mb-5 max-w-xl text-sm sm:text-base leading-relaxed text-white/75 md:mx-0"
-            >
-              I build practical AI-powered products, full-stack applications,
-              and secure AI integrations that turn ideas into working deployed
-              systems.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-              className="flex flex-wrap gap-3 justify-center md:justify-start"
-            >
-              {[
-                {
-                  Icon: Github,
-                  text: "GitHub",
-                  href: "https://github.com/YellankiKaushik",
-                  eventName: "github_click",
-                  destination: "github_profile",
-                },
-                {
-                  Icon: Linkedin,
-                  text: "LinkedIn",
-                  href: "https://www.linkedin.com/in/yellankikaushik/",
-                  eventName: "linkedin_click",
-                  destination: "linkedin_profile",
-                },
-                {
-                  Icon: Mail,
-                  text: "Email",
-                  href: "mailto:kaushikyellanki@gmail.com",
-                  eventName: "email_click",
-                  destination: "mailto",
-                },
-              ].map(({ Icon, text, href, eventName, destination }, index) => (
-                <motion.a
-                  key={index}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    if (eventName) {
-                      trackEvent(eventName, {
-                        location: "hero",
-                        destination,
-                      });
-                    }
-                  }}
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  transition={{ duration: 0.25 }}
-                  className="
-        glass-card
-        px-4 py-2
-        flex items-center gap-2
-        text-sm
-        justify-center
-        hover-glow
-      "
-                >
-                  <span className="text-primary-light">
-                    <Icon className="w-4 h-4" />
-                  </span>
-                  <span className="text-white">
-                    {text}
-                  </span>
-                </motion.a>
-              ))}
-            </motion.div>
+    <section id="home" className="hero-field" aria-labelledby="hero-title">
+      <div className="shell hero">
+        <div className="hero-copy">
+          <p className="eyebrow hero-role"><span aria-hidden="true" />AI Systems Builder &amp; Software Developer</p>
+          <h1 id="hero-title">Kaushik <em data-hero-accent>Yellanki.</em></h1>
+          <p className="hero-lede">I build AI systems, web applications, and automations that make complicated workflows easier to use.</p>
+          <div className="hero-actions">
+            <Link to="/#projects" className="action action-primary">Explore my work <ArrowDown size={19} aria-hidden="true" /></Link>
+            <a href={github} className="text-link" onClick={() => trackEvent("github_click", { location: "hero", destination: "github_profile" })}>GitHub <ArrowUpRight size={17} aria-hidden="true" /></a>
           </div>
-
-          <motion.div className="order-1 md:order-2 flex justify-center mb-6 md:mb-0">
-            <img
-              src={profileImage}
-              alt="Kaushik Yellanki profile photo"
-              decoding="async"
-              className="rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover border-4 border-primary-dark/50 shadow-neon"
-            />
-          </motion.div>
         </div>
-      </motion.div>
+        <figure className="hero-portrait">
+          <div className="portrait-image"><img src={profileImage} alt="Portrait of Kaushik Yellanki" decoding="async" /></div>
+          <figcaption><span>KAUSHIK YELLANKI</span><span>HYDERABAD, INDIA</span></figcaption>
+        </figure>
+      </div>
     </section>
   );
-};
-
-export default HeroSection;
+}

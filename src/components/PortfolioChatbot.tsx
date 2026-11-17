@@ -1,4 +1,4 @@
-import { FormEvent, KeyboardEvent, useMemo, useRef, useState } from "react";
+import { FormEvent, KeyboardEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Bot, MessageCircle, Send, X } from "lucide-react";
 import { suggestedChatbotQuestions } from "@/data/portfolioKnowledge";
 import { getPortfolioAnswer } from "@/utils/portfolioChatbotEngine";
@@ -63,6 +63,21 @@ const PortfolioChatbot = () => {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const launcher = useRef<HTMLButtonElement>(null);
+  const closeButton = useRef<HTMLButtonElement>(null);
+  const messageList = useRef<HTMLDivElement>(null);
+  const wasOpen = useRef(false);
+
+  useEffect(() => {
+    if (isOpen) closeButton.current?.focus();
+    else if (wasOpen.current) launcher.current?.focus();
+    wasOpen.current = isOpen;
+  }, [isOpen]);
+
+  useEffect(() => {
+    const list = messageList.current;
+    if (list) list.scrollTop = list.scrollHeight;
+  }, [messages, isOpen]);
 
   const starterQuestions = useMemo(
     () => suggestedChatbotQuestions.slice(0, 6),
@@ -215,11 +230,11 @@ const PortfolioChatbot = () => {
       <div className="fixed bottom-4 right-4 z-[70] sm:bottom-6 sm:right-6">
         <button
           type="button"
-          aria-label="Open Kaushik portfolio assistant"
+          aria-label="Open Kaushik portfolio assistant" ref={launcher} aria-haspopup="dialog"
           onClick={openChatbot}
-          className="glass-card hover-glow flex items-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-white shadow-neon"
+          className="chat-launch flex min-h-11 items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold"
         >
-          <MessageCircle className="h-4 w-4 text-primary-light" aria-hidden="true" />
+          <MessageCircle className="h-4 w-4" aria-hidden="true" />
           <span>Ask about Kaushik</span>
         </button>
       </div>
@@ -230,13 +245,19 @@ const PortfolioChatbot = () => {
     <section
       role="dialog"
       aria-modal="false"
-      aria-label="Kaushik Portfolio Assistant"
+            aria-label="Kaushik Portfolio Assistant"
+      onKeyDown={event => {
+        if (event.key === "Escape") {
+          event.stopPropagation();
+          closeChatbot();
+        }
+      }}
       className="fixed bottom-4 left-3 right-3 z-[70] mx-auto w-auto max-w-[420px] sm:left-auto sm:right-6 sm:bottom-6"
     >
-      <div className="glass-card flex max-h-[min(680px,calc(100vh-2rem))] flex-col overflow-hidden rounded-2xl border-white/15 shadow-[0_18px_60px_rgba(0,0,0,0.45)]">
+      <div className="glass-card chat-panel flex max-h-[min(680px,calc(100dvh-2rem))] flex-col overflow-hidden rounded-2xl border-white/15 shadow-[0_18px_60px_rgba(0,0,0,0.45)]">
         <header className="flex items-start justify-between gap-4 border-b border-white/10 px-4 py-4">
           <div className="flex gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-cosmic text-white shadow-neon">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-white">
               <Bot className="h-5 w-5" aria-hidden="true" />
             </div>
             <div>
@@ -251,9 +272,9 @@ const PortfolioChatbot = () => {
 
           <button
             type="button"
-            aria-label="Close Kaushik portfolio assistant"
+            aria-label="Close Kaushik portfolio assistant" ref={closeButton}
             onClick={closeChatbot}
-            className="rounded-full p-2 text-white/70 transition hover:bg-white/10 hover:text-white"
+            className="rounded-full p-3 text-white/70 transition hover:bg-white/10 hover:text-white"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -263,7 +284,7 @@ const PortfolioChatbot = () => {
           <p className="mb-2 text-xs font-medium text-white/70">
             Starter questions
           </p>
-          <div className="flex gap-2 overflow-x-auto pb-1">
+          <div className="flex gap-2 overflow-x-auto pb-1" data-lenis-prevent>
             {starterQuestions.map((question, index) => (
               <button
                 key={question}
@@ -278,7 +299,7 @@ const PortfolioChatbot = () => {
           </div>
         </div>
 
-        <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+        <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4" role="log" aria-label="Conversation" ref={messageList} data-lenis-prevent>
           {messages.map((message) => (
             <div
               key={message.id}
@@ -287,9 +308,9 @@ const PortfolioChatbot = () => {
               }`}
             >
               <div
-                className={`max-w-[88%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${
+                className={`max-w-[88%] whitespace-pre-line break-words rounded-2xl px-3 py-2 text-sm leading-relaxed ${
                   message.role === "user"
-                    ? "bg-primary text-white"
+                    ? "chat-submit"
                     : "border border-white/10 bg-white/8 text-white/80"
                 }`}
               >
@@ -317,7 +338,7 @@ const PortfolioChatbot = () => {
           <button
             type="submit"
             aria-label="Send message to Kaushik portfolio assistant"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-cosmic text-white transition hover:shadow-neon disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl chat-submit transition hover:shadow-neon disabled:cursor-not-allowed disabled:opacity-50"
             disabled={!inputValue.trim() || isLoading}
           >
             <Send className="h-4 w-4" aria-hidden="true" />
