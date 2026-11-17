@@ -63,10 +63,13 @@ export function Credentials() {
         <details id="certifications">
           <summary>Certifications <ChevronDown size={21} aria-hidden="true" /></summary>
           <div>
-            {certifications.map(item => <a key={item.link} className="evidence-row" href={item.link}
-              onClick={() => trackEvent("certificate_click", { certificate_title: item.title, issuer: item.issuer })}>
-              <span><strong>{item.title}</strong><br /><small>{item.issuer}</small></span><ArrowUpRight size={18} aria-hidden="true" />
-            </a>)}
+            {certifications.map(item => {
+              const credential = <span><strong>{item.title}</strong><br /><small>{item.issuer}</small></span>;
+              return item.link ? <a key={item.title} className="evidence-row" href={item.link}
+                onClick={() => trackEvent("certificate_click", { certificate_title: item.title, issuer: item.issuer })}>
+                {credential}<ArrowUpRight size={18} aria-hidden="true" />
+              </a> : <div key={item.title} className="evidence-row">{credential}<small>Proof link unavailable</small></div>;
+            })}
           </div>
         </details>
         <details id="achievements">

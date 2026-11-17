@@ -20,8 +20,10 @@ export default function ScrollToTop() {
       }
       return;
     }
-    window.scrollTo({ top: 0, behavior: "instant" });
-    if (navigationType !== "POP") document.getElementById("main-content")?.focus({ preventScroll: true });
+    if (navigationType !== "POP") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      document.getElementById("main-content")?.focus({ preventScroll: true });
+    }
   }, [pathname, search, hash, key, navigationType]);
 
   useEffect(() => {

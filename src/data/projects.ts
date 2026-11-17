@@ -10,6 +10,7 @@ export type PortfolioProject = {
   results?: string[];
   github?: string;
   live?: string;
+  demoStatus?: "unavailable";
   medium?: string;
   order?: number;
   visible?: boolean;
@@ -162,6 +163,7 @@ export const projects: PortfolioProject[] = [
     ],
     github: "https://github.com/YellankiKaushik/AI-Crowd-Intelligence-Assistant",
     live: "https://ai-crowd-intelligence-148352897207.asia-south1.run.app",
+    demoStatus: "unavailable",
     medium: "",
     order: 4,
     featured: true,
@@ -199,6 +201,7 @@ export const projects: PortfolioProject[] = [
     ],
     github: "https://github.com/YellankiKaushik/Sistemaa-Electoral",
     live: "https://election-app-116362886136.asia-south1.run.app/",
+    demoStatus: "unavailable",
     medium: "",
     order: 5,
     featured: true,

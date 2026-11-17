@@ -22,10 +22,11 @@ export default function ProjectDetail() {
 
   const visible = projects.filter(record => record.visible !== false);
   const index = visible.findIndex(record => record.slug === project.slug);
-  const next = visible[index + 1];
+  const next = index >= 0 ? visible[index + 1] : undefined;
+  const demoAvailable = project.demoStatus !== "unavailable";
   const links = [
     { href: project.github, label: "Source on GitHub", destination: "github" },
-    { href: project.live, label: project.live?.includes(".run.app") ? "Cloud Run deployment" : "Open live demo", destination: "live_demo" },
+    { href: demoAvailable ? project.live : undefined, label: "Open live demo", destination: "live_demo" },
     { href: project.medium, label: "Read the write-up", destination: "medium" },
     { ...story?.evidence, destination: "evidence" },
   ];
@@ -45,6 +46,7 @@ export default function ProjectDetail() {
             </a>
           ))}
         </div>
+        {!demoAvailable && <p className="demo-status">The hosted demo is currently unavailable. The source and setup instructions are on GitHub.</p>}
       </header>
       {story && <div className="case-visual"><ProjectVisual story={story} /></div>}
       <div className="case-grid">

@@ -117,9 +117,11 @@ const formatProjectLinks = (
     project.github
       ? `GitHub: ${project.github}`
       : "GitHub link: That link is not currently listed in the portfolio.",
-    project.live
-      ? `Live link: ${project.live}`
-      : "Live link: That link is not currently listed in the portfolio.",
+    project.demoStatus === "unavailable"
+      ? "The hosted demo is currently unavailable."
+      : project.live
+        ? `Live link: ${project.live}`
+        : "Live link: That link is not currently listed in the portfolio.",
     project.medium
       ? `Medium write-up: ${project.medium}`
       : "Medium link: That link is not currently listed in the portfolio.",
@@ -309,7 +311,7 @@ const answerCertifications = (question: string): ChatbotAnswer => {
 
   return {
     category: "certifications",
-    content: `Verified certifications include: ${certifications
+    content: `Certifications listed in the portfolio include: ${certifications
       .map((certification) => `${certification.title} (${certification.issuer})`)
       .join("; ")}.${suffix}`,
   };

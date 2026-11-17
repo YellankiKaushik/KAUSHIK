@@ -94,7 +94,7 @@ const PortfolioChatbot = () => {
     const userMessage = createMessage("user", trimmedPrompt);
     const localResult = getPortfolioAnswer(trimmedPrompt);
     const localAnswer = localResult.content;
-    const shouldUseAI = aiEnhancedCategories.has(localResult.category);
+    const shouldUseAI = import.meta.env.BASE_URL === "/" && aiEnhancedCategories.has(localResult.category);
     const assistantMessage = createMessage(
       "assistant",
       shouldUseAI ? "Thinking..." : localAnswer
@@ -219,7 +219,7 @@ const PortfolioChatbot = () => {
   };
 
   const handleInputKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing) {
       event.preventDefault();
       addUserPrompt(inputValue);
     }
@@ -245,7 +245,7 @@ const PortfolioChatbot = () => {
     <section
       role="dialog"
       aria-modal="false"
-            aria-label="Kaushik Portfolio Assistant"
+      aria-label="Kaushik Portfolio Assistant"
       onKeyDown={event => {
         if (event.key === "Escape") {
           event.stopPropagation();
@@ -274,7 +274,7 @@ const PortfolioChatbot = () => {
             type="button"
             aria-label="Close Kaushik portfolio assistant" ref={closeButton}
             onClick={closeChatbot}
-            className="rounded-full p-3 text-white/70 transition hover:bg-white/10 hover:text-white"
+            className="grid size-11 shrink-0 place-items-center rounded-full text-white/70 transition hover:bg-white/10 hover:text-white"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
@@ -291,7 +291,7 @@ const PortfolioChatbot = () => {
                 type="button"
                 onClick={() => handleStarterQuestionClick(question, index)}
                 disabled={isLoading}
-                className="shrink-0 rounded-full border border-primary/30 bg-gradient-cosmic/15 px-3 py-2 text-left text-xs text-primary-light transition hover:border-primary-light/60 hover:text-white"
+                className="chat-starter min-h-11 shrink-0 rounded-full border px-3 py-2 text-left text-xs transition"
               >
                 {question}
               </button>
@@ -332,13 +332,13 @@ const PortfolioChatbot = () => {
             onKeyDown={handleInputKeyDown}
             rows={1}
             placeholder="Ask about projects, skills, proof..."
-            disabled={isLoading}
-            className="max-h-24 min-h-10 flex-1 resize-none rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-sm text-white placeholder:text-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            maxLength={1000}
+            className="max-h-24 min-h-11 flex-1 resize-none rounded-xl border border-white/25 bg-black/25 px-3 py-2 text-sm text-white placeholder:text-white/60"
           />
           <button
             type="submit"
             aria-label="Send message to Kaushik portfolio assistant"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl chat-submit transition hover:shadow-neon disabled:cursor-not-allowed disabled:opacity-50"
+            className="chat-submit flex size-11 shrink-0 items-center justify-center rounded-xl transition disabled:cursor-not-allowed disabled:opacity-50"
             disabled={!inputValue.trim() || isLoading}
           >
             <Send className="h-4 w-4" aria-hidden="true" />

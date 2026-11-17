@@ -35,12 +35,18 @@ export const setPageSeo = (
 
   let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
   let ogUrl = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
+  const existingRobots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
   if (canonicalPath === null) {
     canonical?.remove();
     ogUrl?.remove();
+    const robots = existingRobots ?? document.createElement("meta");
+    robots.name = "robots";
+    robots.content = "noindex, follow";
+    if (!existingRobots) document.head.appendChild(robots);
     return;
   }
 
+  existingRobots?.remove();
   const url = new URL(canonicalPath, portfolioOrigin).href;
   if (!canonical) {
     canonical = document.createElement("link");

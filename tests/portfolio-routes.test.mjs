@@ -43,6 +43,7 @@ test("home renders the portfolio landmarks, work, and writing links under the Pa
   }
   assert.match(html, /href="\/KAUSHIK\/project\/hazlo"/);
   assert.match(html, /href="\/KAUSHIK\/newsletter"/);
+  assert.match(html, /Proof link unavailable/);
 });
 
 test("all project routes render their data, including archived projects", { timeout: 15_000 }, async () => {
@@ -75,4 +76,19 @@ test("experience, challenge, newsletter, and not-found views render", { timeout:
 test("assistant can answer a contact question from local portfolio data", () => {
   const answer = getPortfolioAnswer("What is Kaushik’s email address?");
   assert.match(answer.content, /kaushikyellanki@gmail\.com/);
+});
+
+test("unavailable deployments are labeled and their broken links stay out of the public UI", async () => {
+  for (const slug of ["ai-crowd-intelligence", "sistemaa-electoral"]) {
+    const html = await renderRoute(`/project/${slug}`);
+    assert.match(html, /hosted demo is currently unavailable/i);
+    assert.match(html, /Source on GitHub/);
+    assert.doesNotMatch(html, /href="[^"]+\.run\.app/);
+  }
+  const challenge = await renderRoute("/challenges/ai-crowd-intelligence-assistant");
+  assert.match(challenge, /hosted demo is currently unavailable/i);
+  assert.doesNotMatch(challenge, /href="[^"]+\.run\.app/);
+  const answer = getPortfolioAnswer("Tell me about Sistemaa Electoral");
+  assert.match(answer.content, /hosted demo is currently unavailable/i);
+  assert.doesNotMatch(answer.content, /\.run\.app/);
 });

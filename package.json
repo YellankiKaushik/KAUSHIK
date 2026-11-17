@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test",
+    "test:browser": "node tests/browser/run.mjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

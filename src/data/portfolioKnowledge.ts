@@ -199,7 +199,7 @@ export const portfolioKnowledge = {
       .filter((project) => Boolean(project.github))
       .map((project) => project.slug),
     projectsWithLiveLinks: projects
-      .filter((project) => Boolean(project.live))
+      .filter((project) => project.live && project.demoStatus !== "unavailable")
       .map((project) => project.slug),
     projectsWithMediumLinks: projects
       .filter((project) => Boolean(project.medium))
@@ -210,12 +210,15 @@ export const portfolioKnowledge = {
     projectsMissingLiveLinks: projects
       .filter((project) => !project.live)
       .map((project) => project.slug),
+    projectsWithUnavailableDemos: projects
+      .filter((project) => project.demoStatus === "unavailable")
+      .map((project) => project.slug),
     projectsMissingMediumLinks: projects
       .filter((project) => !project.medium)
       .map((project) => project.slug),
     projectsWithMissingImages: projects.map((project) => project.slug),
     imageStatus:
-      "Project image paths are defined, but public/projects was missing during the source-of-truth audit.",
+      "Featured case studies use labeled architecture illustrations while product screenshots are unavailable.",
   },
 
   experiences,
@@ -258,7 +261,6 @@ export const portfolioKnowledge = {
     {
       title: "DotNet Full Stack",
       issuer: "Wipro Talentext",
-      link: "https://drive.google.com/file/d/1DLUtQgfCW7AUu0VzSBXr0W7_ZFW30G1Z/view",
     },
     {
       title: "Machine Learning Fundamentals Micro-Credential",

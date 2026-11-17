@@ -55,7 +55,7 @@ export const certifications = [
   {
     title: "DotNet Full Stack",
     issuer: "Wipro Talentext",
-    link: "https://drive.google.com/file/d/1DLUtQgfCW7AUu0VzSBXr0W7_ZFW30G1Z/view",
+    link: null,
   },
   {
     title: "Machine Learning Fundamentals Micro-Credential",

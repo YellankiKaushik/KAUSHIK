@@ -1,114 +1,61 @@
 # Kaushik Yellanki — Portfolio
 
-Personal portfolio for **Kaushik Yellanki**, an AI systems builder and software developer. The site presents selected projects, experience, skills, education, certifications, achievements, and contact information.
+The portfolio presents Kaushik's work as an AI systems builder and software developer. It opens with six featured technical case studies and includes experience, challenges, credentials, Signal Daily, and a portfolio assistant.
 
-**Live site:** [kaaushik.vercel.app](https://kaaushik.vercel.app/) · [kaaush.vercel.app](https://kaaush.vercel.app/)
+Production lives at [kaaush.vercel.app](https://kaaush.vercel.app/). The [alternate hostname](https://kaaushik.vercel.app/) redirects there.
 
-## About the project
+## Local development
 
-This is a responsive, single-page portfolio with detail pages for projects and experience, plus an overview and detail pages for challenges. Portfolio content is maintained in typed data modules so it can be updated without restructuring the page components.
+Use Node.js 24 and npm.
 
-The site also includes a portfolio assistant. It answers from the local portfolio knowledge base when possible and can use a Vercel serverless API backed by OpenRouter for supported questions. When the API is unavailable or AI use is not enabled for a question, the client can provide deterministic local responses.
-
-## Features
-
-- Sections for experience, skills, projects, education, certifications, achievements, and contact
-- Detail pages for portfolio projects and experience
-- Challenge overview and detail pages
-- Responsive React interface with motion and icon components
-- Portfolio assistant with local knowledge and optional server-side AI
-- Optional Google Analytics 4 measurement
-- Vercel deployment configuration with security headers and client-side route fallback
-
-## Technology
-
-- React 18 and TypeScript
-- Vite 7
-- Tailwind CSS
-- Framer Motion
-- React Router
-- Lucide React and Heroicons
-- Vercel serverless functions for the assistant API
-- OpenRouter for optional assistant responses
-- Google Analytics 4, when configured
-
-## Run locally
-
-### Requirements
-
-- Node.js **20.19+** or **22.12+**
-- npm
-
-### Install and start
-
-```bash
-git clone https://github.com/YellankiKaushik/KAUSHIK.git
-cd KAUSHIK
+```sh
 npm ci
 npm run dev
 ```
 
-Vite prints the local URL after the development server starts. In a local build, the app uses `/KAUSHIK/` as its base path; Vercel builds use `/`.
+Open the URL Vite prints. The default base path is `/KAUSHIK/` for GitHub Pages. Vercel sets `VERCEL=1` to use the root path.
 
-## Deployment notes
+| Command | Purpose |
+| --- | --- |
+| `npm run build` | Build into `dist/` for GitHub Pages. |
+| `VERCEL=1 npm run build` | Build for Vercel. In PowerShell run `$env:VERCEL='1'`, then `npm run build`. |
+| `npm run preview` | Serve the production build locally. Use the same `VERCEL` setting as the build. |
+| `npm test` | Run route, content, and API contract tests. |
+| `npx tsc --noEmit -p tsconfig.app.json` | Check frontend types. |
+| `npx eslint .` | Lint the repository. |
 
-The portfolio is hosted on Vercel at [kaaush.vercel.app](https://kaaush.vercel.app/). The verified alternate domain `kaaushik.vercel.app` redirects there (307); the project mapping was inspected on 25 October 2026 and no alias or redirect setting was changed.
+## Architecture
 
-## Signal Daily newsletter
+- React 18, TypeScript, Vite 7, Tailwind CSS, React Router, and Lucide. The shared shell lives in `src/components/SiteShell.tsx`, the route table in `src/PortfolioRoutes.tsx`, and the main design rules in `src/index.css`.
+- `src/data/projects.ts` holds project records, including preserved archive routes. `src/data/projectStories.ts` adds architecture flows, engineering decisions, and limitations for the featured case studies. The project visuals are labeled illustrations.
+- Lenis and GSAP run in a lazy-loaded desktop motion chunk when reduced motion is off. The hero text and card spotlight use custom implementations inspired by React Bits. The site has no Vanta background.
+- The assistant loads separately and can answer from local portfolio knowledge. Vercel serves `POST /api/portfolio-chat` for optional OpenRouter enrichment. The assistant falls back to local answers when the endpoint or model is unavailable.
+- Signal Daily reads the public catalog at `src/data/newsletters.json`. The archive opens with an empty state until an approved edition is available. Subscriptions also require a configured Buttondown username. See [the publication workflow](portfolio-docs/NEWSLETTER_ARCHITECTURE.md).
 
-Signal Daily reader architecture, publication boundaries and maintenance instructions are documented in [portfolio-docs/NEWSLETTER_ARCHITECTURE.md](portfolio-docs/NEWSLETTER_ARCHITECTURE.md). The public catalog is intentionally empty and subscriptions remain disabled until an approved edition is published. Actual editions must come from the approved Signal Daily export workflow; the portfolio does not host the private editor or its database.
+## Browser QA
 
-### Optional environment variables
+Start a local production preview, then run the following in another terminal. Playwright and axe are optional QA tools and do not ship in the portfolio.
 
-Copy `.env.example` to `.env.local` and set only the integrations you want to use:
+```sh
+npm install --no-save --package-lock=false playwright @axe-core/playwright
+npx playwright install chromium
+npm run test:browser
+```
+
+The suite defaults to `http://127.0.0.1:4173/KAUSHIK/`. Set `QA_BASE_URL` to test a different local preview or an authorized deployment. With a root-base preview, use `http://127.0.0.1:4173/`. Screenshots and accessibility and timing results are written to `browser-results.local/`. The assistant API request is intercepted with a test response and the suite never submits a newsletter form.
+
+## Deployment
+
+Vercel is the primary host. Its route table serves existing static files and functions before the browser route fallback. The retired résumé URL returns HTTP 410. Set these variables in the relevant Vercel environment when enabling integrations. For local development, copy `.env.example` to `.env.local`.
 
 | Variable | Purpose |
 | --- | --- |
-| `OPENROUTER_API_KEY` | Enables server-side OpenRouter requests for the portfolio assistant. Keep this secret and configure it in the Vercel project for hosted deployments. |
-| `OPENROUTER_MODEL` | Optional OpenRouter model name. Defaults to `openai/gpt-4o-mini` in the API. |
-| `OPENROUTER_SITE_URL` | Optional site URL sent as OpenRouter request metadata. |
-| `OPENROUTER_SITE_NAME` | Optional site name sent as OpenRouter request metadata. |
-| `VITE_GA_MEASUREMENT_ID` | Optional Google Analytics 4 measurement ID. This value is included in the client build. |
+| `OPENROUTER_API_KEY` | Server-only key for the optional assistant API. |
+| `OPENROUTER_MODEL` | Optional model override. |
+| `OPENROUTER_SITE_URL`, `OPENROUTER_SITE_NAME` | Optional OpenRouter request metadata. |
+| `VITE_GA_MEASUREMENT_ID` | Public, optional Google Analytics ID. |
+| `VITE_BUTTONDOWN_USERNAME` | Public, optional Signal Daily subscription account. |
 
-The local portfolio assistant can use its built-in knowledge without an OpenRouter key. The `/api/portfolio-chat` serverless endpoint requires a Vercel-compatible runtime; running `vite` alone does not serve that API route.
+Use a non-production Git branch for Vercel preview deployments. GitHub Pages remains a manually published static backup. It serves the local assistant fallback without the Vercel function. Keep credentials in the hosting environment.
 
-Never commit `.env` files, API keys, or other credentials. Client-prefixed `VITE_` values are public in the built site and must not contain secrets.
-
-## Useful commands
-
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the Vite development server |
-| `npm run build` | Create a production build in `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run deploy` | Publish the `dist/` directory with `gh-pages` (requires the repository's publishing setup) |
-
-## Repository layout
-
-```text
-api/                 Vercel serverless API for the portfolio assistant
-public/              Static assets and site metadata
-src/
-  components/        Page sections and shared UI components
-  data/              Typed portfolio content and assistant knowledge
-  pages/             Home, detail, overview, and not-found pages
-  utils/             SEO, analytics, and assistant response helpers
-portfolio-docs/      Working notes and source material for portfolio content
-```
-
-Key content files include `src/data/projects.ts`, `src/data/experiences.ts`, `src/data/challenges.ts`, and `src/data/portfolioKnowledge.ts`.
-
-## Build and deploy
-
-Build locally before deploying:
-
-```bash
-npm ci
-npm run build
-```
-
-The production site is hosted on Vercel. Connect the repository to a Vercel project and configure any required environment variables in that project's settings. Vercel serves the React application and the assistant API route; the Vite development server by itself serves only the front end.
-
-## Contributing and content accuracy
-
-This is a personal portfolio. Keep project descriptions, experience, credentials, and outcomes consistent with the source records and verifiable evidence. Do not add invented metrics, claims, or credentials. Keep private information and secrets out of the repository.
+[Redesign reports](docs/redesign/reports/) track verification, release status, and content gaps.

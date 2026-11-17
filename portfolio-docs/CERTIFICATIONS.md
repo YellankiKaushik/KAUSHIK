@@ -6,7 +6,7 @@ EXTRACTED from repository certification arrays. Credential validity should be ma
 
 ## Repository Sources
 
-- `src/components/CertificationsSection.tsx`
+- `src/data/profile.ts`
 - `src/data/portfolioKnowledge.ts`
 
 ## Certification Inventory
@@ -29,7 +29,7 @@ EXTRACTED from repository certification arrays. Credential validity should be ma
 ## DotNet Full Stack
 
 - Issuer: Wipro Talentext
-- Link: `https://drive.google.com/file/d/1DLUtQgfCW7AUu0VzSBXr0W7_ZFW30G1Z/view`
+- Proof link unavailable. The previous Google Drive URL returned “file does not exist” during QA.
 
 ## Machine Learning Fundamentals Micro-Credential
 

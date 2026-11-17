@@ -95,7 +95,7 @@ export const challenges: ChallengeParticipation[] = [
     category: "AI crowd navigation",
     date: null,
     timeframe: "Time-bound hackathon build",
-    status: "Working prototype with GitHub and live demo listed",
+    status: "Hackathon prototype. The hosted demo is currently unavailable.",
     dataStatus: "verified",
     summary:
       "Built a simulated crowd navigation assistant that recommends routes using crowd-aware scoring and Gemini-generated explanations.",
@@ -122,15 +122,14 @@ export const challenges: ChallengeParticipation[] = [
       "Deployment",
     ],
     outcome:
-      "Built and deployed a working hackathon prototype with GitHub and live demo links listed in the portfolio.",
+      "Built and deployed a hackathon prototype. The source and setup instructions are available on GitHub.",
     learnings: [
       "Practiced turning a time-bound problem statement into a usable prototype.",
       "Improved clarity around combining deterministic scoring with AI-generated explanations.",
     ],
     githubUrl:
       "https://github.com/YellankiKaushik/AI-Crowd-Intelligence-Assistant.git",
-    liveUrl:
-      "https://ai-crowd-intelligence-148352897207.asia-south1.run.app",
+    liveUrl: null,
     mediumUrl: null,
     devtoUrl: null,
     certificateUrl: null,

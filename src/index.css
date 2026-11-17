@@ -170,6 +170,7 @@ a.evidence-row:hover strong { color: var(--rust); }
 .detail-page h1 { font-size: clamp(2.6rem, 7.25vw, 7rem); max-width: 17ch; line-height: .95; letter-spacing: -.078em; font-weight: 700; overflow-wrap: anywhere; margin: .1em 0 .22em; }
 .detail-page .lead { max-width: 62ch; font-size: clamp(1.05rem, 2vw, 1.33rem); color: var(--muted); }
 .detail-page-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 1.4rem 0; }
+.demo-status { max-width: 62ch; color: var(--muted); }
 .detail-page h2 { font-size: clamp(1.62rem, 3vw, 2.75rem); line-height: 1.05; font-weight: 700; letter-spacing: -.052em; margin-bottom: .55em; }
 .detail-page h3 { font-weight: 700; font-size: 1.15rem; letter-spacing: -.035em; }
 .case-visual { margin-block: clamp(28px, 5vw, 60px); }
@@ -194,6 +195,9 @@ a.evidence-row:hover strong { color: var(--rust); }
 .chat-panel :focus-visible { outline-color: #ffa684; }
 .chat-panel input, .chat-panel textarea { min-width: 0; }
 .chat-submit { background: var(--rust); color: var(--surface); }
+.chat-submit:not(:disabled):hover { background: #7f2b14; }
+.chat-starter { border-color: #856a5a; background: #393329; color: #ffe1ce; }
+.chat-starter:not(:disabled):hover { border-color: #ffa684; background: #4a3a30; }
 
 @media (max-width: 900px) {
   .work-card, .work-card:nth-child(n) { grid-column: span 6; grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
@@ -240,3 +244,5 @@ a.evidence-row:hover strong { color: var(--rust); }
 .newsletter-edition { margin-top: 2rem; max-width: 70ch; }
 .newsletter-edition section:first-of-type { margin-top: .65rem; }
 .newsletter-row { grid-template-columns: minmax(100px, .4fr) minmax(0, 1.6fr); }
+.newsletter-row h2 { font-size: clamp(1.2rem, 2vw, 1.55rem); margin-bottom: 5px; }
+.newsletter-row:hover h2 { color: var(--rust); }

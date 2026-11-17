@@ -6,7 +6,7 @@ import { setPageSeo } from "@/utils/seo";
 
 function Subscribe() {
   const username = import.meta.env.VITE_BUTTONDOWN_USERNAME || "";
-  if (!/^[a-zA-Z0-9_-]+$/.test(username)) return <p>Email subscriptions will open later. Every edition will be available in the archive.</p>;
+  if (!editions.length || !/^[a-zA-Z0-9_-]+$/.test(username)) return <p>Email subscriptions will open later. Every edition will be available in the archive.</p>;
 
   return (
     <form action={`https://buttondown.com/api/emails/embed-subscribe/${username}`} method="post" className="archive-controls items-end">
@@ -68,7 +68,7 @@ export default function NewsletterPage() {
       <div className="detail-directory">
         {filtered.map(record => <Link className="directory-row newsletter-row" to={`/newsletter/${record.slug}`} key={record.id}>
           <p className="eyebrow"><time dateTime={record.publishedAt}>{record.publishedAt.slice(0, 10)}</time></p>
-          <div><h3>{record.title}</h3><p>{record.intro}</p></div>
+          <div><h2>{record.title}</h2><p>{record.intro}</p></div>
         </Link>)}
         {!filtered.length && <p role="status">{editions.length ? "No editions match your search." : "No editions have been published yet."}</p>}
       </div>
